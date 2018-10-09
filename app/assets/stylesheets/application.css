@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .failure {
+   color: red;
+   text-shadow: 1px 1px black;
+ }
+
+ .header-offline {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: black;
+   opacity: 0.5;
+   position: fixed;
+   z-index: 2000;
+   width: 100%;
+   height: 64px;
+   /* margin-right: auto; */
+   /* margin-left: auto; */
+ }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.big-signup {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  height: 64px;
+line-height: 64px;
+font-size: 24px;
+font-weight: 800;
+}
+
+.splash {
+  background-image: url("https://media.istockphoto.com/photos/liquor-bottles-on-a-white-background-picture-id459018635?k=6&m=459018635&s=612x612&w=0&h=WxfjzC94sN2KMQ9F6JKUuQjJ8UkJW1aMB1kXW-3ZAPo=");
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  padding: 0 60px;
+}
+
+.splash < h1 {
+  font-size: 26px;
+line-height: 32px;
+font-weight: 600;
+}
+
+.login-link {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid black;
+}
+
+.search-bar {
+  width: 300px;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-size: 14px;
+  line-height: 20px;
+  box-sizing: border-box;
+  height: 33px;
+}
+
+.signup-link {
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+  background: white;
+  opacity: 1;
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home-link {
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  opacity: 1;
+  font-weight: 600;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.linkbox {
+  display: flex;
+  font-size: 14px;
+  color: black;
+  justify-content: space-around;
+  margin-right: 15px;
+}
+
+.session-form-container {
+  background-color: black;
+  color: white;
+  box-shadow: 2px 2px gray;
+}
