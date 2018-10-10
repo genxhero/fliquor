@@ -12,7 +12,6 @@ const OfflineHeader = ({store}) => (
    <nav className="linkbox">
      <Link to="/login"className="login-link">Log In</Link>
      <Link to="/signup" className="signup-link-splash">Sign Up</Link>
-
    </nav>
 </div>
 );

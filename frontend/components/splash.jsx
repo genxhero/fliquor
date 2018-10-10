@@ -8,9 +8,9 @@ const Splash = (props) => {
 if (props.location.pathname === '/') {
   return (
     <div className="splash">
-      <h1>Find your inspiration.</h1>
+      <h1 className="inspire">Find your inspiration.</h1>
       <br></br>
-        <h3>Join the Fliquor party, home to 99 bottles of photos!</h3>
+        <h3 className="tagline">Join the Fliquor party, home to 99 bottles of photos!</h3>
         <br></br>
         <br></br>
 
