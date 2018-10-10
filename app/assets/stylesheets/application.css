@@ -251,6 +251,8 @@ font-weight: 600;
 .form-field {
   margin-left: 10px;
 background-color: transparent;
+color: white;
+font-size: 18px;
   box-shadow: inset 1px 1px 1px white;
 }
 
