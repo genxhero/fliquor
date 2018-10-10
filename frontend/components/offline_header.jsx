@@ -5,6 +5,7 @@ import {AuthRoute} from '../util/auth_util';
 
 const OfflineHeader = ({store}) => (
  <div className="header-offline">
+   <div className="header-background"></div>
    <Link to="/home" className="home-link">fliquor</Link>
    <form className="offline-search">
      <input className="search-bar" type="text" ></input>
