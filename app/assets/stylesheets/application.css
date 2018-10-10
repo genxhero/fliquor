@@ -15,10 +15,17 @@
  */
 
 .other-action {
-  background-color: white;
+  background: transparent;
   padding: 5px;
   color: black;
+  margin-left: 50px;
+  font-weight: 800;
+  color: white;s
   text-decoration: none;
+  text-align: center;
+  box-shadow:   inset 1px 4px 3px 1px white,
+   inset -1px -4px 3px 1px white;
+   padding: 10px;
 }
 
  .failure {
@@ -39,6 +46,10 @@
  }
 
  .header-background {
+   position: absolute;
+   width: 100%;
+   height: 64px;
+   z-index: 1000;
    background-color: black;
    opacity: 0.5;
  }
@@ -81,12 +92,14 @@ body {
   background-color: white;
   color: black;
   text-decoration: none;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 3px;
   height: 64px;
-line-height: 64px;
-font-size: 24px;
-font-weight: 800;
-padding-left: 30px;
-padding-right: 30px;
+  line-height: 64px;
+  font-size: 24px;
+  font-weight: bold;
+  width: 205px;
 }
 
 .splash {
@@ -98,6 +111,7 @@ padding-right: 30px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-decoration: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -106,13 +120,12 @@ padding-right: 30px;
 }
 
 .inspire {
-  font-size: 24px;
-line-height: 32px;
+  font-size: 40px;
 font-weight: 600;
 }
 
 .tagline {
-
+  font-size: 20px;
 }
 
 .login-link {
@@ -135,7 +148,7 @@ font-weight: 600;
 }
 
 .search-bar {
-  width: 400px;
+  width: 100%;
   height: auto;
   border: 1px solid black;
   border-radius: 1px;
@@ -144,8 +157,15 @@ font-weight: 600;
   box-sizing: border-box;
   height: 33px;
   background-color: #eee;
+  opacity: 0.5;
 }
 
+.offline-search {
+  z-index: 3000;
+  width: 432px;
+  background-color: #fff;
+  opacity: 0.75;
+}
 
 
 
@@ -165,6 +185,7 @@ font-weight: 600;
   padding-right: 20px;
   font-size: 16px;
   font-weight: 600;
+  z-index: 3000;
 }
 
 .signup-link-home {
@@ -196,6 +217,7 @@ font-weight: 600;
   font-weight: 600;
   font-size: 24px;
   margin-left: 20px;
+  z-index: 3000;
 }
 
 .linkbox {
@@ -204,39 +226,61 @@ font-weight: 600;
   color: black;
   justify-content: space-between;
   margin-right: 15px;
+  z-index: 3000;
 }
 
 .session-form {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items:flex-end;
+  align-items: flex-end;
 
 }
-
-
-.form-label > input {
-  margin-left: 10px;
-}
-
-
 
 .form-header {
   text-align: center;
   font-weight: bold;
   font-size: 32px;
+  padding: 0;
+}
+
+.form-label {
+  margin-bottom: 5px;
+}
+
+.form-field {
+  margin-left: 10px;
+background-color: transparent;
+  box-shadow: inset 1px 1px 1px white;
+}
+
+
+.submission {
+  background: transparent;
+  padding: 5px;
+  color: black;
+  font-weight: 800;
+  color: white;s
+  text-decoration: none;
+  box-shadow:   inset 1px 4px 3px 1px white,
+   inset -1px -4px 3px 1px white;
+   padding: 10px;
+   padding-left: 15px;
+   padding-right: 15px;
+   margin-top: 20px;
 }
 
 .session-form-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   top: 40px;
   right: 100px;
-  background-color: black;
-    box-shadow:  inset 1px 1px 3px 1px white,
-    inset -1px -1px 3px 1px white;
+  background: transparent;
+    box-shadow:  inset 1px 4px 3px 1px white,
+  inset   -1px -4px 3px 1px white;
     padding: 10px;
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 30px;
-
 }
