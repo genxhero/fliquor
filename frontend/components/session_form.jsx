@@ -24,6 +24,21 @@ class SessionForm extends React.Component {
   });
 }
 
+renderErrors() {
+  if (this.props.errors.session.length > 0) {
+
+    return (
+      <div className="errors">
+        <ul>
+          {this.props.errors.session.map((error, key) => {
+            return <li>{error}</li>
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
   handleSubmit(event) {
     event.preventDefault();
     const user = Object.assign({}, this.state);
@@ -44,6 +59,7 @@ class SessionForm extends React.Component {
       return (
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
+        {this.renderErrors()}
         <br></br>
         <form onSubmit={this.handleSubmit} className="session-form">
           <label className="form-label">Username
@@ -70,6 +86,7 @@ class SessionForm extends React.Component {
       return (
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
+        {this.renderErrors()}
         <br></br>
         <form onSubmit={this.handleSubmit} className="session-form">
           <label className="form-label">Username

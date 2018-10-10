@@ -81,6 +81,11 @@
    /* margin-left: auto; */
  }
 
+.right-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -139,6 +144,7 @@ font-weight: 600;
   padding-left: 20px;
   padding-right: 20px; */
   margin-right: 10px;
+  margin-left: 10px;
   position: relative;
   top: 8px;
   font-size: 16px;
@@ -156,8 +162,38 @@ font-weight: 600;
   line-height: 20px;
   box-sizing: border-box;
   height: 33px;
-  background-color: #eee;
-  opacity: 0.5;
+  background-color: #fff;
+  opacity: 0.65;
+  margin-right: 10px;
+}
+
+.search-bar-main {
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-size: 14px;
+  line-height: 20px;
+  box-sizing: border-box;
+  height: 33px;
+  background-color: #fff;
+  opacity: 0.65;
+  margin-right: 10px;
+}
+
+.search-bar-main:focus {
+  outline: none;
+  opacity: 1;
+  background-color: white;
+  width: 160%;
+}
+.search-bar:active {
+  background-color: white;
+  opacity: 1;
+}
+
+.online-search {
+  width: 223px;
 }
 
 .offline-search {
@@ -166,6 +202,8 @@ font-weight: 600;
   background-color: #fff;
   opacity: 0.75;
 }
+
+
 
 
 
@@ -200,13 +238,29 @@ font-weight: 600;
   background: #128fdc;
   opacity: 1;
   margin-right: 20px;
-  /* padding-top: 7px;
-  padding-bottom: 7px;
-  padding-left: 20px;
-  padding-right: 20px; */
+  padding-left: 15px;
+  padding-right: 15px;
   height: 32px;
     line-height: 32px;
     min-width: 80px;
+}
+
+.errors {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 2px cyan;
+}
+
+.upload-link {
+  width: 30px;
+  height: 10px;
+  text-indent: 100%;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: 20px;
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-9441054a.png) -64px -448px no-repeat;
 }
 
 .home-link {
@@ -233,11 +287,11 @@ font-weight: 600;
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-
+  /* align-items:flex-start; */
 }
 
 .form-header {
+    text-shadow: 0px 0px 2px cyan;
   text-align: center;
   font-weight: bold;
   font-size: 32px;
@@ -246,6 +300,10 @@ font-weight: 600;
 
 .form-label {
   margin-bottom: 5px;
+    text-shadow: 0px 0px 2px cyan;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
 }
 
 .form-field {
@@ -256,13 +314,18 @@ font-size: 18px;
   box-shadow: inset 1px 1px 1px white;
 }
 
+.form-field:focus {
+  outline: none;
+}
 
 .submission {
   background: transparent;
   padding: 5px;
   color: black;
   font-weight: 800;
+  font-size: 18px;
   color: white;
+    text-shadow: 0px 0px 2px cyan;
   text-decoration: none;
   box-shadow:   inset 1px 4px 3px 1px white,
    inset -1px -4px 3px 1px white;
@@ -272,9 +335,28 @@ font-size: 18px;
    margin-top: 20px;
 }
 
+.submission:hover{
+  box-shadow: 0px 0px 2px 2px white,
+  inset 1px 4px 3px 1px white,
+  inset -1px -4px 3px 1px white;
+}
+
+.submission:focus {
+  outline: none;
+}
+
+.submission:active{
+  box-shadow: 0px 0px 2px 2px white,
+  inset 1px 2px 3px 1px white,
+  inset -1px -2px 3px 1px white;
+  font-size: 16px;
+}
+
 .session-form-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   top: 40px;
   right: 100px;

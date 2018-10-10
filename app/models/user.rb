@@ -13,9 +13,11 @@
 
 class User < ApplicationRecord
   attr_reader :password
+  BAD_PASSWORDS =["123456", "abcdefg", "abc123", "123abc"]
   after_initialize :ensure_token
   validates :password, length: {minimum: 6, allow_nil: true  }
   validates :username, :password_digest, :email, :first_name, :last_name, :session_token, presence: true, uniqueness: true
+  validate :stupid_passwords
 
   has_many :albums,
   primary_key: :id,
@@ -26,6 +28,15 @@ class User < ApplicationRecord
   primary_key: :id,
   foreign_key: :user_id,
   class_name: "Photo"
+
+def stupid_passwords
+  if BAD_PASSWORDS.include?(@password)
+    errors.add(:password, "#{@password}? No. Try again.")
+  elsif @password.downcase == "password"
+    errors.add(:password, "can neither be password nor any variation thereof.  Please go stand in the corner.")
+  end
+end
+
 
   def password=(password)
     @password = password

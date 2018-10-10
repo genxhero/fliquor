@@ -10,12 +10,20 @@ class Header extends React.Component {
        //Looks for keys of the same name
        return (
          <div className="header-online">
-           <Link to="/" className="home-link">fliquor</Link>
-           <form className="online-search">
-             <input className="search-bar" type="text" ></input>
-           </form>
 
-           {this.displayButtons()}
+           <div className="left-header">
+             <Link to="/" className="home-link">fliquor</Link>
+           </div>
+
+           <div className="right-header">
+             <form className="online-search">
+               <input className="search-bar-main" type="text" placeholder="Photos" ></input>
+             </form>
+             <Link to="/" className="upload-link"></Link>
+              {this.displayButtons()}
+           </div>
+
+
 
         </div>
        )
