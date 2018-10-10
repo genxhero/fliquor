@@ -13,8 +13,8 @@ import OnlineHeaderContainer from './online_header_container';
 const App = () => (
   <div>
     <AuthRoute exact path="/" component={OfflineHeaderContainer} />
-      <AuthRoute exact path="/signup" component={OfflineHeaderContainer} />
-        <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
+    <AuthRoute exact path="/signup" component={OfflineHeaderContainer} />
+    <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
     <Route  path="/home" component={OnlineHeaderContainer} />
     <AuthRoute path="/" component={Splash} />
   </div>

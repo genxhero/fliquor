@@ -14,6 +14,7 @@ class Header extends React.Component {
            <form className="online-search">
              <input className="search-bar" type="text" ></input>
            </form>
+
            {this.displayButtons()}
 
         </div>
@@ -29,7 +30,6 @@ class Header extends React.Component {
       );
      }  else {
          return(
-
            <nav className="linkbox">
              <Link to="/login"className="login-link">Log In</Link>
              <Link to="/signup" className="signup-link-home">Sign Up</Link>
