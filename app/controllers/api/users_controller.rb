@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      #render home page
+      render :show
     else
        flash.now[:errors] = @user.errors.full_messages
        render :new
@@ -22,6 +22,6 @@ class Api::UsersController < ApplicationController
 
 private
     def user_params
-      params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:username, :email, :first_name, :last_name, :password)
     end
 end

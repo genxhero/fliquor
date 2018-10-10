@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
       last_name:""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
   update(field) {
   return event => this.setState({
@@ -29,15 +30,17 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
+
+
   render() {
     let formString = "";
     let formUrl = ""
     let currentPage ="";
 
-    if (this.props.formType === 'signup') {
-      formUrl = '/login';
-      formString ="Log In";
-      currentPage = "Sign Up";
+    if (this.props.formType === 'login') {
+      formUrl = '/signup';
+      formString = "Sign Up";
+      currentPage = "Log In";
       return (
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
@@ -56,14 +59,15 @@ class SessionForm extends React.Component {
           <input className="submission" type="submit" value={currentPage} />
         </form>
         <br></br>
-        <Link className="head-link" to={`${formUrl}`}>{formString} Instead</Link>
+        <Link className="other-action" to={`${formUrl}`}>{formString} Instead</Link>
       </div>
       );
 
     } else  {
-      formUrl = '/signup';
-      formString = "Sign Up";
-      currentPage = "Log In";
+
+      formUrl = '/login';
+      formString ="Log In";
+      currentPage = "Sign Up";
       return (
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
@@ -97,7 +101,7 @@ class SessionForm extends React.Component {
           <input className="submission" type="submit" value={currentPage} />
         </form>
         <br></br>
-        <Link className="head-link" to={`${formUrl}`}>{formString} Instead</Link>
+        <Link className="other-action" to={`${formUrl}`}>{formString} Instead</Link>
       </div>
       );
 
@@ -106,6 +110,6 @@ class SessionForm extends React.Component {
 
   }
 
-} //end of class
+}
 
 export default withRouter(SessionForm);

@@ -5,15 +5,16 @@ import { Route, Redirect, Switch, Link,HashRouter } from 'react-router-dom';
 import {AuthRoute} from '../util/auth_util';
 import Splash from './splash';
 import OfflineHeaderContainer from './offline_header_container';
-//import OnlineHeaderContainer from './online_header_container';
+import OnlineHeaderContainer from './online_header_container';
 //import SplashContainer from './splash_container';
 //import PhotosIndexContainer from './photos_index';
-//feed = protected, splash is auth
+// splash is auth
 
 const App = () => (
   <div>
-    <AuthRoute component={OfflineHeaderContainer} />
-    <AuthRoute component={Splash} />
+    <AuthRoute  path="/"component={OfflineHeaderContainer} />
+    <Route  path="/home" component={OnlineHeaderContainer} />
+    <AuthRoute path="/" component={Splash} />
   </div>
 );
 

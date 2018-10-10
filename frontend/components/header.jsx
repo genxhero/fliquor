@@ -1,11 +1,3 @@
-import React from 'react';
-import { Route, Redirect, Switch, Link,HashRouter } from 'react-router-dom';
-import {AuthRoute} from '../util/auth_util';
-
-const Header = ({store}) => (
- <div className="header-main">
-   <h1>Fliquor</h1>
-</div>
-);
-
-export default Header;
+import OfflineHeaderContainer from './offline_header_container';
+import OnlineHeaderContainer from './online_header_container';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
