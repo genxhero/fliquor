@@ -33,6 +33,48 @@
    text-shadow: 1px 1px black;
  }
 
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  height:auto;
+}
+
+.cover-photo {
+  height: 304px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* background: url(https://picsum.photos/200/300/?random); */
+  background: url(http://s1.1zoom.me/b5050/420/Coast_Bridges_Ocean_USA_490603_3840x2160.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cover-photo-content {
+   height: 50%;
+   width: 100%;
+   position: relative;
+   box-shadow: inset 0 -2px transparent;
+   box-sizing: border-box;
+}
+
+.profile-subnav {
+ height: 50px;
+ background: white;
+ border-bottom: 1px solid hsla(0,0%,54%,.3)
+}
+
+.profile-pane{
+ min-width:  800px;
+ max-width: 80%;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 130px;
+ padding-right: 130px;
+ background-color: #eee;
+}
+
  .header-offline {
    display: flex;
    justify-content: space-between;
@@ -56,17 +98,24 @@
 
 
 .logout-button {
+  font-size: 16px;
+  font-weight: 600;
   border: 1px solid black;
   border-radius: 5px;
-  color: black;
+  color: white;
   text-decoration: none;
-  background: white;
+  margin-left: 5px;
+  text-align: center;
+  font-weight: 700;
+  background: #128fdc;
   opacity: 1;
   margin-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-left: 11px;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 32px;
+    line-height: 32px;
+    min-width: 80px;
 }
  .header-online {
    display: flex;
@@ -303,8 +352,8 @@ font-weight: 600;
   background: #128fdc;
   opacity: 1;
   margin-right: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 12px;
   height: 32px;
     line-height: 32px;
     min-width: 80px;

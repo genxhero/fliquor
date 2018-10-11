@@ -15,7 +15,7 @@ class Header extends React.Component {
              <Link to="/" className="home-link">fliquor</Link>
              <div className="nav-menu">
                <Link to="/home" className="nav-link">Explore</Link>
-               <h3 className="nav-link">You</h3>
+                {this.youlinkmaybe()}
              </div>
            </div>
 
@@ -23,7 +23,7 @@ class Header extends React.Component {
              <form className="online-search">
                  <input className="search-bar-main" type="text" placeholder="Photos" ></input>
              </form>
-             <Link to="/" className="upload-link"></Link>
+             <Link to="/photos/create" className="upload-link"></Link>
               {this.displayButtons()}
            </div>
 
@@ -31,6 +31,14 @@ class Header extends React.Component {
 
         </div>
        )
+   }
+
+   youlinkmaybe(){
+     if (this.props.currentUser){
+       return (
+          <Link to={`/users/${this.props.currentUser.id}`} className="nav-link">You</Link>
+       );
+     }
    }
 
    displayButtons(){

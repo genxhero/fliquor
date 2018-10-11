@@ -1,4 +1,5 @@
 class Photo < ApplicationRecord
+  validates :user_id, presence: true
   belongs_to :user
 
   has_many :tagjoins,
@@ -22,4 +23,8 @@ class Photo < ApplicationRecord
   has_many :albums,
   through: :albumjoins,
   source: :album
+
+  has_one_attached :image
+
+
 end
