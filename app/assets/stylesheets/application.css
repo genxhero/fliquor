@@ -478,6 +478,7 @@ font-weight: 600;
   /* position: relative; */
   top: 40px;
   right: 100px;
+  margin-top: 40px;
   background: transparent;
   box-shadow:  inset 1px 4px 3px 1px white,
   inset   -1px -4px 3px 1px white;
