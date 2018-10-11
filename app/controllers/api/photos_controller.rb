@@ -4,6 +4,15 @@ class Api::PhotosController < ApplicationController
       render :show
     end
 
+    def create
+      @photo = Photo.new(photo_params)
+      if @photo.save
+        render :show
+      else
+        render json: @photos.errors.full_messages
+      end
+    end
+
     def index
       @photos = Photo.all
       render :index

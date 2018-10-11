@@ -4,6 +4,7 @@ import React from 'react';
 import { Route, Redirect, Switch, Link,HashRouter } from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/auth_util';
 import Splash from './splash';
+import PhotoUploadContainer from './photo_upload_container';
 import OfflineHeaderContainer from './offline_header_container';
 import OnlineHeaderContainer from './online_header_container';
 import UserProfileContainer from './user_profile_container';
@@ -20,7 +21,7 @@ const App = () => (
     <AuthRoute path="/" component={Splash} />
     <Route  path="/home" component={OnlineHeaderContainer} />
     <Route exact path="/users/:userID" component={UserProfileContainer} />
-    <ProtectedRoute path="/photos/create" />
+    <ProtectedRoute exact path="/photos/create" component={PhotoUploadContainer}/>
   </div>
 );
 
