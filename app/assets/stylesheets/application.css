@@ -425,8 +425,10 @@ font-weight: 600;
   background-color: transparent;
   color: white;
   font-size: 18px;
+  box-sizing: border-box;
   box-shadow: inset 1px 1px 1px white;
   padding: 10px;
+  margin-bottom: 5px;
 }
 
 .form-field:focus {

@@ -16,8 +16,11 @@ class SessionForm extends React.Component {
       last_name:""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
 
   }
+
+
   update(field) {
   return event => this.setState({
     [field]: event.currentTarget.value
@@ -43,6 +46,17 @@ renderErrors() {
     event.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  demoLogin(event) {
+    event.preventDefault();
+
+     this.setState({username: "demo",
+       password: "demonstration"}, () =>{
+       const user = Object.assign({}, this.state);
+       this.props.processForm(user);}
+     );
+
   }
 
 
@@ -72,6 +86,7 @@ renderErrors() {
                 placeholder="Password"
                 onChange={this.update('password')}/>
           <input className="submission" type="submit" value={currentPage} />
+          <button className="submission" onClick={this.demoLogin}>Demo Login</button>
         </form>
         <br></br>
       </div>
@@ -110,7 +125,7 @@ renderErrors() {
              placeholder="Last Name"
              value={this.state.last_name}
              onChange={this.update('last_name')}/>
-        
+
               <input className="form-field" type="password"
                 placeholder="Password"
                 value={this.state.password}
@@ -118,6 +133,7 @@ renderErrors() {
 
           <input className="submission" type="submit" value={currentPage} />
         </form>
+
         <br></br>
       </div>
       );
