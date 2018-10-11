@@ -62,16 +62,15 @@ renderErrors() {
         {this.renderErrors()}
         <br></br>
         <form onSubmit={this.handleSubmit} className="session-form">
-          <label className="form-label">Username
            <input className="form-field" type="text"
+             placeholder="Username"
              value={this.state.username}
              onChange={this.update('username')}/>
-          </label>
-          <label className="form-label">Password
+
               <input className="form-field"  type="password"
                 value={this.state.password}
+                placeholder="Password"
                 onChange={this.update('password')}/>
-          </label>
           <input className="submission" type="submit" value={currentPage} />
         </form>
         <br></br>
@@ -89,31 +88,34 @@ renderErrors() {
         {this.renderErrors()}
         <br></br>
         <form onSubmit={this.handleSubmit} className="session-form">
-          <label className="form-label">Username
+
            <input className="form-field"  type="text"
+             placeholder="Username"
              value={this.state.username}
              onChange={this.update('username')}/>
-          </label>
-          <label className="form-label">Email
+
            <input className="form-field" type="text"
+             placeholder="Email Address"
              value={this.state.email}
              onChange={this.update('email')}/>
-          </label>
-          <label className="form-label">First Name
+
+
            <input className="form-field"  type="text"
+             placeholder="First Name"
              value={this.state.first_name}
              onChange={this.update('first_name')}/>
-          </label>
-          <label className="form-label">Last Name
+
+
            <input className="form-field" type="text"
+             placeholder="Last Name"
              value={this.state.last_name}
              onChange={this.update('last_name')}/>
-          </label>
-          <label className="form-label">Password
+        
               <input className="form-field" type="password"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={this.update('password')}/>
-          </label>
+
           <input className="submission" type="submit" value={currentPage} />
         </form>
         <br></br>

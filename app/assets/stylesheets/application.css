@@ -405,6 +405,7 @@ font-weight: 600;
 .session-form {
   color: white;
   display: flex;
+  width: 100%;
   flex-direction: column;
   /* align-items:flex-start; */
 }
@@ -417,20 +418,15 @@ font-weight: 600;
   padding: 0;
 }
 
-.form-label {
-  margin-bottom: 5px;
-    text-shadow: 0px 0px 2px cyan;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: right;
-}
+
 
 .form-field {
-  margin-left: 10px;
-background-color: transparent;
-color: white;
-font-size: 18px;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
   box-shadow: inset 1px 1px 1px white;
+  padding: 10px;
 }
 
 .form-field:focus {
@@ -439,18 +435,19 @@ font-size: 18px;
 
 .submission {
   background: transparent;
-  padding: 5px;
   color: black;
   font-weight: 800;
   font-size: 18px;
   color: white;
+  width: 100%;
     text-shadow: 0px 0px 2px cyan;
   text-decoration: none;
   box-shadow:   inset 1px 4px 3px 1px white,
    inset -1px -4px 3px 1px white;
-   padding: 10px;
-   padding-left: 15px;
-   padding-right: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   padding-left: 10px;
+   padding-right: 10px;
    margin-top: 20px;
 }
 
@@ -476,14 +473,15 @@ font-size: 18px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  /* position: relative; */
   top: 40px;
   right: 100px;
   background: transparent;
-    box-shadow:  inset 1px 4px 3px 1px white,
+  box-shadow:  inset 1px 4px 3px 1px white,
   inset   -1px -4px 3px 1px white;
-    padding: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-bottom: 30px;
+  padding: 10px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
