@@ -16,5 +16,5 @@ export const receiveErrors = errors => ({
 export const newPhoto = photo => dispatch => (
     PhotosUtil.createPhoto(photo).then(photo => (
     dispatch(receivePhoto(photo))),
-    errors => (dispatch(receiveErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors)))
   ));
