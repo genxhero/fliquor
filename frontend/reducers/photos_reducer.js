@@ -1,5 +1,5 @@
 import {RECEIVE_PHOTO} from "../actions/photos_actions";
-
+import {merge} from 'lodash';
 
 const photosReducer = (state = {}, action) => {
   Object.freeze(state);
