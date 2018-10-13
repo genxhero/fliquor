@@ -1,4 +1,4 @@
-import {RECEIVE_ALBUM} from "../actions/ALBUM_actions";
+import {RECEIVE_ALBUM} from "../actions/album_actions";
 import {merge} from 'lodash';
 
 const albumsReducer = (state = {}, action) => {
