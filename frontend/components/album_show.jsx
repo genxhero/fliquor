@@ -31,9 +31,9 @@ class AlbumShow extends React.Component {
 
            </div>
          </div>
-         <div className="album-cover" style="background-image:" >
-           <h1>{this.props.album.title}</h1>
-            <span className="album-owner">By {this.props.user.username}</span>
+         <div className="album-cover" style = {{backgroundImage: `url(${photos[0].image_url})`}} >
+           <h1 className="album-title">{this.props.album.title}</h1>
+            <div className="album-owner">By {this.props.user.username}</div>
          </div>
          <div className="album-photos-container">
             <ul className="photo-spread">
