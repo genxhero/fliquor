@@ -26,15 +26,24 @@ class AlbumShow extends React.Component {
 
      return (
        <div className="album-page">
+         <div className="album-toolbar">
+           <div className="album-toolbar-content">
+
+           </div>
+         </div>
+         <div className="album-cover" style={`background-image:url(${photos[0].image_url})`} >
+           <h1>{this.props.album.title}</h1>
+            <span className="album-owner">By {this.props.user.username}</span>
+         </div>
          <div className="album-photos-container">
-          <h1>We are in an album</h1>
             <ul className="photo-spread">
-              {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
+              {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
             </ul>
           </div>
        </div>
      );
    }
 }
+//            <img className="album-cover-photo" src={photos[0].image_url}></img>
 
 export default withRouter(AlbumShow);
