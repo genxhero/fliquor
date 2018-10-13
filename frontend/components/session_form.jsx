@@ -28,18 +28,25 @@ class SessionForm extends React.Component {
   });
 }
 
+
 renderErrors() {
   if (this.props.errors.session.length > 0) {
 
     return (
+        <div className="err-container">
 
-        <div className="errors-popup">
+        <div className="errors-popup" >
+              <h1 className="failure">ERROR</h1>
+
             <ul className="errors">
               {this.props.errors.session.map((error, key) => {
-                return <li>{error}</li>
+                return <li className="error">{error}</li>
               })}
             </ul>
-      </div>
+            <button className="err-clear" onClick={this.props.clearErrors}>Understood</button>
+          </div>
+          <div className="errors-modal"></div>
+    </div>
     );
   }
 }
@@ -70,8 +77,8 @@ renderErrors() {
 
     const ErrorsPopup = () => {
       return (
-        <div>
-     {this.renderErrors()}
+        <div className="err-container-container">
+          {this.renderErrors()}
         </div>
 
      );

@@ -9,7 +9,9 @@ const mapStateToProps = (state, ownProps) => {
   const photo = state.entities.photos[ownProps.match.params.photoID];
   let user;
   if (photo != undefined) {
-    user = state.entities.users[photo.user_id];
+    user = requestUser(photo.user_id);
+    // user = state.entities.users[photo.user_id];
+    // debugger;
   };
   return {
     errors: state.errors,

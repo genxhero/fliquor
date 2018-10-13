@@ -9,6 +9,11 @@ export const receivePhoto = photo => ({
   photo
 });
 
+export const receivePhotos = photos => ({
+  type: RECEIVE_PHOTOS,
+  photos
+});
+
 export const receiveErrors = errors => ({
    type: RECEIVE_ERRORS,
    errors
@@ -21,9 +26,13 @@ export const newPhoto = photo => dispatch => (
   ));
 
 
-
   export const requestPhoto = photoID => dispatch => (
       PhotosUtil.fetchPhoto(photoID).then(photo => (
       dispatch(receivePhoto(photo))),
       errors => (dispatch(receiveErrors(errors)))
     ));
+
+export const requestPhotos = (photos) => dispatch => (
+  PhotosUtil.fetchPhotos(photos).then(photos => (
+    dispatch(receivePhotos(photos)))
+  ));

@@ -24,6 +24,7 @@ componentDidMount() {
 
 
   render() {
+  
     if (this.props.photo === undefined || this.props.user === undefined) {
       return 'Loading';
     }
@@ -41,7 +42,7 @@ componentDidMount() {
       return (
         <div className="show-bottom-left">
           <div className="show-user-info">
-            <h3> {this.props.user.first_name} {this.props.user.last_name}</h3>
+            <h3 className="show-user-name"> {this.props.user.first_name} {this.props.user.last_name}</h3>
            </div>
 
           <div className="show-photo-info">

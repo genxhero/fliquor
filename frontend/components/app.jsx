@@ -10,9 +10,8 @@ import OnlineHeaderContainer from './online_header_container';
 import UserProfileContainer from './user_profile_container';
 import UploadHeaderContainer from './upload_header_container';
 import PhotoShowContainer from './photo_show_container';
-//import SplashContainer from './splash_container';
-//import PhotosIndexContainer from './photos_index';
-// splash is auth
+import PhotosIndexContainer from './photos_index_container';
+import HomeNav from './home_nav';
 
 
 const Create = () => (
@@ -29,6 +28,14 @@ const Show = () => (
   </div>
 );
 
+const Index = () => (
+  <div>
+    <OnlineHeaderContainer />
+    <HomeNav />
+    <PhotosIndexContainer />
+  </div>
+);
+
 const App = () => (
   <div>
 
@@ -36,7 +43,7 @@ const App = () => (
     <AuthRoute exact path="/signup" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
     <AuthRoute path="/" component={Splash} />
-    <Route  exact path="/home" component={OnlineHeaderContainer} />
+    <Route exact path="/home" component={Index}/>
     <Switch>
       <ProtectedRoute exact path="/photos/create" component={Create} />
       <Route path="/photos/:photoID" component={Show} />
@@ -49,3 +56,7 @@ export default App;
 // <AuthRoute path="/login" component={LoginContainer} />
 // <AuthRoute path="/signup" component={SignupContainer} />
 // <ProtectedRoute /> use this for logout and oth
+//
+// <Route  exact path="/home" component={OnlineHeaderContainer} />
+// <Route exact path="/home" component={HomeNav} />
+// <Route exact path="/home" component={PhotosIndexContainer}/>
