@@ -28,6 +28,99 @@
    padding: 10px;
 } */
 
+.photo-page{
+  display: flex;
+  flex-direction: column;
+}
+.show-user-name{
+  font-size: 22px;
+}
+.show-title {
+  font-size: 16px;
+}
+
+.show-desc {
+  font-size: 14px;
+}
+
+.show-photo-info {
+  width: 60%;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #cfd6d9;
+}
+
+
+.show-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  width: 100%;
+  background: #fff;
+  color: #000;
+}
+
+.show-bottom-left {
+  width: 50%;
+  margin-left: 15%;
+}
+
+.show-bottom-right {
+  width: 50%;
+}
+
+.errors-popup {
+  position: fixed;
+  margin-right: 50%;
+  margin-top: 6%;
+  background: black;
+  z-index: 9000;
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow:visible;
+
+}
+
+.errors-modal {
+  background: black;
+  opacity: 0.65;
+  /* position: relative; */
+  z-index: 8000;
+}
+
+.photo-page {
+  /* position:absolute; */
+/* background: #2C2C2C; */
+color: #fff;
+/* display: flex; */
+/* height: 585px;
+width: 100%; */
+}
+
+.show-container {
+  height: 747px;
+  width: 100%;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 20px;
+   background: #2C2C2C;
+}
+
+.show-image {
+  min-width: 485px;
+  min-height: 495px;
+  max-height: 80%;
+  max-width: 60%;
+  margin-bottom: 10px;
+  margin-top: 6%;
+}
+
+
+
 .photo-field-title {
   font-size: 18px;
 }
@@ -344,6 +437,7 @@
    z-index: 2000;
    width: 100%;
    height: 50px;
+
    /* margin-right: auto; */
    /* margin-left: auto; */
  }
@@ -360,6 +454,7 @@
   position: relative;
   align-items: center;
   justify-content: center;
+  margin-left: 5%;
 }
 
 .nav-menu {
@@ -417,7 +512,6 @@ body {
   width: 100%;
   height: 100%;
   z-index: 3;
-  padding: 0 60px;
 }
 
 .inspire {
@@ -439,7 +533,7 @@ font-weight: 600;
   padding-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px; */
-  margin-right: 10px;
+  margin-right: 15px;
   margin-left: 10px;
   position: relative;
   top: 8px;
@@ -475,11 +569,12 @@ font-weight: 600;
   border-radius: 1px;
   font-size: 14px;
   line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   box-sizing: border-box;
   height: 33px;
   background-color: #fff;
   opacity: 0.65;
-  margin-right: 10px;
 }
 
 .search-bar-main {
@@ -525,7 +620,8 @@ font-weight: 600;
 
 .offline-search {
   z-index: 3000;
-  width: 432px;
+  width: 900px;
+  margin-left: 6%;
   /* background-color: #fff;
   opacity: 0.75; */
 }
@@ -558,6 +654,16 @@ font-weight: 600;
   z-index: 3000;
 }
 
+.signup-link-home:hover {
+opacity: 0.65;
+}
+
+.signup-link-splash:hover {
+  opacity: 0.65;
+
+}
+
+
 .signup-link-home {
   font-size: 16px;
   font-weight: 600;
@@ -579,6 +685,7 @@ font-weight: 600;
 
 .errors {
   color: white;
+  list-style: none;
   font-size: 18px;
   font-weight: bold;
   text-shadow: 0px 0px 2px cyan;
@@ -606,7 +713,7 @@ font-weight: 600;
   opacity: 1;
   font-weight: 600;
   font-size: 28px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-right: 24px;
   z-index: 3000;
 }
@@ -644,12 +751,38 @@ font-weight: 600;
   color: white;
   font-size: 18px;
   box-sizing: border-box;
-  box-shadow: inset 1px 1px 1px white;
+  box-shadow: inset 2px 2px 2px white;
   padding: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.form-field-name {
+  width: 50%;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+  box-sizing: border-box;
+  box-shadow: inset 2px 2px 2px white;
+  padding: 10px;
+  margin-bottom: 10px;
+  /* margin-right: 5px;
+  margin-left: 5px; */
+
 }
 
 .form-field:focus {
+  outline: none;
+}
+
+.form-field-name:focus {
   outline: none;
 }
 
@@ -664,8 +797,8 @@ font-weight: 600;
   text-decoration: none;
   box-shadow:   inset 1px 4px 3px 1px white,
    inset -1px -4px 3px 1px white;
-   padding-top: 10px;
-   padding-bottom: 10px;
+   padding-top: 20px;
+   padding-bottom: 20px;
    padding-left: 10px;
    padding-right: 10px;
    margin-top: 20px;
@@ -705,4 +838,5 @@ font-weight: 600;
   padding-left: 50px;
   padding-bottom: 30px;
   padding-top: 30px;
+  width: 364px;
 }

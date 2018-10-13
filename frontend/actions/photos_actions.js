@@ -1,6 +1,7 @@
 import * as PhotosUtil from "../util/photos_util";
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
+export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS'
 export const RECEIVE_ERRORS ='RECEIVE_ERRORS';
 
 export const receivePhoto = photo => ({
@@ -18,3 +19,11 @@ export const newPhoto = photo => dispatch => (
     dispatch(receivePhoto(photo))),
     errors => (dispatch(receiveErrors(errors)))
   ));
+
+
+
+  export const requestPhoto = photoID => dispatch => (
+      PhotosUtil.fetchPhoto(photoID).then(photo => (
+      dispatch(receivePhoto(photo))),
+      errors => (dispatch(receiveErrors(errors)))
+    ));

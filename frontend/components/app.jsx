@@ -9,9 +9,25 @@ import OfflineHeaderContainer from './offline_header_container';
 import OnlineHeaderContainer from './online_header_container';
 import UserProfileContainer from './user_profile_container';
 import UploadHeaderContainer from './upload_header_container';
+import PhotoShowContainer from './photo_show_container';
 //import SplashContainer from './splash_container';
 //import PhotosIndexContainer from './photos_index';
 // splash is auth
+
+
+const Create = () => (
+  <div>
+    <UploadHeaderContainer />
+    <PhotoUploadContainer />
+  </div>
+);
+
+const Show = () => (
+  <div>
+    <OnlineHeaderContainer />
+    <PhotoShowContainer />
+  </div>
+);
 
 const App = () => (
   <div>
@@ -21,9 +37,11 @@ const App = () => (
     <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
     <AuthRoute path="/" component={Splash} />
     <Route  exact path="/home" component={OnlineHeaderContainer} />
+    <Switch>
+      <ProtectedRoute exact path="/photos/create" component={Create} />
+      <Route path="/photos/:photoID" component={Show} />
+    </Switch>
     <Route exact path="/users/:userID" component={UserProfileContainer} />
-    <ProtectedRoute exact path="/photos/create" component={UploadHeaderContainer} />
-    <ProtectedRoute exact path="/photos/create" component={PhotoUploadContainer}/>
   </div>
 );
 

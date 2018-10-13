@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link, withRouter} from 'react-router-dom';
+
 
 class PhotoUpload extends React.Component {
  constructor (props){
@@ -37,7 +39,10 @@ class PhotoUpload extends React.Component {
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
     formData.append('photo[image]', this.state.image);
-    this.props.newPhoto(formData);
+    this.props.newPhoto(formData).then( res => this.props.history.push(`/photos/${res.photo.id}`) );
+      // console.log(res));
+      //
+
   }
 
 shadowClick(){
@@ -46,7 +51,23 @@ shadowClick(){
 }
 
 shadowSubmit(){
-  const shadow = document.getElementsByClassName('uplad-submit')
+  const shadow = document.getElementsByClassName('upload-submit')[0];
+  shadow.click();
+}
+
+renderErrors() {
+  if (this.props.errors.photos.length > 0) {
+
+    return (
+      <div className="errors">
+        <ul>
+          {this.props.errors.photos.map((error, key) => {
+            return <li>{error}</li>
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
 
   render() {
@@ -89,7 +110,7 @@ shadowSubmit(){
      if (this.state.photoURL){
        return (
          <div className="upload-form-left">
-           <input placeholder="Title"type="text" onChange={this.update('title')}></input>
+           <input placeholder={this.state.image.name} type="text" onChange={this.update('title')}></input>
            <input className="photo-field-title" placeholder="Add a description" type="text" onChange={this.update('description')}></input>
            <input className="upload-submit" type="submit" value=""></input>
          </div>
@@ -102,6 +123,11 @@ shadowSubmit(){
      }
    };
 
+const RightContent = () => (
+  <div>
+    {this.renderErrors()}
+  </div>
+);
 
 
     return (
@@ -112,6 +138,7 @@ shadowSubmit(){
         <form className="upload-form" onSubmit={this.save}>
                <MainContent />
                <LeftContent />
+               <RightContent />
         </form>
       </div>
 
@@ -121,7 +148,7 @@ shadowSubmit(){
 }
 
 //controls bar above work area
-export default PhotoUpload;
+export default withRouter(PhotoUpload);
 //util ajax
 
 

@@ -4,7 +4,7 @@ import {newPhoto} from '../actions/photos_actions';
 
 
 const mapStateToProps  = (state, ownProps) => ({
-
+      errors: state.errors
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => (

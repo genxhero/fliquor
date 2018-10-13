@@ -10,7 +10,7 @@ class Api::PhotosController < ApplicationController
       if @photo.save
         render :show
       else
-        render json: @photo.errors.full_messages
+        render json: @photo.errors.full_messages, status: 420
       end
     end
 

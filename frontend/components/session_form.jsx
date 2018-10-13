@@ -21,6 +21,7 @@ class SessionForm extends React.Component {
   }
 
 
+
   update(field) {
   return event => this.setState({
     [field]: event.currentTarget.value
@@ -31,12 +32,13 @@ renderErrors() {
   if (this.props.errors.session.length > 0) {
 
     return (
-      <div className="errors">
-        <ul>
-          {this.props.errors.session.map((error, key) => {
-            return <li>{error}</li>
-          })}
-        </ul>
+
+        <div className="errors-popup">
+            <ul className="errors">
+              {this.props.errors.session.map((error, key) => {
+                return <li>{error}</li>
+              })}
+            </ul>
       </div>
     );
   }
@@ -66,14 +68,25 @@ renderErrors() {
     let formUrl = ""
     let currentPage ="";
 
+    const ErrorsPopup = () => {
+      return (
+        <div>
+     {this.renderErrors()}
+        </div>
+
+     );
+
+    };
+
     if (this.props.formType === 'login') {
       formUrl = '/signup';
       formString = "Sign Up";
       currentPage = "Log In";
       return (
+    <div>
+        <ErrorsPopup />
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
-        {this.renderErrors()}
         <br></br>
         <form onSubmit={this.handleSubmit} className="session-form">
            <input className="form-field" type="text"
@@ -90,6 +103,7 @@ renderErrors() {
         </form>
         <br></br>
       </div>
+      </div>
       );
 
     } else  {
@@ -98,44 +112,48 @@ renderErrors() {
       formString ="Log In";
       currentPage = "Sign Up";
       return (
-      <div className="session-form-container">
-        <h3 className="form-header">{currentPage}</h3>
-        {this.renderErrors()}
-        <br></br>
-        <form onSubmit={this.handleSubmit} className="session-form">
+<div>
+    <ErrorsPopup />
+  <div className="session-form-container">
+    <h3 className="form-header">{currentPage}</h3>
+    <br></br>
+    <form onSubmit={this.handleSubmit} className="session-form">
 
-           <input className="form-field"  type="text"
-             placeholder="Username"
-             value={this.state.username}
-             onChange={this.update('username')}/>
+    <div className="name-container">
+      <input className="form-field-name"  type="text"
+        placeholder="First Name"
+        value={this.state.first_name}
+        onChange={this.update('first_name')}/>
 
-           <input className="form-field" type="text"
-             placeholder="Email Address"
-             value={this.state.email}
-             onChange={this.update('email')}/>
+      <input className="form-field-name" type="text"
+        placeholder="Last Name"
+        value={this.state.last_name}
+        onChange={this.update('last_name')}/>
+    </div>
+
+    <input className="form-field" type="text"
+      placeholder="Your current email address"
+      value={this.state.email}
+      onChange={this.update('email')}/>
+
+       <input className="form-field"  type="text"
+         placeholder="Username"
+         value={this.state.username}
+         onChange={this.update('username')}/>
 
 
-           <input className="form-field"  type="text"
-             placeholder="First Name"
-             value={this.state.first_name}
-             onChange={this.update('first_name')}/>
+          <input className="form-field" type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update('password')}/>
 
+      <input className="submission" type="submit" value={currentPage} />
+    </form>
 
-           <input className="form-field" type="text"
-             placeholder="Last Name"
-             value={this.state.last_name}
-             onChange={this.update('last_name')}/>
+    <br></br>
+  </div>
+</div>
 
-              <input className="form-field" type="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.update('password')}/>
-
-          <input className="submission" type="submit" value={currentPage} />
-        </form>
-
-        <br></br>
-      </div>
       );
 
     }
