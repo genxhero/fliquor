@@ -12,7 +12,9 @@ class PhotoUpload extends React.Component {
      photoURL: null
    };
    this.onFileChange = this.onFileChange.bind(this);
+   this.update = this.update.bind(this);
   this.save = this.save.bind(this);
+  this.getFilename = this.getFilename.bind(this);
  }
 
   onFileChange(e) {
@@ -28,6 +30,8 @@ class PhotoUpload extends React.Component {
 
 
   update(field) {
+  //  debugger;
+
   return event => this.setState({
     [field]: event.currentTarget.value
   });
@@ -70,22 +74,35 @@ renderErrors() {
   }
 }
 
+
+
+getFilename() {
+
+  if (this.state.photoURL){
+    return
+    `${this.state.image.name}`;
+  } else {
+   return
+      "I returned";
+  }
+}
+
   render() {
- const UploadToolbar = () => {
-   if (this.state.photoURL) {
-     return (
-       <div className="upload-toolbar">
-         <div className="shadow-submit-active" onClick={this.shadowSubmit}> Upload Photo</div>
-       </div>
-     );
-   } else {
-     return (
-       <div className="upload-toolbar">
-    <div className="shadow-submit-inactive">Upload</div>
-       </div>
-     );
-   }
- };
+     const UploadToolbar = () => {
+       if (this.state.photoURL) {
+         return (
+           <div className="upload-toolbar">
+             <div className="shadow-submit-active" onClick={this.shadowSubmit}> Upload Photo</div>
+           </div>
+         );
+       } else {
+         return (
+           <div className="upload-toolbar">
+        <div className="shadow-submit-inactive">Upload</div>
+           </div>
+         );
+       }
+     };
 
    const MainContent = () => {
      if (this.state.photoURL){
@@ -106,22 +123,6 @@ renderErrors() {
      }
    };
 
-   const LeftContent = () => {
-     if (this.state.photoURL){
-       return (
-         <div className="upload-form-left">
-           <input placeholder={this.state.image.name} type="text" onChange={this.update('title')}></input>
-           <input className="photo-field-title" placeholder="Add a description" type="text" onChange={this.update('description')}></input>
-           <input className="upload-submit" type="submit" value=""></input>
-         </div>
-       );
-     } else {
-      return (
-        <div>
-        </div>
-       );
-     }
-   };
 
 const RightContent = () => (
   <div>
@@ -131,13 +132,24 @@ const RightContent = () => (
 
 
     return (
-
-
       <div className="upload-container">
           <UploadToolbar/>
-        <form className="upload-form" onSubmit={this.save}>
+        <form onSubmit={this.save} className="upload-form">
                <MainContent />
-               <LeftContent />
+
+                 <div className={this.state.photoURL ? "upload-form-left" : "blank-div"}>
+                   <input className="photo-field-title"
+                     placeholder={this.state.photoURL ? `${this.state.image.name}` : ""} type="text"
+                      onChange={this.update('title')}
+                      ></input>
+                   <input
+                     className="photo-field"
+                     placeholder="Add a description"
+                     type="text"
+
+                     onChange={this.update('description')}></input>
+                   <input className="upload-submit" type="submit" value=""></input>
+                 </div>
                <RightContent />
         </form>
       </div>

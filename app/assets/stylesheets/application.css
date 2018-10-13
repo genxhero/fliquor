@@ -137,7 +137,7 @@
   text-align: center;
   font-size: 32px;
   padding: 20px;
-  
+
 }
 
 .err-clear:hover {
@@ -195,25 +195,40 @@ width: 100%; */
 }
 
 
+.blank-div {
+  display: none;
+  visibility: hidden;
+  width: 0%;
+  height: 0%;;
+}
 
 .photo-field-title {
   font-size: 18px;
+  color: white;
+  background: black;
+  padding: 10px;
+  margin: 5px;
 }
+
 
 .photo-field {
   color: white;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+  background: black;
+  padding: 10px;
+  margin: 5px;
 }
 
 .preview {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
 .upload-toolbar {
   width: 100%;
+  position: fixed;
   background: #F0F0F0;
   display: flex;
   justify-content: flex-end;
@@ -282,11 +297,9 @@ width: 100%; */
 }
 
 .upload-form-main {
-  margin-right: 35%;
-  /* margin-left: 30%; */
-  margin-top: 18%;
-  width: 500px;
-  height: 300px;
+  margin-right: 30%;
+  margin-left: 10%;
+
   display: flex;
   flex-direction: column;
    justify-content: center;
@@ -298,11 +311,13 @@ width: 100%; */
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  margin-top: 20px;
+  margin-left: 30px;
   margin: 20px;
   background: #232323;
   color: white;
-  width: 240;
-  height: 430;
+  width: 600px;
+  height: 100%;
 }
 
 .upload-form-left > input {
@@ -338,6 +353,7 @@ width: 100%; */
   justify-content: space-between;
   width: 100%;
   height: 80%;
+  margin-top: 100px;
 }
 
 .upload-info {
@@ -347,7 +363,7 @@ width: 100%; */
 }
 
 .upload-container {
-    position:absolute;
+    position:fixed;
   background: #2C2C2C;
   color: #fff;
   /* display: flex; */

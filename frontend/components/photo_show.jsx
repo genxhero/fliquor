@@ -24,7 +24,7 @@ componentDidMount() {
 
 
   render() {
-  
+
     if (this.props.photo === undefined || this.props.user === undefined) {
       return 'Loading';
     }
