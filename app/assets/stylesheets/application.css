@@ -28,6 +28,11 @@
    padding: 10px;
 } */
 
+.album-page{
+  position: fixed;
+  margin-top: 50px;
+}
+
 .home-navbar {
   display: flex;
   justify-content: space-between;

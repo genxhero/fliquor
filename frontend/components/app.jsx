@@ -11,6 +11,7 @@ import UserProfileContainer from './user_profile_container';
 import UploadHeaderContainer from './upload_header_container';
 import PhotoShowContainer from './photo_show_container';
 import PhotosIndexContainer from './photos_index_container';
+import AlbumShowContainer from './album_show_container';
 import HomeNav from './home_nav';
 
 
@@ -36,6 +37,13 @@ const Index = () => (
   </div>
 );
 
+const AlbumPage = () => (
+  <div>
+    <OnlineHeaderContainer />
+    <AlbumShowContainer />
+  </div>
+);
+
 const App = () => (
   <div>
 
@@ -47,6 +55,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute exact path="/photos/create" component={Create} />
       <Route path="/photos/:photoID" component={Show} />
+      <Route path="/albums/:albumID" component={AlbumPage} />
     </Switch>
     <Route exact path="/users/:userID" component={UserProfileContainer} />
   </div>

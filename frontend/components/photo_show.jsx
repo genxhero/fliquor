@@ -11,7 +11,6 @@ constructor (props){
 
 componentDidMount() {
   this.props.requestPhoto(this.props.match.params.photoID).then(res => {
-  //  debugger;
     this.props.requestUser(res.photo.user_id);
   })
 }

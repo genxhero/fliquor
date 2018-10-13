@@ -21,3 +21,10 @@ export const createPhoto = formData  => (
     contentType: false
   })
 );
+
+export const deletePhoto = id => (
+  $.ajax({
+    url: `/api/photos/${id}`,
+    method: 'DELETE'
+  })
+);

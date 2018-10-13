@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id          :bigint(8)        not null, primary key
+#  user_id     :integer          not null
+#  title       :string           default("Untitled")
+#  description :string           default("Nondescript")
+#
+
 class Photo < ApplicationRecord
   validates :user_id, presence: true
   belongs_to :user
