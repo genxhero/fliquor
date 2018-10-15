@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_183118) do
+ActiveRecord::Schema.define(version: 2018_10_15_142414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 2018_10_14_183118) do
     t.string "title", default: "Untitled"
     t.string "description", default: "Nondescript"
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "tag_joins", force: :cascade do |t|
+    t.integer "photo_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["photo_id"], name: "index_tag_joins_on_photo_id"
+    t.index ["tag_id"], name: "index_tag_joins_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title", null: false
+    t.index ["title"], name: "index_tags_on_title"
   end
 
   create_table "users", force: :cascade do |t|

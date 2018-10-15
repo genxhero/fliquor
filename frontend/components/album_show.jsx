@@ -40,7 +40,7 @@ class AlbumShow extends React.Component {
          </div>
          <div className="album-photos-container">
             <ul className="photo-spread">
-              {photos.map(photo => <li className="photo-index-item"> <h8 className="photo-data-thumb">{photo.title}</h8><Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
+              {photos.map(photo => <li id={photo.id}className="photo-index-item"> <h8 className="photo-data-thumb">{photo.title}</h8><Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
             </ul>
           </div>
        </div>
