@@ -30,8 +30,6 @@ class PhotoUpload extends React.Component {
 
 
   update(field) {
-  //  debugger;
-
   return event => this.setState({
     [field]: event.currentTarget.value
   });
@@ -44,7 +42,7 @@ class PhotoUpload extends React.Component {
     formData.append('photo[description]', this.state.description);
     formData.append('photo[image]', this.state.image);
     this.props.newPhoto(formData).then( res => this.props.history.push(`/photos/${res.photo.id}`) );
-  
+
   }
 
 shadowClick(){

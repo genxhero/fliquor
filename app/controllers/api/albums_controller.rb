@@ -13,11 +13,11 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-    # @album.thumbnail = @album.photos.first.image
+    photo_ids = params[:album][:photo_ids].split(',')
     debugger;
     if @album.save
-      @album.photo_ids.each do |photo_id|
-          aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id)
+      photo_ids.each do |photo_id|
+          aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id.to_i)
           aj.save
       end
       render :show
@@ -29,7 +29,7 @@ class Api::AlbumsController < ApplicationController
 
 
   def album_params
-    params.require(:album).permit(:title, :thumbnail, photo_ids: [])
+    params.require(:album).permit(:title, :description,  photo_ids: [])
   end
 
 end
