@@ -22,6 +22,16 @@ export const createAlbum = formData  => (
   })
 );
 
+export const editAlbum = formData  => (
+  $.ajax({
+    url: `/api/albums${id}`,
+    method: 'patch',
+    data: formData,
+    processData: false,
+    contentType: false
+  })
+);
+
 export const delteAlbum = id => (
   $.ajax({
     url: `/api/albums/${id}`,

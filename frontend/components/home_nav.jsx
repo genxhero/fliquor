@@ -2,12 +2,23 @@ import React from 'react';
 import {Link, Route, withRouter} from 'react-router-dom';
 
 
-const HomeNav = () =>{
+const HomeNav = (props) =>{
+  const activePath = props.location.pathname
+  //each li will have logic for ctive or not active
   return(
     <div className="home-navbar">
-      <h6>When I have albums and tags, this will become a navigation bar.  Panel content will load below depending on route</h6>
+      <ul className="home-navbar-content">
+        <li className={activePath === "/home" ? "active-pane" : "inactive-pane"}>
+          <Link to="/home">Explore</Link>
+        </li>
+
+    <li className={activePath === "/albums" ? "active-pane" : "inactive-pane"}>
+          <Link to="/albums">Albums</Link>
+    </li>
+          <li className="pending">Trending</li>
+          </ul>>
     </div>
   );
 };
 
-export default HomeNav;
+export default withRouter(HomeNav);

@@ -14,7 +14,7 @@ class PhotosIndex extends React.Component {
   render() {
     const {photos} = this.props;
     if (photos === undefined) {
-      return "Loading";
+      return (<h1>Loading...</h1>);
     }
    return (
      <div className="photo-index-container">

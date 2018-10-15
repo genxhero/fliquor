@@ -1,7 +1,8 @@
 class Api::AlbumsController < ApplicationController
 
   def index
-    @albums =Album.all
+    @albums = Album.all
+    render :index
   end
 
   def show
@@ -13,15 +14,22 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.user_id = current_user.id
     # @album.thumbnail = @album.photos.first.image
+    debugger;
     if @album.save
+      @album.photo_ids.each do |photo_id|
+          aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id)
+          aj.save
+      end
       render :show
     else
       render json: @album.errors.full_messages, status: 420
     end
   end
 
+
+
   def album_params
-    params.require(:album).permit(:title, :thumbnail)
+    params.require(:album).permit(:title, :thumbnail, photo_ids: [])
   end
 
 end

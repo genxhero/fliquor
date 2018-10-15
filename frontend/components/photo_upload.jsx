@@ -44,9 +44,7 @@ class PhotoUpload extends React.Component {
     formData.append('photo[description]', this.state.description);
     formData.append('photo[image]', this.state.image);
     this.props.newPhoto(formData).then( res => this.props.history.push(`/photos/${res.photo.id}`) );
-      // console.log(res));
-      //
-
+  
   }
 
 shadowClick(){

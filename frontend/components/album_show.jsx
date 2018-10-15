@@ -30,14 +30,17 @@ class AlbumShow extends React.Component {
            <div className="album-toolbar-content">
 
            </div>
+
          </div>
+
          <div className="album-cover" style = {{backgroundImage: `url(${photos[0].image_url})`}} >
            <h1 className="album-title">{this.props.album.title}</h1>
-            <div className="album-owner">By {this.props.user.username}</div>
+             <h1 className="album-description">{this.props.album.description}</h1>
+            <div className="album-owner">By { this.props.currentUser.id === this.props.album.user.id ? "YOU"  : this.props.album.user.username }</div>
          </div>
          <div className="album-photos-container">
             <ul className="photo-spread">
-              {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
+              {photos.map(photo => <li className="photo-index-item"> <h8 className="photo-data-thumb">{photo.title}</h8><Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
             </ul>
           </div>
        </div>
@@ -45,5 +48,6 @@ class AlbumShow extends React.Component {
    }
 }
 //            <img className="album-cover-photo" src={photos[0].image_url}></img>
+
 
 export default withRouter(AlbumShow);

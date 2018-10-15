@@ -10,8 +10,9 @@ constructor (props){
 }
 
 componentDidMount() {
-  this.props.requestPhoto(this.props.match.params.photoID).then(res => {
-    this.props.requestUser(res.photo.user_id);
+  this.props.requestPhoto(this.props.match.params.photoID).then(res =>
+    {
+    this.props.requestUser(res.photo.user.id);
   })
 }
 
@@ -41,7 +42,7 @@ componentDidMount() {
       return (
         <div className="show-bottom-left">
           <div className="show-user-info">
-            <h3 className="show-user-name"> {this.props.user.first_name} {this.props.user.last_name}</h3>
+            <h3 className="show-user-name"> {this.props.photo.user.first_name} {this.props.photo.user.last_name}</h3>
            </div>
 
           <div className="show-photo-info">

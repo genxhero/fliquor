@@ -20,7 +20,7 @@ class UserProfile extends React.Component {
     <div className="user-profile">
       <OnlineHeaderContainer />
       <br></br>
-      <div className="cover-photo">
+      <div className="cover-photo" >
         <div className="cover-photo-content"> </div>
       </div>
       <div className="profile-subnav">
@@ -33,5 +33,5 @@ class UserProfile extends React.Component {
 
   }
 }
-
+//style = {{backgroundImage: `url(${photos[0].image_url})`}}
 export default UserProfile;
