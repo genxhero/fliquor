@@ -15,7 +15,12 @@ import AlbumShowContainer from './album_show_container';
 import HomeNav from './home_nav';
 import AlbumIndexContainer from './album_index_container';
 import AlbumCreateContainer from './album_create_container';
+import AlbumEditContainer from './album_edit_container';
+import TagIndexContainer from './tag_index_container';
 
+
+///photos/tags/airplane  on backend, tags/show
+//photos/tags/ on backend, tags/index
 
 const Create = () => (
   <div>
@@ -59,7 +64,22 @@ const AlbumCreate = () => (
   <div>
     <OnlineHeaderContainer />
    <AlbumCreateContainer />
-  </div>  
+  </div>
+);
+
+const AlbumEdit = () => (
+  <div>
+    <OnlineHeaderContainer />
+   <AlbumEditContainer />
+  </div>
+);
+
+const TagPane = () => (
+  <div>
+    <OnlineHeaderContainer />
+    <HomeNav />
+    <TagIndexContainer />
+  </div>
 );
 
 const App = () => (
@@ -75,8 +95,10 @@ const App = () => (
       <ProtectedRoute exact path="/photos/create" component={Create} />
       <Route path="/photos/:photoID" component={Show} />
       <ProtectedRoute exact path="/albums/create" component={AlbumCreate} />
+      <ProtectedRoute exact path="/albums/:albumID/edit" component={AlbumEdit} />
       <Route exact path="/albums/:albumID" component={AlbumPage} />
-      <Route path="/albums" component={AlbumPane} />
+      <Route exact path="/albums" component={AlbumPane} />
+      <Route exact path="/tags" component={TagPane} />
     </Switch>
     <Route exact path="/users/:userID" component={UserProfileContainer} />
   </div>

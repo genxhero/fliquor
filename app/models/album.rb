@@ -12,9 +12,6 @@
 class Album < ApplicationRecord
   validates :user_id, presence: true
 
-
-
-
   belongs_to :user,
   primary_key: :id,
   foreign_key: :user_id,
@@ -30,6 +27,7 @@ class Album < ApplicationRecord
   has_many :photos,
   through: :albumjoins,
   source: :photo
+
 
 
 end

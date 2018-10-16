@@ -3,27 +3,31 @@ import AlbumEdit from './album_edit';
 import { requestPhotos } from '../actions/photos_actions';
 import {withRouter} from 'react-router-dom';
 import {requestUser} from '../actions/users_actions';
-import {requestAlbum} from '../actions/album_actions';
+import {requestAlbum, editAlbum} from '../actions/album_actions';
+import {getPhotosByUser} from '../reducers/selectors';
+
+
 
 const mapStateToProps = (state, ownProps) => {
   const album = state.entities.albums[ownProps.match.params.albumID];
-  let user, photos;
-  if (album != undefined) {
-    user = requestUser(album.user_id);
-    photos = album.photos;
-  };
+  const currentUser = Object.values(state.entities.users)[0];
+  const allPhotos = requestPhotos();
+  const photos = getPhotosByUser(state, currentUser.id);
+
   //debugger;
      return {
+       errors: state.errors,
        album,
        photos,
-       user,
+       currentUser
      };
 };
 
 const mapDispatchToProps = dispatch => ({
   requestAlbum: id => dispatch(requestAlbum(id)),
   requestUser: id => dispatch(requestUser(id)),
-  requestPhotos: id => dispatch(requestPhotos(id))
+  requestPhotos: id => dispatch(requestPhotos(id)),
+  editAlbum: (formData, albumID) => dispatch(editAlbum(formData, albumID))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AlbumEdit));

@@ -39,3 +39,9 @@ export const requestAlbum = albumID => dispatch => (
         dispatch(receiveAlbum(album))),
         errors => (dispatch(receiveErrors(errors)))
       ));
+
+      export const editAlbum = (album, albumID) => dispatch => (
+          AlbumUtil.updateAlbum(album, albumID).then(album => (
+          dispatch(receiveAlbum(album))),
+          errors => (dispatch(receiveErrors(errors)))
+        ));

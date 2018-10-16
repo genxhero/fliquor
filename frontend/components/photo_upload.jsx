@@ -9,6 +9,7 @@ class PhotoUpload extends React.Component {
    this.state = {
      title: 'Untitled',
      description:'Nondescript',
+     tag_ids: "",
      photoURL: null
    };
    this.onFileChange = this.onFileChange.bind(this);
@@ -41,6 +42,7 @@ class PhotoUpload extends React.Component {
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
     formData.append('photo[image]', this.state.image);
+    formData.append('photo[tag_ids]',this.state.tag_ids)
     this.props.newPhoto(formData).then( res => this.props.history.push(`/photos/${res.photo.id}`) );
 
   }
@@ -135,15 +137,24 @@ const RightContent = () => (
 
                  <div className={this.state.photoURL ? "upload-form-left" : "blank-div"}>
                    <input className="photo-field-title"
+                     value={this.state.title}
                      placeholder={this.state.photoURL ? `${this.state.image.name}` : ""} type="text"
                       onChange={this.update('title')}
                       ></input>
                    <input
                      className="photo-field"
                      placeholder="Add a description"
+                     value={this.state.description}
                      type="text"
 
                      onChange={this.update('description')}></input>
+                     <input
+                       className="photo-field"
+                       placeholder="Add tags separated by commas"
+                       value={this.state.tag_ids}
+                       type="text"
+
+                       onChange={this.update('tag_ids')}></input>
                    <input className="upload-submit" type="submit" value=""></input>
                  </div>
                <RightContent />

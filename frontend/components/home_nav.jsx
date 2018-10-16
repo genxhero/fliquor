@@ -15,7 +15,9 @@ const HomeNav = (props) =>{
     <li className={activePath === "/albums" ? "active-pane" : "inactive-pane"}>
           <Link to="/albums">Albums</Link>
     </li>
-          <li className="pending">Trending</li>
+          <li className={activePath === "/tags"  ? "active-pane" : "inactive-pane" }>
+            <Link to="/tags">Trending</Link>
+          </li>
           </ul>>
     </div>
   );

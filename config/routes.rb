@@ -6,5 +6,7 @@ Rails.application.routes.draw do
       resource :session, only: [:create, :destroy]
       resources :photos, only: [:index, :show, :create, :update, :destroy]
       resources :albums, only: [:new, :index, :create, :update, :destroy, :show]
+      resources :tag_joins, only: [:create, :destroy]
+      resources :tags, only: [:index, :show]
     end
 end

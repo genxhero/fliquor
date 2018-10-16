@@ -21,7 +21,7 @@ class Photo < ApplicationRecord
 
   has_many :tags,
   through: :tagjoins,
-  source: :photo
+  source: :tag
 
   has_many :albumjoins,
   primary_key: :id,
@@ -36,5 +36,18 @@ class Photo < ApplicationRecord
 
   has_one_attached :image
 
-
+def parse_tags(tag_arr)
+  tag_ids = []
+   tag_arr.each do |title|
+     if  Tag.find_by(title: title) == nil
+       tag = Tag.new(title: title)
+       tag.save!
+       tag_ids << tag.id
+     else
+       tag = Tag.find_by(title: title)
+       tag_ids << tag.id
+     end
+   end
+     tag_ids
+   end
 end

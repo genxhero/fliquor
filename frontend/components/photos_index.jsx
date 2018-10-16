@@ -17,11 +17,13 @@ class PhotosIndex extends React.Component {
       return (<h1>Loading...</h1>);
     }
    return (
-     <div className="photo-index-container">
-       <ul className="photo-spread">
-         {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
-       </ul>
-
+     <div className="photo-index-page">
+       <div className="photo-index-container">
+         <h3>Explore</h3>
+         <ul className="photo-spread">
+           {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
+         </ul>
+       </div>
      </div>
    );
  }

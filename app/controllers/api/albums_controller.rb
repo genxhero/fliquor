@@ -14,7 +14,7 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.user_id = current_user.id
     photo_ids = params[:album][:photo_ids].split(',')
-    debugger;
+
     if @album.save
       photo_ids.each do |photo_id|
           aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id.to_i)
@@ -23,6 +23,20 @@ class Api::AlbumsController < ApplicationController
       render :show
     else
       render json: @album.errors.full_messages, status: 420
+    end
+  end
+
+  def update
+     debugger
+     @album = Album.find(params[:id])
+     photo_ids = params[:album][:photo_ids].split(',')
+     @album.photo_ids = photo_ids;
+
+    if @album.update_attributes(album_params)
+
+      render :show
+    else
+      render json: @album.errors.full_messages, status: 422
     end
   end
 
