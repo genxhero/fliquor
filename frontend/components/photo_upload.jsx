@@ -105,7 +105,7 @@ getFilename() {
    const MainContent = () => {
      if (this.state.photoURL){
        return (
-         <div className="upload-form-main">
+         <div className="upload-form-preview">
            <img className="preview" src={this.state.photoURL}/>
         </div>
        );
@@ -145,7 +145,7 @@ const RightContent = () => (
                      className="photo-field"
                      placeholder="Add a description"
                      value={this.state.description}
-                     
+
 
                      onChange={this.update('description')}></textarea>
                      <input
