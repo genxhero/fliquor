@@ -538,10 +538,10 @@ display: flex;
 }
 
 #explore {
-  font-size: 32px;
+  font-size: 28px;
 font-weight: lighter;
 width: 100px;
-margin: 0 auto;
+margin: 0;
 text-align: left;
 
 }
