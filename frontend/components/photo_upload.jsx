@@ -141,13 +141,13 @@ const RightContent = () => (
                      placeholder={this.state.photoURL ? `${this.state.image.name}` : ""} type="text"
                       onChange={this.update('title')}
                       ></input>
-                   <input
+                    <textarea
                      className="photo-field"
                      placeholder="Add a description"
                      value={this.state.description}
-                     type="text"
+                     
 
-                     onChange={this.update('description')}></input>
+                     onChange={this.update('description')}></textarea>
                      <input
                        className="photo-field"
                        placeholder="Add tags separated by commas"

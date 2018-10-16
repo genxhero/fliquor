@@ -5,7 +5,7 @@ class Api::PhotosController < ApplicationController
     end
 
     def create
-      debugger
+
       @photo = Photo.new(photo_params)
       @photo.user_id = current_user.id
 

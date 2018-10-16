@@ -27,7 +27,7 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
-     debugger
+     
      @album = Album.find(params[:id])
      photo_ids = params[:album][:photo_ids].split(',')
      @album.photo_ids = photo_ids;

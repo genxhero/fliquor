@@ -537,8 +537,8 @@ display: flex;
   margin-left: 10%;
 }
 
-.photo-index-container > h3 {
-  font-size: 24px;
+#explore {
+  font-size: 32px;
 font-weight: lighter;
 width: 100px;
 margin: 0 auto;
