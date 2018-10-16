@@ -542,6 +542,7 @@ display: flex;
 font-weight: lighter;
 width: 100px;
 margin: 0;
+margin-top: 15px;
 text-align: left;
 
 }
@@ -752,7 +753,6 @@ width: 100%; */
 
 .preview {
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -1517,10 +1517,22 @@ opacity: 0.65;
   background-blend-mode: darken;
 }
 
+
 .tag-show-link:hover {
   background-color: transparent;
   transition: background-color .2s ease-out;
 }
+
+.tag-show-links {
+  display: flex;
+  margin-left: 10%;
+  margin-bottom: 5px;
+}
+.tag-show-label {
+  margin-left: 10%;
+}
+
+
 
 .thumb-overlay {
   position: absolute;
@@ -1553,4 +1565,43 @@ opacity: 0.65;
   display: flex ;
   flex-wrap:wrap;
   font-size: 22px;
+}
+
+
+
+.tag-show-page {
+  position: absolute;
+  width: 100%;
+  background: #F3F5F6;
+  height: 100%
+}
+
+.tag-show-container {
+  position: relative;
+  top: 120px;
+  display: flex;
+ flex-direction: column;
+}
+
+.tag-photo-spread {
+  padding-inline-start: 0;
+  margin-left: 10%;
+  display: flex ;
+  flex-wrap:wrap;
+  font-size: 22px;
+  list-style: none;
+}
+
+.tag-photo {
+  margin:5px;
+}
+
+.arrow {
+  display: inline-block;
+  margin: 0 12px 0 10px;
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -539px -479px no-repeat;
+  width: 8px;
+  height: 14px;
+  position: relative;
+  top: 2px;
 }

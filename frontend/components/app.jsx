@@ -17,7 +17,7 @@ import AlbumIndexContainer from './album_index_container';
 import AlbumCreateContainer from './album_create_container';
 import AlbumEditContainer from './album_edit_container';
 import TagIndexContainer from './tag_index_container';
-
+import TagShowContainer from "./tag_show_container";
 
 ///photos/tags/airplane  on backend, tags/show
 //photos/tags/ on backend, tags/index
@@ -82,6 +82,14 @@ const TagPane = () => (
   </div>
 );
 
+const TagShow = () => (
+    <div>
+        <OnlineHeaderContainer />
+        <HomeNav />
+        <TagShowContainer />
+    </div>
+);
+
 const App = () => (
   <div className="app-main">
 
@@ -98,6 +106,7 @@ const App = () => (
       <ProtectedRoute exact path="/albums/:albumID/edit" component={AlbumEdit} />
       <Route exact path="/albums/:albumID" component={AlbumPage} />
       <Route exact path="/albums" component={AlbumPane} />
+      <Route exact path="/tags/:tagTitle" component={TagShow} />
       <Route exact path="/tags" component={TagPane} />
     </Switch>
     <Route exact path="/users/:userID" component={UserProfileContainer} />

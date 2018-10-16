@@ -21,7 +21,7 @@ class PhotosIndex extends React.Component {
        <div className="photo-index-container">
          <div id="explore">Explore</div>
          <ul className="photo-spread">
-           {photos.map(photo => <li className="photo-index-item"> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
+           {photos.map(photo => <li className="photo-index-item" id={`${photo.id}`}> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
          </ul>
        </div>
      </div>

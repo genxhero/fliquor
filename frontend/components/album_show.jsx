@@ -46,6 +46,7 @@ class AlbumShow extends React.Component {
        return 'Loading';
      }
      const photos = this.props.album.photos;
+
       if (photos === undefined) {
         return "Loading";
       }

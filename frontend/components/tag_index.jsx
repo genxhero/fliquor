@@ -13,6 +13,7 @@ class TagIndex extends React.Component {
 
     this.props.requestTags();
 
+
   }
 
   render(){
@@ -28,11 +29,11 @@ class TagIndex extends React.Component {
         <div className="tag-index-container">
           <h4 id="tagslabel">Trending Tags — All Time</h4>
           <ul className="tag-spread">
-            {tags.filter(tag => tag.photos.length > 0).map(tag => <li className="tag-index-item"
+            {tags.filter(tag => tag.photos.length > 0).map(tag => <li className="tag-index-item" id={`${tag.id}`}
 
               >
 
-              <Link to="/home" className="tag-show-link"
+              <Link to={`/tags/${tag.title}`} className="tag-show-link"
                  style={{backgroundImage: `url(${tag.photos[0].image_url})`,  }}
                 >
                 <div className="tag-data-thumb">{tag.title}  </div>

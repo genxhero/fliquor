@@ -3,7 +3,7 @@ import * as TagUtil from "../util/tag_util";
 export const RECEIVE_TAG = "RECEIVE_TAG";
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 
-export const ReceiveTag = tag => {
+export const receiveTag = tag => {
   return ({
     type: RECEIVE_TAG,
     tag

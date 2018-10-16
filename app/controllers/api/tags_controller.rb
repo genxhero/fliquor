@@ -9,7 +9,8 @@ class Api::TagsController < ApplicationController
     end
 
     def show
-      @tag = Tag.find(params[:id])
+      dummy = "you"
+      @tag = Tag.find_by(title: params[:id])
       render :show
     end
 
