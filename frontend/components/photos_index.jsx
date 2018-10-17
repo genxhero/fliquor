@@ -5,11 +5,13 @@ class PhotosIndex extends React.Component {
 
   constructor(props){
     super(props);
+
   }
 
   componentDidMount(){
      this.props.requestPhotos();
   }
+
 
   render() {
     const {photos} = this.props;

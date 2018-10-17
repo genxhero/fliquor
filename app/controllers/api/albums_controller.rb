@@ -27,7 +27,7 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
-     
+
      @album = Album.find(params[:id])
      photo_ids = params[:album][:photo_ids].split(',')
      @album.photo_ids = photo_ids;
@@ -38,6 +38,13 @@ class Api::AlbumsController < ApplicationController
     else
       render json: @album.errors.full_messages, status: 422
     end
+  end
+
+  def destroy
+    @album = Album.find(params[:id])
+    Album.destroy(@album.id)
+    # debugger
+    render :show
   end
 
 

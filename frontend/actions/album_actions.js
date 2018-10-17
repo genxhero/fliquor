@@ -2,6 +2,7 @@ import * as AlbumUtil from  "../util/album_util";
 
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 export const RECEIVE_ALBUMS ="RECEIVE_ALBUMS"
+export const REMOVE_ALBUM = "REMOVE_ALBUM";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const receiveAlbum = album => {
@@ -17,6 +18,12 @@ return ({
   albums
 });
 }
+
+export const removeAlbum = albums => ({
+  type: REMOVE_ALBUM,
+  albums
+});
+
 
 export const receiveErrors = errors => ({
    type: RECEIVE_ERRORS,
@@ -45,3 +52,9 @@ export const requestAlbum = albumID => dispatch => (
           dispatch(receiveAlbum(album))),
           errors => (dispatch(receiveErrors(errors)))
         ));
+
+        export const destroyAlbum = albumID => dispatch => (
+            AlbumUtil.deleteAlbum(albumID)
+            .then(albums => dispatch(removeAlbum(albums)))
+            .then(albums => dispatch(receiveAlbums(albums)))
+        );

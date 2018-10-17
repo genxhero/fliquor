@@ -3,7 +3,7 @@ import AlbumShow from './album_show';
 import { requestPhotos } from '../actions/photos_actions';
 import {withRouter} from 'react-router-dom';
 import {requestUser} from '../actions/users_actions';
-import {requestAlbum} from '../actions/album_actions';
+import {requestAlbum, destroyAlbum} from '../actions/album_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = Object.values(state.entities.users)[0];
@@ -24,6 +24,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   requestAlbum: id => dispatch(requestAlbum(id)),
+ destroyAlbum: id => dispatch(destroyAlbum(id)),
   requestUser: id => dispatch(requestUser(id)),
   requestPhotos: id => dispatch(requestPhotos(id))
 });

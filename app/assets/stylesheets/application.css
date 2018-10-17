@@ -681,7 +681,7 @@ margin-left: 9%;
 
 .photo-page {
   /* position:absolute; */
-/* background: #2C2C2C; */
+background: #2C2C2C;
 color: #fff;
 /* display: flex; */
 /* height: 585px;
@@ -689,13 +689,14 @@ width: 100%; */
 }
 
 .show-container {
-  height: 747px;
+  height: 700px;
   width: 100%;
   display: flex;
    justify-content: center;
    align-items: center;
-   padding-bottom: 20px;
    background: #2C2C2C;
+   margin-top: 1%;
+   flex-direction: column;
 }
 
 .show-image {
@@ -704,7 +705,40 @@ width: 100%; */
   max-height: 80%;
   max-width: 60%;
   margin-bottom: 10px;
-  margin-top: 6%;
+}
+
+.show-menu-top {
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  height: 20px;
+  width: 100%;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+#back-link {
+  color: white;
+}
+#back-link:hover {
+  text-decoration: underline;
+}
+
+.back-arrow {
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -539px -228px no-repeat;
+width: 14px;
+height: 12px;
+float: left;
+margin-right: 10px;
+margin-top: 2px;
+}
+
+.show-menu-bottom {
+  height: 20px;
+  height: 20px;
+    width: 100%;
+    margin-right: 40px;
+padding-bottom: 20px;
 }
 
 
@@ -1604,4 +1638,22 @@ opacity: 0.65;
   height: 14px;
   position: relative;
   top: 2px;
+}
+
+.photo-edit-btn {
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -315px -212px no-repeat;
+  width: 18px;
+  height: 18px;
+
+}
+
+.photo-destroy-btn {
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -412px -177px no-repeat;
+  width: 18px;
+  height: 20px;
+  position:relative;
+  top: 3px;
+}
+.photo-destroy-btn:hover {
+  cursor:pointer;
 }

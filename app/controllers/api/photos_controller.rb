@@ -29,6 +29,12 @@ class Api::PhotosController < ApplicationController
       render :index
     end
 
+    def destroy
+      @photo = Photo.find(params[:id])
+      Photo.destroy(@photo.id)
+      render :show
+    end
+
     def photo_params
       params.require(:photo).permit(:title, :description, :image, tag_ids: [])
     end

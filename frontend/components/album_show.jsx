@@ -6,6 +6,7 @@ class AlbumShow extends React.Component {
     super(props);
     this.editMaybe = this.editMaybe.bind(this);
     this.newMaybe = this.newMaybe.bind(this);
+    this.sakujo = this.sakujo.bind(this);
   }
 
   componentDidMount(){
@@ -16,12 +17,26 @@ class AlbumShow extends React.Component {
 
   }
 
+
+    sakujo(e){
+      e.preventDefault();
+       this.props.destroyAlbum(this.props.album.id)
+      // .then(this.props.history.push("/albums"));
+    }
+
   editMaybe(){
     if (this.props.currentUser.id === this.props.album.user.id){
-        return (<Link
-          to={`/albums/${this.props.album.id}/edit`}
-          className="album-tb-edit"
-          ></Link>
+        return (
+            <div className="button-span">
+              <Link
+              to={`/albums/${this.props.album.id}/edit`}
+              className="album-tb-edit"
+              ></Link>
+              <div className="photo-destroy-btn"
+                onClick={this.sakujo}>
+              </div>
+            </div>
+
       );
     } else {
       return (<span></span>);

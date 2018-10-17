@@ -33,7 +33,7 @@ return  $.ajax({
   })
 };
 
-export const delteAlbum = id => (
+export const deleteAlbum = id => (
   $.ajax({
     url: `/api/albums/${id}`,
     method: 'DELETE'

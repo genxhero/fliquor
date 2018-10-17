@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter} from 'react-router-dom';
+import { Link, withRouter, Redirect} from 'react-router-dom';
 
 
 
@@ -9,6 +9,7 @@ class PhotoShow extends React.Component {
 constructor (props){
   super(props);
 
+this.sakujo= this.sakujo.bind(this);
 this.deleteTag = this.deleteTag.bind(this);
 }
 
@@ -16,8 +17,6 @@ componentDidMount() {
   this.props.requestPhoto(this.props.match.params.photoID).then(res =>
     {
     this.props.requestUser(res.photo.user.id);
-  //  debugger;
-  //  let dummy = "you";
   })
 }
 
@@ -37,17 +36,45 @@ componentDidMount() {
     e.preventDefault();
     const  tj = this.props.photo.tagjoins.find( (el) => el.tag_id === parseInt(e.currentTarget.id));
     this.props.deleteTag(tj.id);
-
-     // this.setState({
-     //
-     // });
   }
 
   expandTag(){
 
   }
 
+  sakujo(e){
+    e.preventDefault();
+
+
+   this.props.destroyPhoto(this.props.photo.id)
+     .then(this.props.history.push("/home"));
+  //   .then( this.props.requestPhotos())
+  }
+
+  editMaybe() {
+    // let dummy = "you";
+    // debugger;
+    if (this.props.currentUser.id === this.props.photo.user.id){
+        return (
+      <div className="button-span">
+        <Link
+        to={`/photos/${this.props.photo.id}/edit`}
+        className="album-tb-edit"
+        ></Link>
+      <div className="photo-destroy-btn"
+        onClick={this.sakujo}>
+      </div>
+    </div>
+
+      );
+    } else {
+      return (<div ></div>);
+    }
+  }
+
   render() {
+
+
 
     if (this.props.photo === undefined || this.props.user === undefined) {
       return 'Loading';
@@ -122,7 +149,9 @@ componentDidMount() {
     return (
       <div className="photo-page">
         <div className="show-container">
+          <div className="show-menu-top"><Link to="/home" id="back-link"><div className="back-arrow"></div> back to Photos</Link></div>
             <img className="show-image" src={this.props.photo.image_url}></img>
+            <div className="show-menu-bottom">{this.editMaybe()}</div>
         </div>
         <Bottom />
       </div>
