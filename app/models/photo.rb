@@ -34,6 +34,11 @@ class Photo < ApplicationRecord
   through: :albumjoins,
   source: :album
 
+  has_many :comments,
+  primary_key: :id,
+  foreign_key: :photo_id,
+  class_name: "Comment"
+
   has_one_attached :image
 
 def parse_tags(tag_arr)

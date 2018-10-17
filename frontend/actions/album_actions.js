@@ -56,5 +56,4 @@ export const requestAlbum = albumID => dispatch => (
         export const destroyAlbum = albumID => dispatch => (
             AlbumUtil.deleteAlbum(albumID)
             .then(albums => dispatch(removeAlbum(albums)))
-            .then(albums => dispatch(receiveAlbums(albums)))
         );

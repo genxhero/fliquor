@@ -1,4 +1,4 @@
-json.extract! photo, :id, :user_id, :title, :description, :tags, :tagjoins, :album_ids
+json.extract! photo, :id, :user_id, :title, :description, :tags, :tagjoins, :album_ids, :comments
 
 if photo.image.attached?
   json.image_url url_for(photo.image)

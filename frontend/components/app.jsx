@@ -11,6 +11,7 @@ import UserProfileContainer from './user_profile_container';
 import UploadHeaderContainer from './upload_header_container';
 import PhotoShowContainer from './photo_show_container';
 import PhotosIndexContainer from './photos_index_container';
+import PhotoEditContainer from './photo_edit_container';
 import AlbumShowContainer from './album_show_container';
 import HomeNav from './home_nav';
 import AlbumIndexContainer from './album_index_container';
@@ -18,6 +19,7 @@ import AlbumCreateContainer from './album_create_container';
 import AlbumEditContainer from './album_edit_container';
 import TagIndexContainer from './tag_index_container';
 import TagShowContainer from "./tag_show_container";
+
 
 ///photos/tags/airplane  on backend, tags/show
 //photos/tags/ on backend, tags/index
@@ -101,6 +103,7 @@ const App = () => (
 
     <Switch>
       <ProtectedRoute exact path="/photos/create" component={Create} />
+      <ProtectedRoute exact path="/photos/:photoID/edit" component={PhotoEditContainer} />
       <Route path="/photos/:photoID" component={Show} />
       <ProtectedRoute exact path="/albums/create" component={AlbumCreate} />
       <ProtectedRoute exact path="/albums/:albumID/edit" component={AlbumEdit} />

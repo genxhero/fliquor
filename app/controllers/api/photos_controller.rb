@@ -29,6 +29,20 @@ class Api::PhotosController < ApplicationController
       render :index
     end
 
+    def update
+      @photo = Photo.find[params[:id]]
+      debugger
+      tags_arr = params[:photo][:tag_ids].split(', ');
+      tag_ids = @photo.parse_tags(tags_arr)
+      @photo.tag_ids = tag_ids
+
+      if @album.update_attributes(photo_params)
+        render :show
+      else
+        render jason: @album.errors.full_messages, status: 422
+      end
+    end
+
     def destroy
       @photo = Photo.find(params[:id])
       Photo.destroy(@photo.id)

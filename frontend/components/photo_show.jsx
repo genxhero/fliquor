@@ -8,21 +8,41 @@ class PhotoShow extends React.Component {
 
 constructor (props){
   super(props);
+  this.state = {
+    body: ""
+  }
+  this.sakujo= this.sakujo.bind(this);
+  this.update = this.update.bind(this);
+  this.deleteTag = this.deleteTag.bind(this);
+  this.getAuthor = this.getAuthor.bind(this);
+  this.newCommentMaybe = this.newCommentMaybe.bind(this);
+  this.editMaybe = this.editMaybe.bind(this);
+  this.addComment = this.addComment.bind(this);
+  this.deleteComment = this.deleteComment.bind(this);
 
-this.sakujo= this.sakujo.bind(this);
-this.deleteTag = this.deleteTag.bind(this);
+}
+
+
+getAuthor(userID) {
+  const author = this.props.requestUser(userID);
+  // debugger;
+  // let dummy ="butter;"
+  return author;
 }
 
 componentDidMount() {
+
   this.props.requestPhoto(this.props.match.params.photoID).then(res =>
     {
-    this.props.requestUser(res.photo.user.id);
+
+    this.props.requestUser(res.photo.photo.user_id);
   })
 }
 
   componentDidUpdate(previous) {
 
     if (previous.match.params.photoID !== this.props.match.params.photoID) {
+
       this.props.requestPhoto(this.props.match.params.photoID);
     }
   // debugger;
@@ -48,7 +68,7 @@ componentDidMount() {
 
    this.props.destroyPhoto(this.props.photo.id)
      .then(this.props.history.push("/home"));
-  //   .then( this.props.requestPhotos())
+
   }
 
   editMaybe() {
@@ -70,6 +90,51 @@ componentDidMount() {
     } else {
       return (<div ></div>);
     }
+  }
+
+  newCommentMaybe(){
+
+      if (this.props.currentUser) {
+        return (
+          <div className="comment-form-container">
+            <form className="comment-creation" onSubmit={this.addComment}>
+                    <textarea className="comment-field"
+                       placeholder="Add a comment"
+                       onChange={this.update('body')}
+                       value={this.state.body}
+                       >
+
+
+                    </textarea>
+                    <input className="comment-submit" type="submit" value="Comment"></input>
+            </form>
+          </div>
+
+        );
+      } else {
+        return (<div className="commenting-disabled"> Please log in or sign up to comment</div>);
+
+      }
+  }
+
+  update(field) {
+  return event => this.setState({
+    [field]: event.currentTarget.value
+  });
+  }
+
+  addComment(e){
+    e.preventDefault();
+    let formData = new FormData();
+    debugger;
+    formData.append('comment[body]', this.state.body);
+    this.props.createComment(formData, this.props.photo.id);
+  //  .then(this.props.history.push(`/photos/${this.props.photo.id}`) );
+   //.then( res => this.props.history.push(`/photos/${this.props.photo.id}`) );
+  }
+
+  deleteComment() {
+   //deleteComment
   }
 
   render() {
@@ -102,12 +167,23 @@ componentDidMount() {
           </div>
 
          <div className="show-photo-comments">
-           <ul>
-             <li> Placeholder comments</li>
-             <li> Wait until you see the real ones </li>
-             <li> Phase V: Electric Boogaloo</li>
-           </ul>
+           <div className="comment-spread">
+             {this.props.comments.map( comment => {
+               // let dummy = "this coder";
+               // debugger;
+               // let x = "y";
+
+               return (
+                  <div className="comment-single" id={`${comment.id}`}>
+                    <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link></div>
+                    <div className="comment-body">{comment.body}</div>
+                  </div>
+               );
+             }, this)
+           }
+           </div>
          </div>
+           {this.newCommentMaybe()}
         </div>
       );
     };
@@ -126,7 +202,8 @@ componentDidMount() {
               </div>
                 <ul className="tags-list">
                 {this.props.photo.tags.map(tag => <li
-                  className="tag-bubble-existing" onClick={this.deleteTag} id={`${tag.id}`}> {tag.title}</li>)}
+                  className="tag-bubble-existing" onClick={this.deleteTag} id={`${tag.id}`}> {tag.title}
+                </li>)}
                </ul>
            </div>
 
@@ -161,3 +238,6 @@ componentDidMount() {
 }
 
 export default withRouter(PhotoShow);
+//<h3>{comment.user_id === this.props.currentUser.id ? "Deletable" : "Not Deletable"}</h3>
+
+//  {this.props.currentUser.id === comment.user_id ? <div className="delete-x"></div>> : <div></div>}

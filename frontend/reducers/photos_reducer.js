@@ -6,7 +6,10 @@ const photosReducer = (state = {}, action) => {
   Object.freeze(state);
     switch(action.type) {
       case RECEIVE_PHOTO:
-      return merge({}, state, { [action.photo.id]: action.photo} );
+      let dummy;
+      debugger;
+      let scapegoat;
+      return merge({}, state, { [action.photo.photo.id]: action.photo.photo} );
 
       case RECEIVE_PHOTOS:
     //  debugger;

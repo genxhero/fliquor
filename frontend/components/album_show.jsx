@@ -21,7 +21,7 @@ class AlbumShow extends React.Component {
     sakujo(e){
       e.preventDefault();
        this.props.destroyAlbum(this.props.album.id)
-      // .then(this.props.history.push("/albums"));
+       .then(this.props.history.push("/albums"));
     }
 
   editMaybe(){

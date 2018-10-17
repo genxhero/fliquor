@@ -36,6 +36,94 @@ a {
   text-decoration: none;
 }
 
+.comment-form-container {
+
+}
+
+.comment-creation {
+  display:flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  display: flex;
+    align-items: flex-end;
+}
+
+.commenting-disabled {
+  color: gray;
+  font-size: 14px;
+}
+
+.comment-single {
+ margin: 15px;
+}
+
+.comment-author {
+  padding-top: 3px;
+     padding-bottom: 3px;
+}
+
+.comment-body {
+
+}
+
+.comment-spread {
+    margin-top: 15px;
+}
+
+.show-photo-comments {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comment-field {
+ width: 95%;
+ min-height: 80px;
+ padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  resize: none;
+  margin-bottom: 5px;
+  background-color: white;
+  border: none;
+}
+
+.comment-field:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #008ddf;
+  background-color: white;
+
+}
+
+/*  Thank you Codepen!!!*/
+.comment-field-tip {
+
+}
+
+.comment-submit {
+      float: right;
+
+      margin-top: 10px;
+      margin-bottom: 20px;
+      height: 32px;
+      min-width: 100px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: 600;
+      background: #009AE6;
+      color: white;
+
+}
+
+.comment-submit:hover {
+  cursor: pointer;
+  background: #0044C0;
+}
+
+
+
 .tags-container {
     border-top: 1px solid gray;
     border-bottom:1px solid gray;
@@ -588,11 +676,12 @@ text-align: left;
 
 .show-desc {
   font-size: 14px;
+  margin-bottom: 0px;
 }
 
 .show-photo-info {
-  width: 60%;
-  padding: 0 0 10px;
+  width: 100%;
+  padding: 0 0 20px;
   border-bottom: 1px solid #cfd6d9;
 }
 
@@ -602,13 +691,14 @@ text-align: left;
   flex-direction: row;
   justify-content:space-between;
   width: 100%;
-  background: #fff;
+  background: #F3F5F6;
   color: #000;
 }
 
 .show-bottom-left {
   width: 50%;
   margin-left: 15%;
+  height: 100%;
 }
 
 .show-bottom-right {
@@ -1231,12 +1321,16 @@ font-weight: 600;
   border-radius: 1px;
   font-size: 14px;
   line-height: 20px;
-  padding-left: 10px;
+  padding-left: 40px;
   padding-right: 10px;
   box-sizing: border-box;
   height: 33px;
   background-color: #fff;
   opacity: 0.65;
+  background-image: url('searchicon.png');
+  background-position: 10px 7px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
 }
 
 .search-bar-main {
@@ -1253,6 +1347,10 @@ font-weight: 600;
   opacity: 0.65;
   margin-right: 10px;
   transition: opacity .25s ease-in-out;
+  background-image: url('searchicon.png');
+  background-position: 10px 7px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
 }
 
 .search-bar-main:focus {
