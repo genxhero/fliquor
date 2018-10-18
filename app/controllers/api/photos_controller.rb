@@ -1,6 +1,6 @@
 class Api::PhotosController < ApplicationController
     def show
-      @photo = Photo.find(params[:id])
+       @photo = Photo.find(params[:id].to_i)
       render :show
     end
 
@@ -30,16 +30,20 @@ class Api::PhotosController < ApplicationController
     end
 
     def update
-      @photo = Photo.find[params[:id]]
-      debugger
-      tags_arr = params[:photo][:tag_ids].split(', ');
-      tag_ids = @photo.parse_tags(tags_arr)
-      @photo.tag_ids = tag_ids
 
-      if @album.update_attributes(photo_params)
-        render :show
+      @photo = Photo.find(params[:id].to_i)
+
+      tags_arr = params[:photo][:tag_ids].split(', ')
+
+      tag_ids = @photo.parse_tags(tags_arr)
+      debugger
+      @photo.tag_ids = tag_ids
+#Might not work based on placement of tag_ids = tag_ids
+      if @photo.update_attributes(photo_params)
+
+       render :show
       else
-        render jason: @album.errors.full_messages, status: 422
+        render jason: @photo.errors.full_messages, status: 422
       end
     end
 
@@ -50,6 +54,8 @@ class Api::PhotosController < ApplicationController
     end
 
     def photo_params
-      params.require(:photo).permit(:title, :description, :image, tag_ids: [])
+     params.require(:photo).permit(:title, :description, :image, tag_ids: [])
+    #  params.require(:photo).permit(:title, :description, :image, :tag_ids)
+
     end
 end

@@ -6,9 +6,9 @@ const photosReducer = (state = {}, action) => {
   Object.freeze(state);
     switch(action.type) {
       case RECEIVE_PHOTO:
-      let dummy;
-      debugger;
-      let scapegoat;
+      // let dummy;
+      // debugger;
+      // let scapegoat;
       return merge({}, state, { [action.photo.photo.id]: action.photo.photo} );
 
       case RECEIVE_PHOTOS:
@@ -18,12 +18,11 @@ const photosReducer = (state = {}, action) => {
       case  REMOVE_TAG:
       let newState = Object.assign({}, state)
 
-      return Object.assign(newState, {[action.photo.id]: action.photo})
+      return Object.assign(newState, {[action.photo.photo.id]: action.photo.photo})
 
       case REMOVE_PHOTO:
       let nooState = Object.assign({}, state)
-    //  debugger;
-      delete nooState[action.photos.id]
+      delete nooState[action.photos.photo.id]
 
       return nooState
 

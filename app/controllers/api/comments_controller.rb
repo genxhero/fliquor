@@ -1,13 +1,12 @@
 class Api::CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
-    @comment.photo_id = params[:photo_id].to_i
-    @comment.save
+    comment = Comment.new(comment_params)
+    comment.user_id = current_user.id
+    comment.photo_id = params[:photo_id].to_i
+    comment.save
     @photo = Photo.find(params[:photo_id].to_i)
-    debugger
-    dummy = "me"
+  
     render "/api/photos/show"
   end
 

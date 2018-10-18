@@ -54,7 +54,15 @@ a {
 }
 
 .comment-single {
- margin: 15px;
+ padding: 5px;
+ margin: 3px;
+ height: 40px;
+margin: 5px;
+width: 100%
+}
+
+.comment-single:hover {
+  background: white;
 }
 
 .comment-author {
@@ -63,7 +71,7 @@ a {
 }
 
 .comment-body {
-
+  margin-left: 40px;
 }
 
 .comment-spread {

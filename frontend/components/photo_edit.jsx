@@ -5,8 +5,9 @@ import {merge} from 'lodash';
 class PhotoEdit extends React.Component {
   constructor(props){
     super(props)
-    debugger;
+
     this.state = {
+      id: this.props.photo.id,
       title: this.props.photo.title,
       description: this.props.photo.description,
       tag_ids: this.props.photo.tags.map((el) => el.title).join(", ")
@@ -14,12 +15,10 @@ class PhotoEdit extends React.Component {
     };
     this.update = this.update.bind(this);
    this.save = this.save.bind(this);
-   this.stringifyTags = this.stringifyTags.bind(this);
+   this.shadowSubmit = this.shadowSubmit.bind(this);
   }
 
-  stringifyTags(){
-    const tagTitlArr = this.props.photo.tags.map((el) => el.title)
-  }
+
 
   update(field) {
   return event => this.setState({
@@ -27,15 +26,77 @@ class PhotoEdit extends React.Component {
   });
 }
 
+renderErrors() {
+  if (this.props.errors.photos.length > 0) {
+
+    return (
+      <div className="errors">
+        <ul>
+          {this.props.errors.photos.map((error, key) => {
+            return <li>{error}</li>
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+shadowSubmit(){
+  const shadow = document.getElementsByClassName('upload-submit')[0];
+  shadow.click();
+}
+
   save(e) {
     e.preventDefault();
     let formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
-  //  formData.append('photo[image]', this.state.image);
-    formData.append('photo[tag_ids]',this.state.tag_ids)
-    this.props.newPhoto(formData).then( res => this.props.history.push(`/photos/${res.photo.id}`) );
+    formData.append('photo[tag_ids]',this.state.tag_ids);
+    //debugger;
+    this.props.editPhoto(formData, this.props.photo.id)
+     .then(
+        this.props.history.push(`/photos/${this.props.photo.id}`));
 
+  }
+
+  render(){
+
+    return (
+      <div className="upload-container">
+        <div className="upload-toolbar">
+          <div className="shadow-submit-active" onClick={this.shadowSubmit}> Upload Photo</div>
+        </div>
+        <form onSubmit={this.save} className="upload-form">
+          <div className="upload-form-preview">
+            <img className="preview" src={this.props.photo.image_url}/>
+         </div>
+
+                 <div className="upload-form-left">
+                   <input className="photo-field-title"
+                     value={this.state.title}
+                     placeholder={this.state.title} type="text"
+                      onChange={this.update('title')}
+                      ></input>
+                    <textarea
+                     className="photo-field"
+                     placeholder="Add a description"
+                     value={this.state.description}
+                     onChange={this.update('description')}></textarea>
+                     <input
+                       className="photo-field"
+                       placeholder="Add tags separated by commas"
+                       value={this.state.tag_ids}
+                       type="text"
+
+                       onChange={this.update('tag_ids')}></input>
+                   <input className="upload-submit" type="submit" value=""></input>
+                 </div>
+                 <div>
+                   {this.renderErrors()}
+                 </div>
+        </form>
+      </div>
+    );
   }
 
 }

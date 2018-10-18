@@ -126,7 +126,7 @@ componentDidMount() {
   addComment(e){
     e.preventDefault();
     let formData = new FormData();
-    debugger;
+    
     formData.append('comment[body]', this.state.body);
     this.props.createComment(formData, this.props.photo.id);
   //  .then(this.props.history.push(`/photos/${this.props.photo.id}`) );
@@ -154,74 +154,7 @@ componentDidMount() {
       return (<div></div>);
     };
 
-    const LeftInfo = () => {
-      return (
-        <div className="show-bottom-left">
-          <div className="show-user-info">
-            <h3 className="show-user-name"> {this.props.photo.user.first_name} {this.props.photo.user.last_name}</h3>
-           </div>
 
-          <div className="show-photo-info">
-            <h3 className="show-title">{this.props.photo.title} </h3>
-            <h3 className="show-desc">{this.props.photo.description} </h3>
-          </div>
-
-         <div className="show-photo-comments">
-           <div className="comment-spread">
-             {this.props.comments.map( comment => {
-               // let dummy = "this coder";
-               // debugger;
-               // let x = "y";
-
-               return (
-                  <div className="comment-single" id={`${comment.id}`}>
-                    <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link></div>
-                    <div className="comment-body">{comment.body}</div>
-                  </div>
-               );
-             }, this)
-           }
-           </div>
-         </div>
-           {this.newCommentMaybe()}
-        </div>
-      );
-    };
-
-    const RightInfo = () => {
-      return(
-        <div className="show-bottom-right">
-             <ul>
-               <li>Dolor ipsum sit amet</li>
-             </ul>
-             <h6>Album information will go here upon implementation in Phase III: The Quickening</h6>
-           <div className="tags-container">
-              <div className="tag-heading">
-                <h5>Tags </h5>
-                <h5> Add Tags</h5>
-              </div>
-                <ul className="tags-list">
-                {this.props.photo.tags.map(tag => <li
-                  className="tag-bubble-existing" onClick={this.deleteTag} id={`${tag.id}`}> {tag.title}
-                </li>)}
-               </ul>
-           </div>
-
-
-
-
-        </div>
-      );
-    };
-
-    const Bottom = () => {
-      return (
-        <div className="show-bottom">
-        <LeftInfo />
-        <RightInfo />
-      </div>
-      );
-    };
 
     return (
       <div className="photo-page">
@@ -230,7 +163,67 @@ componentDidMount() {
             <img className="show-image" src={this.props.photo.image_url}></img>
             <div className="show-menu-bottom">{this.editMaybe()}</div>
         </div>
-        <Bottom />
+        <div className="show-bottom">
+          <div className="show-bottom-left">
+            <div className="show-user-info">
+              <h3 className="show-user-name"> {this.props.photo.user.first_name} {this.props.photo.user.last_name}</h3>
+             </div>
+
+            <div className="show-photo-info">
+              <h3 className="show-title">{this.props.photo.title} </h3>
+              <h3 className="show-desc">{this.props.photo.description} </h3>
+            </div>
+
+           <div className="show-photo-comments">
+             <div className="comment-spread">
+               {this.props.comments.map( comment => {
+                  let dummy = "this coder";
+                  let author = this.props.requestUser(comment.user_id);
+                  let x = "y";
+
+                 return (
+                    <div className="comment-single" id={`${comment.id}`}>
+                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{author.username}</Link></div>
+                      <div className="comment-body">{comment.body}</div>
+                    </div>
+                 );
+               }, this)
+             }
+             </div>
+           </div>
+
+               <div className= {this.props.currentUser ?  "comment-form-container" : "blank-div"}>
+                 <form className="comment-creation" onSubmit={this.addComment}>
+                         <textarea className="comment-field"
+                            placeholder="Add a comment"
+                            onChange={this.update('body')}
+                            value={this.state.body}
+                            >
+                         </textarea>
+                         <input className="comment-submit" type="submit" value="Comment"></input>
+                 </form>
+               </div>
+               <div className={this.props.currentUser ?  "blank-div" : "commenting-disabled"}>"commenting-disabled"> Please log in or sign up to comment</div>
+
+          </div>
+          <div className="show-bottom-right">
+               <ul>
+                 <li>Dolor ipsum sit amet</li>
+               </ul>
+               <h6>Album information will go here upon implementation in Phase III: The Quickening</h6>
+             <div className="tags-container">
+                <div className="tag-heading">
+                  <h5>Tags </h5>
+                  <h5> Add Tags</h5>
+                </div>
+                  <ul className="tags-list">
+                  {this.props.photo.tags.map(tag => <li
+                    className="tag-bubble-existing" onClick={this.deleteTag} id={`${tag.id}`}> {tag.title}
+                  </li>)}
+                 </ul>
+             </div>
+          </div>
+       </div>
       </div>
     );
   }

@@ -1,10 +1,8 @@
 
 
 export const createComment = (formData, photoID) => {
-  let dummy = "me";
-  const somestuff = Object.assign({}, formData);
-  // debugger;
-   $.ajax({
+
+return   $.ajax({
      url: `/api/photos/${photoID}/comments`,
      method: "POST",
      data: formData,

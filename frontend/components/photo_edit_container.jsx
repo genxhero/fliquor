@@ -6,7 +6,6 @@ import {editPhoto, destroyPhoto} from '../actions/photos_actions';
 const mapStateToProps = (state, ownProps) => {
   const photo = state.entities.photos[ownProps.match.params.photoID];
   const currentUser = Object.values(state.entities.users)[0];
-debugger;
   return {
     errors: state.errors,
     photo,
