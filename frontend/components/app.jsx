@@ -31,6 +31,13 @@ const Create = () => (
   </div>
 );
 
+const Edit = () => (
+  <div>
+    <UploadHeaderContainer />
+    <PhotoEditContainer />
+  </div>
+);
+
 const Show = () => (
   <div>
     <OnlineHeaderContainer />
@@ -103,7 +110,7 @@ const App = () => (
 
     <Switch>
       <ProtectedRoute exact path="/photos/create" component={Create} />
-      <ProtectedRoute exact path="/photos/:photoID/edit" component={PhotoEditContainer} />
+      <ProtectedRoute exact path="/photos/:photoID/edit" component={Edit} />
       <Route path="/photos/:photoID" component={Show} />
       <ProtectedRoute exact path="/albums/create" component={AlbumCreate} />
       <ProtectedRoute exact path="/albums/:albumID/edit" component={AlbumEdit} />

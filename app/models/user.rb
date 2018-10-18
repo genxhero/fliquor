@@ -29,6 +29,11 @@ class User < ApplicationRecord
   foreign_key: :user_id,
   class_name: "Photo"
 
+  has_many :comments,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: 'Comment'
+
 # def stupid_passwords
 #   if BAD_PASSWORDS.include?(@password)
 #     errors.add(:password, "#{@password}? No. Try again.")

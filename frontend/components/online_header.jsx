@@ -1,9 +1,16 @@
 
 import React from 'react';
-import { Route, Redirect, Switch, Link,HashRouter } from 'react-router-dom';
+import { Route, Redirect, Switch, Link,HashRouter, withRouter } from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/auth_util';
 
 class Header extends React.Component {
+
+
+constructor(props){
+  super(props);
+  this.logout = this.logout.bind(this);
+}
+
 
    render(){
       const {store, currentUser, logout} =  this.props;
@@ -45,7 +52,7 @@ class Header extends React.Component {
      if (this.props.currentUser) {
       return (
         <nav className="linkbox">
-          <button className="logout-button" onClick={this.props.logout}>Log Out</button>
+           <button className="logout-button" onClick={this.props.logout}>Log Out</button>
         </nav>
       );
      }  else {
@@ -59,6 +66,15 @@ class Header extends React.Component {
    }
 
 
+  logout(){
+  //  this.props.logout().then(this.props.history.push("/"));
+  this.props.logout.then(window.location.reload());
+  }
+
 }
 
-export default Header;
+export default withRouter(Header);
+//
+      //    <button className="logout-button" onClick={this.logout}>Log Out</button>
+
+//             <button className="logout-button" onClick={this.props.logout}>Log Out</button>

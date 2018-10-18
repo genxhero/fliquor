@@ -11,6 +11,8 @@ constructor (props){
   this.state = {
     body: ""
   }
+
+
   this.sakujo= this.sakujo.bind(this);
   this.update = this.update.bind(this);
   this.deleteTag = this.deleteTag.bind(this);
@@ -19,14 +21,17 @@ constructor (props){
   this.editMaybe = this.editMaybe.bind(this);
   this.addComment = this.addComment.bind(this);
   this.deleteComment = this.deleteComment.bind(this);
+  this.goToTag = this.goToTag.bind(this);
+  this.deleteCommentMaybe = this.deleteCommentMaybe.bind(this);
+
 
 }
 
 
 getAuthor(userID) {
   const author = this.props.requestUser(userID);
-  // debugger;
-  // let dummy ="butter;"
+
+  let dummy ="butter;"
   return author;
 }
 
@@ -58,8 +63,17 @@ componentDidMount() {
     this.props.deleteTag(tj.id);
   }
 
-  expandTag(){
+  expandTag(el){
+     el.style.backgroundColor = "red";
+  }
 
+  collapseTag(el){
+
+  }
+
+  goToTag(e){
+    e.preventDefault();
+   this.props.history.push(`/tags/${currentTarget.id}`)
   }
 
   sakujo(e){
@@ -74,7 +88,7 @@ componentDidMount() {
   editMaybe() {
     // let dummy = "you";
     // debugger;
-    if (this.props.currentUser.id === this.props.photo.user.id){
+    if (this.props.currentUser.id === this.props.photo.user.id && this.props.currentUser != undefined){
         return (
       <div className="button-span">
         <Link
@@ -117,6 +131,17 @@ componentDidMount() {
       }
   }
 
+  deleteCommentMaybe(e) {
+    let dummy = "me"
+//    debugger;
+    if(e === this.props.currentUser.id){
+    return (<div className="comment-trash-icon"></div>);
+  } else {
+    return (<div></div>);
+  }
+
+  }
+
   update(field) {
   return event => this.setState({
     [field]: event.currentTarget.value
@@ -126,9 +151,9 @@ componentDidMount() {
   addComment(e){
     e.preventDefault();
     let formData = new FormData();
-    
+
     formData.append('comment[body]', this.state.body);
-    this.props.createComment(formData, this.props.photo.id);
+    this.props.createComment(formData, this.props.photo.id).then(this.setState({body: ""}));
   //  .then(this.props.history.push(`/photos/${this.props.photo.id}`) );
    //.then( res => this.props.history.push(`/photos/${this.props.photo.id}`) );
   }
@@ -177,13 +202,10 @@ componentDidMount() {
            <div className="show-photo-comments">
              <div className="comment-spread">
                {this.props.comments.map( comment => {
-                  let dummy = "this coder";
-                  let author = this.props.requestUser(comment.user_id);
-                  let x = "y";
-
                  return (
                     <div className="comment-single" id={`${comment.id}`}>
-                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{author.username}</Link></div>
+                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><span className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id)}</span>
+                      </div>
                       <div className="comment-body">{comment.body}</div>
                     </div>
                  );
@@ -213,14 +235,28 @@ componentDidMount() {
                <h6>Album information will go here upon implementation in Phase III: The Quickening</h6>
              <div className="tags-container">
                 <div className="tag-heading">
-                  <h5>Tags </h5>
+                  <Link to="/tags">Tags</Link>
                   <h5> Add Tags</h5>
                 </div>
-                  <ul className="tags-list">
-                  {this.props.photo.tags.map(tag => <li
-                    className="tag-bubble-existing" onClick={this.deleteTag} id={`${tag.id}`}> {tag.title}
-                  </li>)}
-                 </ul>
+                  <div className="tags-list">
+                  {this.props.photo.tags.map(tag =>
+
+                       <div className="tag-bubble-existing"
+                           onmouseEnter={this.expandTag}
+                         >
+
+                        <Link className="tag-link"
+                          to={`/tags/${tag.title}`}>
+                          {tag.title}
+                        </Link>
+
+                        <div className={this.props.currentUser.id === this.props.photo.user_id ? "delete-x" : "blank-div"}
+                             onClick={this.deleteTag}>
+                        </div>
+                      </div>
+
+                  , this)}
+                </div>
              </div>
           </div>
        </div>
@@ -234,3 +270,4 @@ export default withRouter(PhotoShow);
 //<h3>{comment.user_id === this.props.currentUser.id ? "Deletable" : "Not Deletable"}</h3>
 
 //  {this.props.currentUser.id === comment.user_id ? <div className="delete-x"></div>> : <div></div>}
+//  <div className="tag-bubble" id={`${tag.id}`}> </div>

@@ -2,6 +2,7 @@ import PhotoEdit from './photo_edit';
 import {connect} from 'react-redux';
 import {requestTags} from '../actions/tag_actions';
 import {editPhoto, destroyPhoto} from '../actions/photos_actions';
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const photo = state.entities.photos[ownProps.match.params.photoID];
@@ -22,4 +23,4 @@ const mapDispatchToProps = (dispatch, ownProps) => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(PhotoEdit);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PhotoEdit));

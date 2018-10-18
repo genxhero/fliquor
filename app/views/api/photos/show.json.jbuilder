@@ -9,7 +9,9 @@ json.comments do
       json.id comment.id
       json.body comment.body
       json.user_id comment.user_id
-      json.username comment.user.username
+  #    debugger
+      # json.username comment.user.username
+      json.user comment.user
     end
   end
 end

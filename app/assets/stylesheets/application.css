@@ -40,6 +40,21 @@ a {
 
 }
 
+.comment-trash-icon {
+  position:relative;
+  font-weight: 200;
+  margin-right: 10px;
+  background: url(https://s.yimg.com/ap/build/images/sprites/scrappy-0df0b38d.png) -172px -84px no-repeat;
+  width: 18px;
+  height: 18px;
+  opacity: 0;
+
+}
+
+
+
+
+
 .comment-creation {
   display:flex;
   justify-content: flex-end;
@@ -58,20 +73,49 @@ a {
  margin: 3px;
  height: 40px;
 margin: 5px;
-width: 100%
+width: 100%;
+display: flex;
+flex-direction: column;
+
 }
+
+
+
+.comment-single:hover > .comment-author > .comment-bottom > .comment-trash-icon  {
+  opacity: 1;
+}
+
+.comment-trash-icon:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+.comment-bottom {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+ }
+
+
+
 
 .comment-single:hover {
   background: white;
 }
 
 .comment-author {
-  padding-top: 3px;
+     padding-top: 3px;
      padding-bottom: 3px;
+     display: flex;
+     flex-direction: row;
+     color: #F3F5F6;
 }
 
 .comment-body {
   margin-left: 40px;
+  padding 5px;
 }
 
 .comment-spread {
@@ -136,19 +180,24 @@ width: 100%
     border-top: 1px solid gray;
     border-bottom:1px solid gray;
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
     margin: 1%;
     padding: 5px;
     border-top: 1px solid #cfd6d9;
     border-bottom: 1px solid #cfd6d9;
+    box-sizing: border-box;
 }
 
 .tags-list {
   display: flex;
   list-style: none;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  width: 40%;
+  width: 100%;
   padding-left: 0px;
+  padding-inline-start 0;
+
 }
 
 .tag-heading {
@@ -158,36 +207,45 @@ width: 100%
   font-size: 18px;
   display: flex;
   justify-content: space-between;
-  width: 43%;
 }
 
 .tag-bubble-existing {
+  display: flex;
+  flex-direction: row;
   background: transparent;
   border: 2px solid #cfd6d9;
   font-size: 14px;
   cursor: pointer;
   padding-top: 1px;
+  color: #212124;
   padding-bottom: 1px;
   padding-right: 0px;
-  float: left;
   border-radius: 5px;
   position: relative;
-  max-width: 96%;
-  margin: 0 5px 5px 0;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
-  -webkit-transition: all .15s ease-in-out;
+  margin: 2px;
+  padding: 5px;
+  position: relative;
+  -webkit-transition: all .4s ease-in-out;
   transition: all .15s ease-in-out;
   color: black;
-
+  overflow:hidden;
+    visibility: visible;
+    justify-content: space-between;
+    width: fit-content;
 }
 
 .tag-bubble-existing:hover {
-  padding-right: 18px;
+  width: fit-content;
   -webkit-transition: all .15s ease-in-out;
   border: 3px solid  #cfd6d9;
+
+}
+
+.tag-existing:hover > delete-x {
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -524px -76px no-repeat;
+  color: cyan;
+  width: 15px;
+  height: 15px;
 }
 
 .tag-bubble-add {
@@ -941,8 +999,15 @@ padding-bottom: 20px;
   font-size: 28px;
   font-weight: 700;
   font-weight: bolder;
-
+  display:flex;
+  flex-direction: row;
 }
+
+#r {
+  color: #EC4083;
+}
+
+
 
 .upload-nav-link {
   color: #666;
@@ -1077,7 +1142,7 @@ padding-bottom: 20px;
   color: #C6C0BC;
   outline: none;
     border: none;
-    margin-right: 30px;
+    margin-right: 50px;
 }
 
 .shadow-submit-inactive:focus{
@@ -1385,6 +1450,7 @@ font-weight: 600;
   width: 500px;
   display: flex;
   justify-content: flex-end;
+
 }
 
 .offline-search {
@@ -1759,7 +1825,49 @@ opacity: 0.65;
   height: 20px;
   position:relative;
   top: 3px;
+  margin-right: 15px;
 }
 .photo-destroy-btn:hover {
   cursor:pointer;
+}
+
+
+.tag-link {
+  color: black;
+  padding-left: 3px;
+  min-width: fit-content;
+  margin-right: 10px;
+  border-right: none;
+   /* border-left: 2px solid #cfd6d9;
+  border-top: 2px solid #cfd6d9;
+  border-bottom: 2px solid #cfd6d9; */
+  font-size: 14px;
+  height: inherit;
+  -webkit-transition: all .15s ease-in-out;
+}
+
+.tag-link:hover {
+  border-right: none;
+  width: fit-content;
+  -webkit-transition: all .15s ease-in-out;
+}
+
+.tag-bubble {
+  width: 20px;
+  display: flex;
+  justify-content: flex-start;
+  height: 24px;
+  margin: 5px;
+
+   border: 2px solid #cfd6d9;
+}
+
+.delete-x {
+  width: 0px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  background: white;
 }

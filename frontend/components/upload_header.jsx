@@ -10,7 +10,7 @@ class UploadHeader extends React.Component {
         <div className="upload-header">
 
           <div className="upload-left-header">
-            <Link to="/" className="upload-home-link">fliquor</Link>
+            <Link to="/" className="upload-home-link"><span id="fliquo">fliquo</span><span id="r">r</span></Link>
             <div className="nav-menu">
               <Link to={`/users/${this.props.currentUser.id}`} className="upload-nav-link">Your Photostream</Link>
             </div>
