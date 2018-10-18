@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
   destroyPhoto: id => dispatch(destroyPhoto(id)),
   requestPhotos: () => dispatch(requestPhotos()),
   createComment: (formData, photoID) => dispatch(createComment(formData, photoID)),
-  deleteComment:  (id) => dispatch(delteComment(id))
+  deleteComment:  (id) => dispatch(deleteComment(id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PhotoShow));

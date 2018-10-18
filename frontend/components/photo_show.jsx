@@ -158,8 +158,11 @@ componentDidMount() {
    //.then( res => this.props.history.push(`/photos/${this.props.photo.id}`) );
   }
 
-  deleteComment() {
+  deleteComment(e) {
    //deleteComment
+   e.preventDefault();
+     const deadCommentWalking = this.props.comments.find((el) === parseInt(e.currentTarget.id));
+     this.props.deleteComment(deadCommentWalking.id);
   }
 
   render() {
