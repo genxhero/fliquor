@@ -6,12 +6,24 @@ class PhotosIndex extends React.Component {
   constructor(props){
     super(props);
 
+    this.noverlay = this.noverlay.bind(this);
+    this.overlay = this.noverlay.bind(this);
   }
 
   componentDidMount(){
      this.props.requestPhotos();
   }
 
+
+  overlay(event){
+  debugger;
+    event.currentTarget.style.color = "white";
+
+  }
+
+  noverlay(event){
+
+  }
 
   render() {
     const {photos} = this.props;
@@ -23,7 +35,14 @@ class PhotosIndex extends React.Component {
        <div className="photo-index-container">
          <div id="explore">Explore</div>
          <ul className="photo-spread">
-           {photos.map(photo => <li className="photo-index-item" id={`${photo.id}`}> <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link></li>)}
+           {photos.map(photo => <li className="photo-index-item"
+                                    id={`${photo.id}`}
+                                    onMouseEnter={this.overlay}
+                                    onMouseLeave={this.noverlay}
+                                    >
+           <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link>
+
+         </li>)}
          </ul>
        </div>
      </div>

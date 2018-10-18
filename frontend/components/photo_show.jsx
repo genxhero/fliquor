@@ -9,9 +9,10 @@ class PhotoShow extends React.Component {
 constructor (props){
   super(props);
   this.state = {
-    body: ""
+    body: "",
+    expanded: false,
+    xpandid: 0
   }
-
 
   this.sakujo= this.sakujo.bind(this);
   this.update = this.update.bind(this);
@@ -23,10 +24,15 @@ constructor (props){
   this.deleteComment = this.deleteComment.bind(this);
   this.goToTag = this.goToTag.bind(this);
   this.deleteCommentMaybe = this.deleteCommentMaybe.bind(this);
-
+  this.blankFunc = this.blankFunc.bind(this);
+  this.expandTag = this.expandTag.bind(this);
+  this.collapseTag = this.collapseTag.bind(this);
 
 }
 
+blankFunc(){
+  return null;
+}
 
 getAuthor(userID) {
   const author = this.props.requestUser(userID);
@@ -56,18 +62,39 @@ componentDidMount() {
   //  }
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log(`Current Props:`, this.props);
+    console.log(`The Next Props`, nextProps);
+    if (this.props.currentUser != nextProps.currentUser) {
+      console.log("USER LOGGED OUT");
+
+    }
+  }
+
 
   deleteTag(e) {
     e.preventDefault();
+
     const  tj = this.props.photo.tagjoins.find( (el) => el.tag_id === parseInt(e.currentTarget.id));
     this.props.deleteTag(tj.id);
   }
 
-  expandTag(el){
-     el.style.backgroundColor = "red";
+  expandTag(e){
+    console.log("expanding")
+    this.setState({
+      expanded: true,
+      xpandid: e.currentTarget.id
+    });
+
+  //   e.currentTarget.width ="100px";
   }
 
-  collapseTag(el){
+  collapseTag(e){
+    this.setState({
+      expanded: false,
+      xpandid: 0
+    });
+//    e.currentTarget.width = "30px";
 
   }
 
@@ -86,9 +113,8 @@ componentDidMount() {
   }
 
   editMaybe() {
-    // let dummy = "you";
-    // debugger;
-    if (this.props.currentUser.id === this.props.photo.user.id && this.props.currentUser != undefined){
+
+    if ( this.props.currentUser && this.props.currentUser.id === this.props.photo.user.id){
         return (
       <div className="button-span">
         <Link
@@ -131,11 +157,12 @@ componentDidMount() {
       }
   }
 
-  deleteCommentMaybe(e) {
+  deleteCommentMaybe(e, f) {
     let dummy = "me"
 //    debugger;
-    if(e === this.props.currentUser.id){
-    return (<div className="comment-trash-icon"></div>);
+    if( this.props.currentUser && e === this.props.currentUser.id){
+
+    return (<div className="comment-trash-icon" id={f} onClick={this.deleteComment}></div>);
   } else {
     return (<div></div>);
   }
@@ -161,12 +188,12 @@ componentDidMount() {
   deleteComment(e) {
    //deleteComment
    e.preventDefault();
-     const deadCommentWalking = this.props.comments.find((el) === parseInt(e.currentTarget.id));
+
+     const deadCommentWalking = this.props.comments.find((el) => el.id === parseInt(e.currentTarget.id));
      this.props.deleteComment(deadCommentWalking.id);
   }
 
   render() {
-
 
 
     if (this.props.photo === undefined || this.props.user === undefined) {
@@ -181,7 +208,6 @@ componentDidMount() {
     const EditButton = () => {
       return (<div></div>);
     };
-
 
 
     return (
@@ -205,9 +231,12 @@ componentDidMount() {
            <div className="show-photo-comments">
              <div className="comment-spread">
                {this.props.comments.map( comment => {
+              let   dummmy = "Peanut";
+
+              let   standin = "A patsy";
                  return (
                     <div className="comment-single" id={`${comment.id}`}>
-                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><span className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id)}</span>
+                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><span className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id, comment.id)}</span>
                       </div>
                       <div className="comment-body">{comment.body}</div>
                     </div>
@@ -244,21 +273,35 @@ componentDidMount() {
                   <div className="tags-list">
                   {this.props.photo.tags.map(tag =>
 
-                       <div className="tag-bubble-existing"
-                           onmouseEnter={this.expandTag}
+                       <div className="tag-bubble-existing" id={`${tag.id}`}
+                           onMouseEnter={(this.props.currentUser  && this.props.currentUser.id === this.props.photo.user_id) ? this.expandTag : this.blankFunc}
+                           onMouseLeave={(this.props.currentUser  && this.props.currentUser.id === this.props.photo.user_id) ? this.collapseTag : this.blankFunc}
                          >
-
-                        <Link className="tag-link"
-                          to={`/tags/${tag.title}`}>
-                          {tag.title}
-                        </Link>
-
-                        <div className={this.props.currentUser.id === this.props.photo.user_id ? "delete-x" : "blank-div"}
-                             onClick={this.deleteTag}>
+                      { this.state.expanded === true && this.state.xpandid == tag.id ?
+                        <div className="tag-expanded">
+                          <Link className="tag-link" id={`${tag.title}`}
+                            to={`/tags/${tag.title}`}>
+                            {tag.title}
+                          </Link>
+                          <div className={this.props.currentUser.id === this.props.photo.user_id ? "delete-x" : "blank-div"}
+                               onClick={this.deleteTag}
+                               id={`${tag.id}`}
+                               >
+                          </div>
                         </div>
+                          :
+                          <Link className="tag-link" id={`${tag.title}`}
+                            to={`/tags/${tag.title}`}>
+                            {tag.title}
+                          </Link>
+
+
+                      }
                       </div>
 
                   , this)}
+
+
                 </div>
              </div>
           </div>

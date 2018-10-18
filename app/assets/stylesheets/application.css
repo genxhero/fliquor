@@ -196,8 +196,7 @@ flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   padding-left: 0px;
-  padding-inline-start 0;
-
+  padding-inline-start: 0;
 }
 
 .tag-heading {
@@ -211,6 +210,7 @@ flex-direction: column;
 
 .tag-bubble-existing {
   display: flex;
+  height: 20px;
   flex-direction: row;
   background: transparent;
   border: 2px solid #cfd6d9;
@@ -234,18 +234,27 @@ flex-direction: column;
     width: fit-content;
 }
 
+.tag-expanded {
+  display: flex;
+flex-direction: row;
+align-items: baseline;
+}
+
+
+
 .tag-bubble-existing:hover {
-  width: fit-content;
+   width: fit-content;
   -webkit-transition: all .15s ease-in-out;
-  border: 3px solid  #cfd6d9;
+  border: 3px solid  #cfd6d9; 
 
 }
 
-.tag-existing:hover > delete-x {
-  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -524px -76px no-repeat;
-  color: cyan;
+.tag-bubble-existing:hover > .delete-x {
+  /* background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -524px -76px no-repeat;
+  color: gray;
   width: 15px;
   height: 15px;
+  opacity: 1; */
 }
 
 .tag-bubble-add {
@@ -1842,32 +1851,24 @@ opacity: 0.65;
   border-top: 2px solid #cfd6d9;
   border-bottom: 2px solid #cfd6d9; */
   font-size: 14px;
-  height: inherit;
+  height: 20px;
   -webkit-transition: all .15s ease-in-out;
 }
 
 .tag-link:hover {
-  border-right: none;
+  /* border-right: none;
   width: fit-content;
-  -webkit-transition: all .15s ease-in-out;
+  -webkit-transition: all .15s ease-in-out; */
 }
 
-.tag-bubble {
-  width: 20px;
-  display: flex;
-  justify-content: flex-start;
-  height: 24px;
-  margin: 5px;
-
-   border: 2px solid #cfd6d9;
-}
 
 .delete-x {
-  width: 0px;
-  height: inherit;
+  height: 9px;
+  width: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  background: white;
+  opacity: 1;
+  background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -524px -76px no-repeat;
 }

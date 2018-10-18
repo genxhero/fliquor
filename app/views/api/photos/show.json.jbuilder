@@ -10,8 +10,8 @@ json.comments do
       json.body comment.body
       json.user_id comment.user_id
   #    debugger
-      # json.username comment.user.username
-      json.user comment.user
+      json.username comment.user.username
+    #  json.user comment.user
     end
   end
 end

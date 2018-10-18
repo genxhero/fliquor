@@ -3,12 +3,15 @@ import {merge} from 'lodash';
 
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
+
     switch(action.type) {
       case RECEIVE_PHOTO:
-      // let dummy;
-      //   debugger;
-      // let scapegoat;
-      return action.photo.photo.comments;
+
+          if (action.photo.comments === undefined){
+            return state;
+          }
+
+      return action.photo.comments;
       default:
       return state;
   }
