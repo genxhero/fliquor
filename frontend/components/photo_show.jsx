@@ -63,10 +63,8 @@ componentDidMount() {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(`Current Props:`, this.props);
-    console.log(`The Next Props`, nextProps);
+
     if (this.props.currentUser != nextProps.currentUser) {
-      console.log("USER LOGGED OUT");
 
     }
   }
@@ -236,7 +234,7 @@ componentDidMount() {
               let   standin = "A patsy";
                  return (
                     <div className="comment-single" id={`${comment.id}`}>
-                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><span className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id, comment.id)}</span>
+                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><div className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id, comment.id)}</div>
                       </div>
                       <div className="comment-body">{comment.body}</div>
                     </div>
@@ -268,7 +266,7 @@ componentDidMount() {
              <div className="tags-container">
                 <div className="tag-heading">
                   <Link to="/tags">Tags</Link>
-                  <h5> Add Tags</h5>
+
                 </div>
                   <div className="tags-list">
                   {this.props.photo.tags.map(tag =>
