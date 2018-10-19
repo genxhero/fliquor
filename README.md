@@ -1,11 +1,12 @@
 
+
 # Description
 
 Fliquor is a social  app where users may upload photos to present to other users.  
 
 Photos can be sorted by tag, by album, or all of them at once.  Additionally, any user can leave a comment on a photo to voice their opinion on the composition, the subject, or what ever happens to be on their mind at the time.  Photos and albums may be created, edited, or destroyed, while tags and comments may only be created or destroyed.
 
-<link here>
+[Live Demo](https://fliquor.herokuapp.com)
 
 # Technologies Used
 
@@ -95,6 +96,8 @@ const Edit = () => (
 
 # Feature 2: Album CRUD
 
+### Frontend
+
 When one hits the Albums heading on the home navigation bar, the albums index pane loads. When loaded, the first <li> to load is always the Create New Album button. This button is a link to the Protected route "albums/create"
 
 ![Album Index](https://s3-us-west-1.amazonaws.com/fliquor-pro/readme/Screen+Shot+2018-10-19+at+10.28.30+AM.png)
@@ -161,8 +164,49 @@ Behind the scenes, I am changing the class of every list item based on the curre
      onClick={this.toggleSelected}>
 ```
 
+Upon a successful submission (an album may be untitled, and it may be nondescript) one is directed to the Album Show page.
+
+![](https://s3-us-west-1.amazonaws.com/fliquor-pro/readme/albumshow.png)
+
+As you can see, when one is logged in one can see the word "You" in the spot reserved for the creator's name.  Here is the code that made it all possible:
+
 ```javascript
+<div className="album-owner">By { this.props.currentUser.id === this.props.album.user.id ? "YOU"  this.props.album.user.username }</div>
 ```
+
+To update an album, one only has to click the pen icon in the top right-hand corner; likewise, if one clicks on the trash can icon to the immediate right of the pen icon the album will be destroyed and the album index page will load.
+
+### Backend
+
+Photos and albums have a many-to-many association through a join table which I named "albumjoins".  An AlbumJoin simply stores two foreign keys: a photo_id, and an album_id.
+
+```ruby
+  has_many :albumjoins,
+  primary_key: :id,
+  foreign_key: :album_id,
+  class_name: "AlbumJoin",
+  dependent: :destroy,
+  inverse_of: :album
+
+  has_many :photos,
+  through: :albumjoins,
+  source: :photo
+```
+In the controller, the first problem I ran into was that the json was returning the array of photo ids as a string.  The solution was to use our trusty "split" method to get each individual ID number.  Then I iterated through the newly minted array and created an AlbumJoin for each of them; since the album doesn't have an ID until after it saved, the joins are only created in the event of a successful save.
+
+```ruby
+  def create
+    @album = Album.new(album_params)
+    @album.user_id = current_user.id
+    photo_ids = params[:album][:photo_ids].split(',')
+    if @album.save
+      photo_ids.each do |photo_id|
+          aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id.to_i)
+          aj.save
+      end
+```
+
+Updating was both a challenge and a joy to complete.  I learned a great deal about how to work with join tables and the built-in Rails methods granted me by the associations.
 
 ```ruby
 ```

@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   const allPhotos = requestPhotos();
   const photos = getPhotosByUser(state, currentUser.id);
 
-  //debugger;
+  //;
      return {
        errors: state.errors,
        album,

@@ -5,7 +5,7 @@ import { requestPhotos } from '../actions/photos_actions';
 import {withRouter} from 'react-router-dom';
 //
 // const mapStateToProps = (state, ownProps) => {
-//   debugger;
+//   ;
 // return (
 //     {
 //       photos: Object.keys(state.entities.photos).map(id => state.entities.photos[id]);

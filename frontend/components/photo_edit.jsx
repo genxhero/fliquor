@@ -52,7 +52,7 @@ shadowSubmit(){
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
     formData.append('photo[tag_ids]',this.state.tag_ids);
-    //debugger;
+    //;
     this.props.editPhoto(formData, this.props.photo.id)
      .then(
         this.props.history.push(`/photos/${this.props.photo.id}`));

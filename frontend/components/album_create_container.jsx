@@ -10,7 +10,7 @@ const mapStateToProps  = (state, ownProps) => {
 const currentUser = state.entities.users[state.session.id];
   const allPhotos = requestPhotos();
   const photos = getPhotosByUser(state, currentUser.id);
-//debugger;
+//;
   return {
       errors: state.errors,
       currentUser,

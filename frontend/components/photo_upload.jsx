@@ -45,7 +45,7 @@ class PhotoUpload extends React.Component {
     formData.append('photo[tag_ids]',this.state.tag_ids);
 
     this.props.newPhoto(formData).then( res => {
-      //   debugger;
+      //   ;
         this.props.history.push(`/photos/${res.photo.photo.id}`)
       });
 

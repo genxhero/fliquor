@@ -7,12 +7,12 @@ const photosReducer = (state = {}, action) => {
     switch(action.type) {
       case RECEIVE_PHOTO:
       // let dummy;
-      // debugger;
+      // ;
       // let scapegoat;
       return merge({}, state, { [action.photo.photo.id]: action.photo.photo} );
 
       case RECEIVE_PHOTOS:
-    //  debugger;
+    //  ;
       return merge({}, state, action.photos)
 
       case  REMOVE_TAG:

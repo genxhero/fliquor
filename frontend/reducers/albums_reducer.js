@@ -12,9 +12,9 @@ const albumsReducer = (state = {}, action) => {
 
        case REMOVE_ALBUM:
         let newState = Object.assign({}, state)
-      //  debugger;
+      //  ;
         delete newState[action.albums.id]
-    //    debugger;
+    //    ;
 
         return newState
 

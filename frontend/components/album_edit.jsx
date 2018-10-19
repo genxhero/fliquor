@@ -6,7 +6,7 @@ import {merge} from 'lodash';
 class AlbumEdit extends React.Component {
    constructor(props){
      super(props);
-      //  debugger;
+      //  ;
      this.selected = this.props.album.photos.map(photo => photo.id)
 
      this.state = {
@@ -42,7 +42,7 @@ class AlbumEdit extends React.Component {
          formData.append('album[photo_ids]', this.state.selected)
 
          this.props.editAlbum(formData, this.props.album.id).then( res => this.props.history.push(`/albums/${res.album.id}`) );
-     //debugger;
+     //;
       // const edited = merge({}, this.props.album, {
       //   id: this.props.album.id,
       //   title: this.state.title,
@@ -58,7 +58,7 @@ class AlbumEdit extends React.Component {
    toggleSelected(event){
      event.preventDefault();
       let id = parseInt(event.currentTarget.id);
-    //  debugger;
+    //  ;
      if (this.selected.includes(id) ){
         this.selected.splice(this.selected.indexOf(id), 1 );
       }  else {

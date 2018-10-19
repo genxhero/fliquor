@@ -41,7 +41,7 @@ class AlbumShow extends React.Component {
   noverlay(event){
  this.setState({overlaying: false});
      event.currentTarget.style.color = "transparent";
-     // debugger;
+     // ;
      event.currentTarget.style.textShadow="none";
     //event.currentTarget.firstChild.lastChild.style.color = "transparent";
      event.currentTarget.firstChild.style.backgroundImage="none";

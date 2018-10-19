@@ -19,7 +19,7 @@ constructor(props) {
   }
   render(){
     const {albums} = this.props;
-  //  debugger;
+  //  ;
     if (albums === undefined) {
       return "Loading";
     }

@@ -56,7 +56,7 @@ componentDidMount() {
 
       this.props.requestPhoto(this.props.match.params.photoID);
     }
-  // debugger;
+  // ;
   //   if(previous.props.photo.tags !== this.props.photo.tags){
   //      this.props.requestPhoto(this.props.match.params.photoID)
   //  }

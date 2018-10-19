@@ -8,13 +8,13 @@ import {requestAlbums} from '../actions/album_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-//  debugger;
+//  ;
   const photo = state.entities.photos[ownProps.match.params.photoID];
   const currentUser = state.entities.users[state.session.id];
   const comments = Object.values(state.entities.comments);
   // const comments = Object.values(state.entities.comments).filter((comment) => comment.photo_id === photo.id);
 
-//debugger;
+//;
   let user;
 
    if (photo != undefined) {

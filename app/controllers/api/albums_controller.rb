@@ -14,7 +14,6 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.user_id = current_user.id
     photo_ids = params[:album][:photo_ids].split(',')
-
     if @album.save
       photo_ids.each do |photo_id|
           aj = AlbumJoin.new(album_id: @album.id, photo_id: photo_id.to_i)
@@ -43,7 +42,7 @@ class Api::AlbumsController < ApplicationController
   def destroy
     @album = Album.find(params[:id])
     Album.destroy(@album.id)
-    # debugger
+    #
     render :show
   end
 
