@@ -245,7 +245,7 @@ align-items: baseline;
 .tag-bubble-existing:hover {
    width: fit-content;
   -webkit-transition: all .15s ease-in-out;
-  border: 3px solid  #cfd6d9; 
+  border: 3px solid  #cfd6d9;
 
 }
 
@@ -727,15 +727,53 @@ text-align: left;
 }
 
 .photo-index-item {
-  padding: 5px;
-  color: transparent;
+  /* padding: 5px; */
+/*
+  color: white;
+   text-shadow: 1px 1px black; */
+    color: transparent;
+  text-shadow: none;
   border: 3px solid transparent;
+  position: relative;
+  padding-inline-start: 0;
+
 }
 
 .photo-index-item:hover {
-  color: white;
-  text-shadow: 1px 1px black;
+  /* color: white; */
+  /* text-shadow: 1px 1px black; */
   border: 3px solid #1a73e8;
+  transition: background-image 0.5s
+}
+
+.photo-index-info-overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 200;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-image: none;
+
+}
+
+.photo-index-title {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.photo-index-user{
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.link-from-photo-index{
+  color: inherit;
+  position: relative;
 }
 
 .photo-page{

@@ -7,7 +7,7 @@ class PhotosIndex extends React.Component {
     super(props);
 
     this.noverlay = this.noverlay.bind(this);
-    this.overlay = this.noverlay.bind(this);
+    this.overlay = this.overlay.bind(this);
   }
 
   componentDidMount(){
@@ -16,13 +16,25 @@ class PhotosIndex extends React.Component {
 
 
   overlay(event){
-  debugger;
+    // let butter = "butter";
+
+    // let pika = "fluff";
+
     event.currentTarget.style.color = "white";
+    event.currentTarget.style.textShadow="1px 1px black";
+  //  debugger;
+    event.currentTarget.style.backgroundImage="linear-gradient:(rgba(255,0,0,0),rgba(255,0,0,0),rgba(255,0,0,0), rgba(0,0,0,.7))";
+
+
 
   }
 
   noverlay(event){
 
+     event.currentTarget.style.color = "transparent";
+     // debugger;
+     event.currentTarget.style.textShadow="none";
+     event.currentTarget.style.backgroundImage="none";
   }
 
   render() {
@@ -35,12 +47,24 @@ class PhotosIndex extends React.Component {
        <div className="photo-index-container">
          <div id="explore">Explore</div>
          <ul className="photo-spread">
-           {photos.map(photo => <li className="photo-index-item"
-                                    id={`${photo.id}`}
-                                    onMouseEnter={this.overlay}
-                                    onMouseLeave={this.noverlay}
+           {photos.map(photo => <li
+             className="photo-index-item"
+              id={`${photo.id}`}
+              onMouseEnter={this.overlay}
+             onMouseLeave={this.noverlay}
                                     >
-           <Link to={`/photos/${photo.id}`}><img className="photo-list-mini" src={photo.image_url}/></Link>
+            <div className="photo-index-info-overlay">
+              <div className= "photo-index-title">{photo.title}</div>
+                <div className= "photo-index-user">by {photo.user.first_name + " " + photo.user.last_name}</div>
+                        </div>
+
+           <Link to={`/photos/${photo.id}`} className="link-from-photo-index" >
+             <img className="photo-list-mini"
+               src={photo.image_url}
+               id={`${photo.id}`}
+               onMouseEnter={this.overlay}
+               onMouseLeave={this.noverlay}/>
+           </Link>
 
          </li>)}
          </ul>
