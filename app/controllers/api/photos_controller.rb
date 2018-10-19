@@ -36,7 +36,7 @@ class Api::PhotosController < ApplicationController
       tags_arr = params[:photo][:tag_ids].split(', ')
 
       tag_ids = @photo.parse_tags(tags_arr)
-      debugger
+      
       @photo.tag_ids = tag_ids
 #Might not work based on placement of tag_ids = tag_ids
       if @photo.update_attributes(photo_params)
