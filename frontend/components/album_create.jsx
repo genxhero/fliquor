@@ -7,6 +7,7 @@ class AlbumCreate extends React.Component {
      super(props);
      this.selected = []
      this.state = {
+       loading: false,
        title: 'Untitled Album',
        description:'Nondescript Album',
        selected: []
@@ -24,6 +25,9 @@ class AlbumCreate extends React.Component {
 
    save(e) {
      e.preventDefault();
+     this.setState ({
+       loading: true
+     });
      let formData = new FormData();
      formData.append('album[title]', this.state.title);
      formData.append('album[description]', this.state.description);
@@ -49,6 +53,12 @@ class AlbumCreate extends React.Component {
    }
 
   render() {
+    if (this.state.loading){
+
+      return (
+        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        );
+    }
     return (
       <div className="album-creation-page">
 

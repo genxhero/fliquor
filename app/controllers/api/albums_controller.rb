@@ -26,11 +26,9 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
-
      @album = Album.find(params[:id])
      photo_ids = params[:album][:photo_ids].split(',')
      @album.photo_ids = photo_ids
-
     if @album.update_attributes(album_params)
 
       render :show

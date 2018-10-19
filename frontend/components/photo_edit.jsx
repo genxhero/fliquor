@@ -7,6 +7,7 @@ class PhotoEdit extends React.Component {
     super(props)
 
     this.state = {
+      loading: false,
       id: this.props.photo.id,
       title: this.props.photo.title,
       description: this.props.photo.description,
@@ -48,6 +49,9 @@ shadowSubmit(){
 
   save(e) {
     e.preventDefault();
+    this.setState ({
+      loading: true
+    });
     let formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
@@ -60,6 +64,13 @@ shadowSubmit(){
   }
 
   render(){
+    if (this.state.loading){
+
+      return
+      (        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+);
+
+    }
 
     return (
       <div className="upload-container">

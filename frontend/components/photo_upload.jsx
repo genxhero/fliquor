@@ -10,7 +10,8 @@ class PhotoUpload extends React.Component {
      title: '',
      description:'',
      tag_ids: "",
-     photoURL: null
+     photoURL: null,
+     loading: false,
    };
    this.onFileChange = this.onFileChange.bind(this);
    this.update = this.update.bind(this);
@@ -38,6 +39,9 @@ class PhotoUpload extends React.Component {
 
   save(e) {
     e.preventDefault();
+    this.setState ({
+      loading: true
+    });
     let formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
@@ -90,6 +94,14 @@ getFilename() {
 }
 
   render() {
+    if (this.state.loading){
+
+      return(
+
+        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+  );  
+ }
      const UploadToolbar = () => {
        if (this.state.photoURL) {
          return (

@@ -12,7 +12,8 @@ class AlbumEdit extends React.Component {
      this.state = {
        title: this.props.album.title,
        description: this.props.album.desription,
-       selected: this.selected
+       selected: this.selected,
+       loading: false
      };
        this.save = this.save.bind(this);
        this.toggleSelected = this.toggleSelected.bind(this);
@@ -27,14 +28,11 @@ class AlbumEdit extends React.Component {
 
    save(e) {
      e.preventDefault();
+     this.setState ({
+       loading: true
+     });
 
-     // let pojo =
-     //   {
-     //     id: this.props.album.id,
-     //     title: this.state.title,
-     //     description: this.state.description,
-     //     photo_ids: this.state.selected
-     //  }
+
          let formData = new FormData();
          formData.append('album[id]', this.props.album.id)
          formData.append('album[title]', this.state.title);
@@ -42,13 +40,6 @@ class AlbumEdit extends React.Component {
          formData.append('album[photo_ids]', this.state.selected)
 
          this.props.editAlbum(formData, this.props.album.id).then( res => this.props.history.push(`/albums/${res.album.id}`) );
-     //;
-      // const edited = merge({}, this.props.album, {
-      //   id: this.props.album.id,
-      //   title: this.state.title,
-      //   description: this.state.description,
-      //   photo_ids: this.state.selected
-      // });
    }
 
    componentDidMount(){
@@ -70,6 +61,14 @@ class AlbumEdit extends React.Component {
    }
 
   render() {
+    if (this.state.loading){
+
+      return(
+        <div>
+          <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>);
+
+    }
     return (
       <div className="album-creation-page">
 
