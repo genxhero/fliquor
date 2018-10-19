@@ -6,7 +6,7 @@ const commentsReducer = (state = {}, action) => {
 
     switch(action.type) {
       case RECEIVE_PHOTO:
-          debugger;
+      
           if (action.photo.comments === undefined){
             return {};
           }

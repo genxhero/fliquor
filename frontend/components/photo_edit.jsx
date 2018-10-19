@@ -64,14 +64,14 @@ shadowSubmit(){
     return (
       <div className="upload-container">
         <div className="upload-toolbar">
-          <div className="shadow-submit-active" onClick={this.shadowSubmit}> Upload Photo</div>
+          <div className="shadow-submit-active" onClick={this.shadowSubmit}> Save Photo</div>
         </div>
-        <form onSubmit={this.save} className="upload-form">
+        <form onSubmit={this.save} className="edit-form">
           <div className="upload-form-preview">
             <img className="preview" src={this.props.photo.image_url}/>
          </div>
 
-                 <div className="upload-form-left">
+                 <div className="edit-form-left">
                    <input className="photo-field-title"
                      value={this.state.title}
                      placeholder={this.state.title} type="text"

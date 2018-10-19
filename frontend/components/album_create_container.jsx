@@ -7,7 +7,7 @@ import {getPhotosByUser} from '../reducers/selectors';
 
 
 const mapStateToProps  = (state, ownProps) => {
-  const currentUser = Object.values(state.entities.users)[0];
+const currentUser = state.entities.users[state.session.id];
   const allPhotos = requestPhotos();
   const photos = getPhotosByUser(state, currentUser.id);
 //debugger;

@@ -6,7 +6,7 @@ import {requestUser} from '../actions/users_actions';
 import {requestAlbum, destroyAlbum} from '../actions/album_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = Object.values(state.entities.users)[0];
+  const currentUser = state.entities.users[state.session.id];
   const album = state.entities.albums[ownProps.match.params.albumID];
   let user, photos;
 
