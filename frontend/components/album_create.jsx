@@ -28,7 +28,6 @@ class AlbumCreate extends React.Component {
      formData.append('album[title]', this.state.title);
      formData.append('album[description]', this.state.description);
      formData.append('album[photo_ids]', this.state.selected)
-  //   debugger;
      this.props.newAlbum(formData).then( res => this.props.history.push(`/albums/${res.album.id}`) );
    }
 
@@ -38,15 +37,14 @@ class AlbumCreate extends React.Component {
 
    toggleSelected(event){
      event.preventDefault();
-      let id = parseInt(event.currentTarget.id);
-    //  debugger;
+     let id = parseInt(event.currentTarget.id);
      if (this.selected.includes(id) ){
         this.selected.splice(this.selected.indexOf(id), 1 );
       }  else {
         this.selected.push(id);
       }
-   this.setState({
-          selected: this.selected
+     this.setState({
+        selected: this.selected
       });
    }
 
@@ -71,7 +69,8 @@ class AlbumCreate extends React.Component {
             </textarea>
               <input type="submit"
                 value="save"
-                className={this.state.selected.length === 0 ? "album-save-disabled" : "album-save-enabled"}></input>
+                className={this.state.selected.length === 0 ? "album-save-disabled" : "album-save-enabled"}>
+              </input>
           </form>
 
           <div className="album-creation-photos">

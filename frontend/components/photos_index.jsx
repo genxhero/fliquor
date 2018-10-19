@@ -19,6 +19,7 @@ class PhotosIndex extends React.Component {
 
   componentDidMount(){
      this.props.requestPhotos();
+     //
   }
 
 
