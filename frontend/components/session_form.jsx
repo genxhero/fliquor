@@ -31,17 +31,14 @@ class SessionForm extends React.Component {
 
 renderErrors() {
   if (this.props.errors.session.length > 0) {
-
     return (
         <div className="err-container">
-
         <div className="errors-popup" >
               <h1 className="failure">ERROR</h1>
-
-            <ul className="errors">
-              {this.props.errors.session.map((error, key) => {
-                return <li className="error">{error}</li>
-              })}
+              <ul className="errors">
+               {this.props.errors.session.map((error, key) => {
+                 return <li className="error">{error}</li>
+               })}
             </ul>
             <button className="err-clear" onClick={this.props.clearErrors}>Understood</button>
           </div>
@@ -53,6 +50,7 @@ renderErrors() {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.clearErrors();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }
