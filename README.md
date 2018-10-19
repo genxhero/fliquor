@@ -206,7 +206,10 @@ In the controller, the first problem I ran into was that the json was returning 
       end
 ```
 
-Updating was both a challenge and a joy to complete.  I learned a great deal about how to work with join tables and the built-in Rails methods granted me by the associations.
+Updating was both a challenge and a joy to complete.  I learned a great deal about how to work with join tables and the built-in Rails methods granted me by the associations.  Once I understood the power of these methods, update became very easy to solve.
 
 ```ruby
+    @album = Album.find(params[:id])
+     photo_ids = params[:album][:photo_ids].split(',')
+     @album.photo_ids = photo_ids
 ```
