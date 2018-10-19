@@ -7,8 +7,8 @@ class PhotoUpload extends React.Component {
    super(props)
 
    this.state = {
-     title: 'Untitled',
-     description:'Nondescript',
+     title: '',
+     description:'',
      tag_ids: "",
      photoURL: null
    };

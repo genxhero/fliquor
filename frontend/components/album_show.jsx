@@ -4,9 +4,14 @@ import {Link, withRouter} from 'react-router-dom';
 class AlbumShow extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      overlaying: false
+    };
     this.editMaybe = this.editMaybe.bind(this);
     this.newMaybe = this.newMaybe.bind(this);
     this.sakujo = this.sakujo.bind(this);
+    this.overlay = this.overlay.bind(this);
+    this.noverlay = this.noverlay.bind(this);
   }
 
   componentDidMount(){
@@ -17,6 +22,30 @@ class AlbumShow extends React.Component {
 
   }
 
+
+  overlay(event){
+    // let butter = "butter";
+
+    // let pika = "fluff";
+    this.setState({overlaying: true});
+
+    event.currentTarget.style.color = "white";
+    event.currentTarget.style.textShadow="1px 1px black";
+    //event.currentTarget.firstChild.lastChild.style.color = "gray";
+    event.currentTarget.firstChild.style.backgroundImage="linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0), rgba(0,0,0,.7))";
+
+
+
+  }
+
+  noverlay(event){
+ this.setState({overlaying: false});
+     event.currentTarget.style.color = "transparent";
+     // debugger;
+     event.currentTarget.style.textShadow="none";
+    //event.currentTarget.firstChild.lastChild.style.color = "transparent";
+     event.currentTarget.firstChild.style.backgroundImage="none";
+  }
 
     sakujo(e){
       e.preventDefault();
@@ -90,8 +119,20 @@ class AlbumShow extends React.Component {
               </div>
          </div>
          <div className="album-photos-container">
-            <ul className="photo-spread">
-              {photos.map(photo => <li id={photo.id}className="photo-index-item"> <h8 className="photo-data-thumb">{photo.title}</h8><Link to={`/photos/${photo.id}`}><img className="album-thumb" src={photo.image_url}/></Link></li>)}
+            <ul className="album-photo-spread">
+              {photos.map(photo =>
+              <li id={photo.id}
+                  className="album-show-photo"
+                  onMouseEnter={this.overlay}
+                  onMouseLeave={this.noverlay}
+                   >
+                <div className="photo-data-thumb-holder">
+                    <div className="photo-data-thumb">{photo.title}</div>
+                </div>
+                <Link  to={`/photos/${photo.id}`}>
+                  <img className="album-thumb" src={photo.image_url}/>
+                </Link>
+              </li>)}
             </ul>
           </div>
        </div>

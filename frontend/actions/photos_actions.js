@@ -22,7 +22,7 @@ export const removePhoto = (photos) => ({
 });
 
 export const removeComment = photo => {
-  debugger;
+
   {
   type: REMOVE_COMMENT,
   photo

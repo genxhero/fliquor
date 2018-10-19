@@ -114,7 +114,7 @@ flex-direction: column;
      display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+
 }
 
 .comment-body {
@@ -621,12 +621,20 @@ height: 100%
 
 
 .photo-data-thumb {
-  position: relative;
-  left: 20%;
-  bottom: 5%;
+  position: absolute;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  bottom: 2%;
 }
 
-
+.photo-data-thumb-holder{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
 
 
 .album-owner {
@@ -726,6 +734,17 @@ text-align: left;
   padding-inline-start: 0;
 }
 
+.album-photo-spread {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  padding-inline-start: 0;
+
+}
+
 .photo-list-mini {
   width: 400px;
   height: 350px;
@@ -744,13 +763,38 @@ text-align: left;
 
 }
 
+.album-show-photo {
+  width: 300px;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  align-items: flex-end;
+  color: transparent;
+  text-shadow: none;
+  border: 3px solid white;
+  background-image: none;
+}
+
+.album-show-photo:hover {
+  width: 300px;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  text-shadow: 1px 1px black;
+  transition: all 0.2s;
+}
+
 .photo-index-item:hover {
-  /* color: white; */
-  /* text-shadow: 1px 1px black; */
+   color: white;
+   text-shadow: 1px 1px black;
   border: 3px solid #1a73e8;
   transition: all 0.2s;
   cursor: pointer;
 }
+
+
 
 .photo-index-info-overlay {
   display: flex;
@@ -1879,6 +1923,15 @@ opacity: 0.65;
 
 .tag-photo {
   margin:5px;
+  position: relative;
+}
+
+.tag-photo-list-mini {
+  width: 400px;
+}
+
+.from-tag-to-photo {
+
 }
 
 .arrow {
