@@ -743,7 +743,8 @@ text-align: left;
   /* color: white; */
   /* text-shadow: 1px 1px black; */
   border: 3px solid #1a73e8;
-  transition: background-image 0.5s
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
 .photo-index-info-overlay {
@@ -758,6 +759,8 @@ text-align: left;
   background-image: none;
 
 }
+
+.photo-index-overlay
 
 .photo-index-title {
   margin-left: 5px;
