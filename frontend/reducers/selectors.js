@@ -17,3 +17,13 @@ export const getPhotosByTag = (state, tagID) => {
   }
   return result;
 };
+
+export const getAlbumsByPhoto = (state, photoID) => {
+  let result = [];
+  for (let id in state.entities.albums) {
+    if (state.entities.albums[id].photo_id === photoID){
+      result.push(state.entities.albums[id]);
+    }
+  }
+  return result;
+};

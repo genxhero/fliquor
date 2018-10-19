@@ -259,10 +259,13 @@ componentDidMount() {
 
           </div>
           <div className="show-bottom-right">
-               <ul>
-                 <li>Dolor ipsum sit amet</li>
-               </ul>
-               <h6>Album information will go here upon implementation in Phase III: The Quickening</h6>
+               <div className = "photo-show-albums-container">
+                 <div className="photo-show-albums-heading"></div>
+                 <div className="photo-show-album-spread">
+                   
+                 </div>
+
+               </div>
              <div className="tags-container">
                 <div className="tag-heading">
                   <Link to="/tags">Tags</Link>

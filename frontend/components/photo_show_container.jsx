@@ -4,6 +4,7 @@ import { requestPhoto, destroyPhoto, requestPhotos, createComment, deleteComment
 import {withRouter} from 'react-router-dom';
 import {requestUser, requestUsers} from '../actions/users_actions';
 import {deleteTag} from '../actions/joins_actions';
+import {requestAlbums} from '../actions/album_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
