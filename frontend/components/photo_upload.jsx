@@ -19,6 +19,8 @@ class PhotoUpload extends React.Component {
   this.getFilename = this.getFilename.bind(this);
  }
 
+
+
   onFileChange(e) {
     const file = e.target.files[0];
     const fileReader = new FileReader();
@@ -97,10 +99,13 @@ getFilename() {
     if (this.state.loading){
 
       return(
+       <div className="loading-container">
 
-        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+         <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div className="loading-background"></div>
+       </div>
 
-  );  
+  );
  }
      const UploadToolbar = () => {
        if (this.state.photoURL) {

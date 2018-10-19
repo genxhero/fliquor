@@ -28,6 +28,24 @@
    padding: 10px;
 } */
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+
+}
+
+.loading-background {
+  width: 9001px;
+  height: 9001px;
+  background: black;
+  opacity: 0.5;
+  z-index: 500;
+  position: fixed;
+}
+
 Link {
   text-decoration: none;
 }
@@ -2002,6 +2020,8 @@ opacity: 0.65;
   position: relative;
   width: 64px;
   height: 64px;
+
+  z-index: 800;
 }
 .lds-spinner div {
   transform-origin: 32px 32px;
