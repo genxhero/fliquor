@@ -156,8 +156,7 @@ componentDidMount() {
   }
 
   deleteCommentMaybe(e, f) {
-    let dummy = "me"
-//    debugger;
+
     if( this.props.currentUser && e === this.props.currentUser.id){
 
     return (<div className="comment-trash-icon" id={f} onClick={this.deleteComment}></div>);
@@ -255,14 +254,14 @@ componentDidMount() {
                          <input className="comment-submit" type="submit" value="Comment"></input>
                  </form>
                </div>
-               <div className={this.props.currentUser ?  "blank-div" : "commenting-disabled"}>"commenting-disabled"> Please log in or sign up to comment</div>
+               <div className={this.props.currentUser ?  "blank-div" : "commenting-disabled"}> Please log in or sign up to comment</div>
 
           </div>
           <div className="show-bottom-right">
                <div className = "photo-show-albums-container">
                  <div className="photo-show-albums-heading"></div>
                  <div className="photo-show-album-spread">
-                   
+
                  </div>
 
                </div>
