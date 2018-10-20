@@ -44,6 +44,7 @@ class PhotoUpload extends React.Component {
     this.setState ({
       loading: true
     });
+
     let formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
@@ -97,11 +98,12 @@ getFilename() {
 
   render() {
     if (this.state.loading){
-
+      
       return(
        <div className="loading-container">
-
-         <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+         <div className="loading-container-inner">
+           <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+         </div>
         <div className="loading-background"></div>
        </div>
 

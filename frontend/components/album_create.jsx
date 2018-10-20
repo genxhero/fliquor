@@ -56,8 +56,12 @@ class AlbumCreate extends React.Component {
     if (this.state.loading){
 
       return (
-        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-        );
+        <div className="loading-container">
+          <div className="loading-container-inner">
+            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          </div>
+         <div className="loading-background"></div>
+        </div>        );
     }
     return (
       <div className="album-creation-page">

@@ -1,7 +1,8 @@
 class Api::PhotosController < ApplicationController
     def show
-      
+
        @photo = Photo.find(params[:id].to_i)
+    
       render :show
     end
 
@@ -26,7 +27,7 @@ class Api::PhotosController < ApplicationController
     end
 
     def index
-      @photos = Photo.all
+      @photos = Photo.all.shuffle
       render :index
     end
 

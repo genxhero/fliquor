@@ -28,23 +28,6 @@
    padding: 10px;
 } */
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-
-}
-
-.loading-background {
-  width: 9001px;
-  height: 9001px;
-  background: black;
-  opacity: 0.5;
-  z-index: 500;
-  position: fixed;
-}
 
 Link {
   text-decoration: none;
@@ -2014,6 +1997,34 @@ opacity: 0.65;
   background: url(https://s.yimg.com/ap/build/images/sprites/icons-938e2840.png) -524px -76px no-repeat;
 }
 
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index:950;
+}
+
+.loading-container-inner {
+  position:relative;
+      margin-top: 25%;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-background {
+  width: 9001px;
+  height: 9001px;
+  background: black;
+  opacity: 0.5;
+  z-index: 950;
+  position: fixed;
+}
+
 .lds-spinner {
   color: official;
   display: inline-block;
@@ -2021,7 +2032,7 @@ opacity: 0.65;
   width: 64px;
   height: 64px;
 
-  z-index: 800;
+  z-index: 1000;
 }
 .lds-spinner div {
   transform-origin: 32px 32px;

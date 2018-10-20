@@ -6,13 +6,11 @@ const photosReducer = (state = {}, action) => {
   Object.freeze(state);
     switch(action.type) {
       case RECEIVE_PHOTO:
-      // let dummy;
-      // ;
-      // let scapegoat;
+    
       return merge({}, state, { [action.photo.photo.id]: action.photo.photo} );
 
       case RECEIVE_PHOTOS:
-    //  ;
+
       return merge({}, state, action.photos)
 
       case  REMOVE_TAG:
