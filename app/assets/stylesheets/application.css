@@ -29,6 +29,38 @@
 } */
 
 
+.footer {
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.dead-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dead-links > a {
+  color: white;
+  padding: 20px;
+}
+
+.dead-links > a:visited {
+  color: white;
+}
+
+.dead-links > a:hover {
+  opacity: .5;
+  color: gray;
+  transition: all 0.2s;
+}
+
 Link {
   text-decoration: none;
 }
@@ -36,6 +68,7 @@ Link {
 a {
   text-decoration: none;
 }
+
 
 .comment-form-container {
 

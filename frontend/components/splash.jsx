@@ -4,6 +4,22 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
  import LoginContainer from './login_container';
 import {AuthRoute} from '../util/auth_util';
 
+
+const Footer = () => (
+  <div className="footer"> 
+  <nav className="dead-links">
+      <Link to="/">About</Link>
+      <Link to="/">Jobs</Link>
+      <Link to="/">Blog</Link>
+      <Link to="/">Developers</Link>
+      <Link to="/">Guidelines</Link>
+      <Link to="/">Privacy</Link>
+      <Link to="/">Terms</Link>
+      <Link to="/">Help Forum</Link>
+  </nav>
+  </div>
+);
+
 const Splash = (props) => {
 if (props.location.pathname === '/') {
   return (
@@ -18,20 +34,21 @@ if (props.location.pathname === '/') {
       <br></br>
       <br></br>
       <Link className="big-signup" to="/home">View Photos</Link>
+      <Footer />
 
     </div>
   ); } else if (props.location.pathname === '/signup') {
     return (
       <div className="splash">
           <SignupContainer />
+          <Footer />
       </div>
     );
   } else if (props.location.pathname === '/login'){
-      return (
-        <div className="splash">
+      return <div className="splash">
           <LoginContainer />
-        </div>
-      );
+           <Footer />
+        </div>;
   } else {
     return (<div></div>);
   }
