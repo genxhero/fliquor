@@ -15,6 +15,10 @@ if (props.location.pathname === '/') {
         <br></br>
 
           <Link className="big-signup" to="/signup">Sign Up</Link>
+      <br></br>
+      <br></br>
+      <Link className="big-signup" to="/home">View Photos</Link>
+
     </div>
   ); } else if (props.location.pathname === '/signup') {
     return (

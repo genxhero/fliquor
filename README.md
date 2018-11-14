@@ -213,3 +213,8 @@ Updating was both a challenge and a joy to complete.  I learned a great deal abo
      photo_ids = params[:album][:photo_ids].split(',')
      @album.photo_ids = photo_ids
 ```
+### Punch List
+
+*  Deadlink icon
+*  Deadlink footer on splash
+*  Error modal needs to be re-aligned
