@@ -217,7 +217,11 @@ componentDidMount() {
         <div className="show-bottom">
           <div className="show-bottom-left">
             <div className="show-user-info">
-              <h3 className="show-user-name"> {this.props.photo.user.first_name} {this.props.photo.user.last_name}</h3>
+             <Link to={`/users/${this.props.photo.user.id}`}> 
+                <h3 className="show-user-name"> 
+                {this.props.photo.user.first_name} {this.props.photo.user.last_name}
+                </h3>
+              </Link>
              </div>
 
             <div className="show-photo-info">
@@ -228,9 +232,7 @@ componentDidMount() {
            <div className="show-photo-comments">
              <div className="comment-spread">
                {this.props.comments.map( comment => {
-              let   dummmy = "Peanut";
-
-              let   standin = "A patsy";
+            
                  return (
                     <div className="comment-single" id={`${comment.id}`}>
                       <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><div className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id, comment.id)}</div>
