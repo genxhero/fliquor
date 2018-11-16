@@ -11,37 +11,79 @@ const ProfileSubnav = ({props}) => {
     const activePath = props.location.pathname
     return <div className="profile-subnav">
         <ul className="profile-subnav-content">
-          <li className={activePath === "/users/:userID/about" ? "active-pane" : "inactive-pane"}>
-            <Link to="/users/:userID/about">About</Link>
+          <li className={activePath === `/users/${props.match.params.userID}/about` ? "active-pane" : "inactive-pane"}>
+            <Link to={`/users/${props.match.params.userID}/about`}>
+              About
+            </Link>
           </li>
 
-        <li className={activePath === "/users/:userID/photostream" ? "active-pane" : "inactive-pane"}>
-          <Link to="/users/:userID/photostream">Photostream</Link>
+          <li className={activePath === `/users/${props.match.params.userID}/photostream` ? "active-pane" : "inactive-pane"}>
+          <Link to={`/users/${props.match.params.userID}/photostream`}>Photostream</Link>
           </li>
-        <li className={activePath === "/users/:userID/albums" ? "active-pane" : "inactive-pane"}>
-          <Link to="/users/:userID/albums">Albums</Link>
+        <li className={activePath === `/users/${props.match.params.userID}/albums` ? "active-pane" : "inactive-pane"}>
+          <Link to={`/users/${props.match.params.userID}/albums`}>Albums</Link>
           </li>
         </ul>>
       </div>;
 
 };
 
-const ProfilePane = ({props}) => {
+const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
   const activePath = props.location.pathname;
+  const userId = parseInt(props.match.params.userID);  
+  const photos = Object.values(props.photos).filter( (photo) => {
+     if (photo.user_id === userId) {
+       return photo
+     }
+  } );
+ 
+  switch (activePath) {
+    case `/users/${userId}/photostream`:
+      return <div className="photo-index-page">
+          <div className="photo-index-container">
+            <ul className="photo-spread">
+              {photos.map(photo => (
+                <li
+                  className="photo-index-item"
+                  id={`${photo.id}`}
+                  onMouseEnter={overlay}
+                  onMouseLeave={noverlay}
+                  onClick={shadowClick}
+                >
+                  <div className="photo-index-info-overlay">
+                    <div className="photo-index-title">{photo.title}</div>
+                    <div className="photo-index-user">
+                      by {photo.user.first_name + " " + photo.user.last_name}
+                    </div>
+                  </div>
 
-  switch(activePath) {
-    case "/users/:userID/photostream":
-    return (<h1>Photostream</h1>);
-    break;
-    case "/users/:userID/about":
-      return (<h1>About</h1>);
-    break;
-    case "/users/:userID/albums":
-      return (<h1>Albums</h1>);
-    break;
-    default: 
-    return null;
-    break;
+                  <Link
+                    to={`/photos/${photo.id}`}
+                    className="link-from-photo-index"
+                  >
+                    <img
+                      className="photo-list-mini"
+                      src={photo.image_url}
+                      id={`${photo.id}`}
+                      onMouseEnter={overlay}
+                      onMouseLeave={noverlay}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>;
+      break;
+    case `/users/${userId}/about`:
+      return <h1>About</h1>;
+      break;
+    case `/users/${userId}/albums`:
+      return <h1>Albums</h1>;
+      break;
+    default:
+      return null;
+      break;
   }
 
 };
@@ -54,6 +96,29 @@ class UserProfile extends React.Component {
     this.state = {
       pageOwner: null
     }
+    this.shadowClick = this.shadowClick.bind(this);
+    this.overlay = this.overlay.bind(this);
+    this.noverlay = this.noverlay.bind(this);
+
+  }
+
+  shadowClick(event) {
+    this.props.history.push(`/photos/${event.currentTarget.id}`);
+  }
+
+  overlay(event) {
+  
+    this.setState({ overlaying: true });
+    event.currentTarget.style.color = "white";
+    event.currentTarget.style.textShadow = "1px 1px black";
+    event.currentTarget.firstChild.style.backgroundImage = "linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0), rgba(0,0,0,.7))";
+  }
+
+  noverlay(event) {
+    this.setState({ overlaying: false });
+    event.currentTarget.style.color = "transparent";
+    event.currentTarget.style.textShadow = "none";
+    event.currentTarget.firstChild.style.backgroundImage = "none";
   }
 
   componentDidMount() {
@@ -97,7 +162,7 @@ if(!this.state.pageOwner) {
       <ProfileSubnav props={this.props} />
       
       <div className="profile-pane">
-      <ProfilePane  props={this.props} />
+      <ProfilePane  props={this.props} overlay={this.overlay} noverlay={this.noverlay} shadowClick={this.shadowClick} />
       </div>
     </div>
 
