@@ -1368,6 +1368,7 @@ padding-bottom: 20px;
 .profile-subnav {
  height: 50px;
  background: white;
+ color: black;
  border-bottom: 1px solid hsla(0,0%,54%,.3)
 }
 

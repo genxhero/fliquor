@@ -1,28 +1,28 @@
 
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import OnlineHeaderContainer from './online_header_container';
+import { getPhotosByUser } from "../reducers/selectors.js";
 
 
-const ProfileSubnav = (props) => {
+
+const ProfileSubnav = ({props}) => {
+  // debugger;
     const activePath = props.location.pathname
-    return (
-      <div className="home-navbar">
+    return <div className="home-navbar">
         <ul className="home-navbar-content">
-          <li className={activePath === "/home" ? "active-pane" : "inactive-pane"}>
-            <Link to="/home">Explore</Link>
+          <li className={activePath === "/users/:userID/about" ? "active-pane" : "inactive-pane"}>
+            <Link to="/users/:userID/about">About</Link>
           </li>
 
-          <li className={activePath === "/albums" ? "active-pane" : "inactive-pane"}>
-            <Link to="/albums">Albums</Link>
+        <li className={activePath === "/users/:userID/photostream" ? "active-pane" : "inactive-pane"}>
+          <Link to="/users/:userID/photostream">Photostream</Link>
           </li>
-          <li className={activePath === "/tags" ? "active-pane" : "inactive-pane"}>
-            <Link to="/tags">Trending</Link>
+        <li className={activePath === "/users/:userID/albums" ? "active-pane" : "inactive-pane"}>
+          <Link to="/users/:userID/albums">Albums</Link>
           </li>
         </ul>>
-    </div>
-
-    );
+      </div>;
 
 };
 
@@ -75,8 +75,10 @@ if(!this.state.pageOwner) {
         <div className="cover-photo-overlay"></div>
       </div>
       <div className="profile-subnav">
+      <ProfileSubnav props={this.props} />
       </div>
       <div className="profile-pane">
+
       </div>
     </div>
 
@@ -86,6 +88,10 @@ if(!this.state.pageOwner) {
 
 
 
+  }
+
+  newMethod() {
+    return this;
   }
 }
 //style = {{backgroundImage: `url(${photos[0].image_url})`}}

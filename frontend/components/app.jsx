@@ -119,7 +119,7 @@ const App = () => (
       <Route exact path="/tags/:tagTitle" component={TagShow} />
       <Route exact path="/tags" component={TagPane} />
     </Switch>
-    <Route exact path="/users/:userID" component={UserProfileContainer} />
+    <Route path="/users/:userID" component={UserProfileContainer} />
   </div>
 );
 

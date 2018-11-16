@@ -13,16 +13,11 @@ const mapStateToProps = (state, ownProps) => {
    
     const currentUser = state.entities.users[state.session.id];
     // const photos = getPhotosByUser(state, user.id);
+     
+    const photos = state.entities.photos;
     // debugger;
-    let photos, user;
-     if (user != undefined) {
-        //  debugger;
-        photos = getPhotosByUser(state, user.id);
-              } 
-    
     return {
         currentUser,
-        user,
         photos
     };
 
