@@ -39,8 +39,8 @@ const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
  
   switch (activePath) {
     case `/users/${userId}/photostream`:
-      return <div className="photo-index-page">
-          <div className="photo-index-container">
+      return (
+          
             <ul className="photo-spread">
               {photos.map(photo => (
                 <li
@@ -72,8 +72,8 @@ const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>;
+          
+        );
       break;
     case `/users/${userId}/about`:
       return <h1>About</h1>;
