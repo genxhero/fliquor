@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Route, Link} from 'react-router-dom';
+import { Route, Link, Redirect} from 'react-router-dom';
 import OnlineHeaderContainer from './online_header_container';
 import { getPhotosByUser } from "../reducers/selectors.js";
 
@@ -35,7 +35,15 @@ const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
      if (photo.user_id === userId) {
        return photo
      }
-  } );
+    }
+   );
+
+  const albums = props.albums.filter((album) => {
+    if (album.user_id === userId) {
+      return album;
+    }
+   }
+  );
  
   switch (activePath) {
     case `/users/${userId}/photostream`:
@@ -79,10 +87,17 @@ const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
       return <h1>About</h1>;
       break;
     case `/users/${userId}/albums`:
-      return <h1>Albums</h1>;
+      debugger;
+      return (
+              
+        <ul className="album-spread">
+          <li> <Link className="album-index-create" to="/albums/create">Create New Album</Link></li>
+          {albums.filter(album => album.photos.length > 0).map(album => <li className="album-index-item" id={`${album.id}`} > <h6 className="album-data-thumb">{album.title} by {album.user.username}</h6><Link to={`/albums/${album.id}`}><img className="album-thumbnail" src={album.photos[0].image_url} /></Link></li>)}
+        </ul>
+        );
       break;
     default:
-      return null;
+      return <Redirect to={`/users/${userId}/about`} />;
       break;
   }
 
@@ -122,8 +137,10 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount() {
+    this.props.requestAlbums();
     this.props.requestUser(this.props.match.params.userID).then(res => {
       this.setState({ pageOwner: res.user });
+      //this.props.requestAlbums 
       // debugger;
     })
   }

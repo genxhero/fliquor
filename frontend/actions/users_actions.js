@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/api_util';
 
-const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USER = "RECEIVE_USER";
 
 const receiveUser = user => ({
   type: RECEIVE_USER,
