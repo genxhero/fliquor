@@ -9,8 +9,8 @@ import { getPhotosByUser } from "../reducers/selectors.js";
 const ProfileSubnav = ({props}) => {
   // debugger;
     const activePath = props.location.pathname
-    return <div className="home-navbar">
-        <ul className="home-navbar-content">
+    return <div className="profile-subnav">
+        <ul className="profile-subnav-content">
           <li className={activePath === "/users/:userID/about" ? "active-pane" : "inactive-pane"}>
             <Link to="/users/:userID/about">About</Link>
           </li>
@@ -23,6 +23,26 @@ const ProfileSubnav = ({props}) => {
           </li>
         </ul>>
       </div>;
+
+};
+
+const ProfilePane = ({props}) => {
+  const activePath = props.location.pathname;
+
+  switch(activePath) {
+    case "/users/:userID/photostream":
+    return (<h1>Photostream</h1>);
+    break;
+    case "/users/:userID/about":
+      return (<h1>About</h1>);
+    break;
+    case "/users/:userID/albums":
+      return (<h1>Albums</h1>);
+    break;
+    default: 
+    return null;
+    break;
+  }
 
 };
 
@@ -74,11 +94,10 @@ if(!this.state.pageOwner) {
         </div>
         <div className="cover-photo-overlay"></div>
       </div>
-      <div className="profile-subnav">
       <ProfileSubnav props={this.props} />
-      </div>
+      
       <div className="profile-pane">
-
+      <ProfilePane  props={this.props} />
       </div>
     </div>
 
