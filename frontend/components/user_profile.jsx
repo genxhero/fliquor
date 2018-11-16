@@ -87,7 +87,6 @@ const ProfilePane = ({props, overlay, noverlay, shadowClick}) => {
       return <h1>About</h1>;
       break;
     case `/users/${userId}/albums`:
-      debugger;
       return (
               
         <ul className="album-spread">
@@ -166,11 +165,27 @@ if(!this.state.pageOwner) {
 } else {
 
   const user = this.state.pageOwner;
+  const photos = Object.values(this.props.photos).filter((photo) => {
+    if (photo.user_id === user.id) {
+      return photo
+    }
+  }
+  );
+
+  if (photos.length > 0){
+   const cover =  document.getElementById("cover");
+   if (cover != null) {
+     cover.style.backgroundImage = `url(${photos[0].image_url})`;
+     cover.style.backgroundPosition = "center";
+   }
+   
+  }
+
   return (
     <div className="user-profile">
       <OnlineHeaderContainer />
       <br></br>
-      <div className="cover-photo" >
+      <div className="cover-photo" id="cover" >
         <div className="cover-photo-content">
           <span className="user-info">{user.first_name}  {user.last_name} </span>
         </div>

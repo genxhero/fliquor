@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
 
   if (album != undefined) {
     user = requestUser(album.user_id);
-    debugger;
     photos = album.photos;
   };
      return {
