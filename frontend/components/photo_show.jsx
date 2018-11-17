@@ -17,7 +17,6 @@ constructor (props){
   this.sakujo= this.sakujo.bind(this);
   this.update = this.update.bind(this);
   this.deleteTag = this.deleteTag.bind(this);
-  this.getAuthor = this.getAuthor.bind(this);
   this.newCommentMaybe = this.newCommentMaybe.bind(this);
   this.editMaybe = this.editMaybe.bind(this);
   this.addComment = this.addComment.bind(this);
@@ -34,12 +33,6 @@ blankFunc(){
   return null;
 }
 
-getAuthor(userID) {
-  const author = this.props.requestUser(userID);
-
-  let dummy ="butter;"
-  return author;
-}
 
 componentDidMount() {
 
@@ -64,9 +57,9 @@ componentDidMount() {
 
   componentWillReceiveProps(nextProps){
 
-    if (this.props.currentUser != nextProps.currentUser) {
-
-    }
+    // if (this.props.currentUser != nextProps.currentUser) {
+          
+    // }
   }
 
 

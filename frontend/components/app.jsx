@@ -1,7 +1,7 @@
 import React from 'react';
  import LoginContainer from './login_container';
  import SignupContainer from './signup_container';
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/auth_util';
 import Splash from './splash';
 import PhotoUploadContainer from './photo_upload_container';
@@ -99,6 +99,13 @@ const TagShow = () => (
     </div>
 );
 
+const UserProfile = () => (
+<div>
+    <OnlineHeaderContainer />
+     <UserProfileContainer />
+</div>
+);
+
 const App = () => (
   <div className="app-main">
 
@@ -119,11 +126,11 @@ const App = () => (
       <Route exact path="/tags/:tagTitle" component={TagShow} />
       <Route exact path="/tags" component={TagPane} />
     </Switch>
-    <Route path="/users/:userID" component={UserProfileContainer} />
+    <Route path="/users/:userID" component={UserProfile} />
   </div>
 );
 
-export default App;
+export default withRouter(App);
 // <AuthRoute path="/login" component={LoginContainer} />
 // <AuthRoute path="/signup" component={SignupContainer} />
 // <ProtectedRoute /> use this for logout and oth
