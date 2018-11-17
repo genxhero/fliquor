@@ -13,14 +13,25 @@ class SessionForm extends React.Component {
       password: "",
       email: "",
       first_name:"",
-      last_name:""
+      last_name:"",
+      erroneous: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.clearButton = this.clearButton.bind(this);
 
   }
 
 
+  clearButton(){
+    this.props.clearErrors();
+    const form = document.getElementsByClassName("session-form-container")[0];
+    if (form != null) {
+      form.style.zIndex = "9000";
+    }
+    // this.setState({erroneous: false});
+  }
+  
 
   update(field) {
   return event => this.setState({
@@ -31,6 +42,12 @@ class SessionForm extends React.Component {
 
 renderErrors() {
   if (this.props.errors.session.length > 0) {
+    // this.setState({erroneous: true});
+   const form =  document.getElementsByClassName("session-form-container")[0];
+   if (form != null) {
+     form.style.zIndex = "200";
+   }
+ 
     return (
         <div className="err-container">
         <div className="errors-popup" >
@@ -40,7 +57,7 @@ renderErrors() {
                  return <li className="error">{error}</li>
                })}
             </ul>
-            <button className="err-clear" onClick={this.props.clearErrors}>Understood</button>
+            <button className="err-clear" onClick={this.clearButton}>Understood</button>
           </div>
           <div className="errors-modal"></div>
     </div>
@@ -83,12 +100,20 @@ renderErrors() {
 
     };
 
+    if (this.state.erroneous === true) {
+      return(
+         <div className="splash-content">
+         <ErrorsPopup />
+         </div>
+         );
+    }
+
     if (this.props.formType === 'login') {
       formUrl = '/signup';
       formString = "Sign Up";
       currentPage = "Log In";
       return (
-    <div>
+    <div className="splash-content">
         <ErrorsPopup />
       <div className="session-form-container">
         <h3 className="form-header">{currentPage}</h3>
@@ -117,7 +142,7 @@ renderErrors() {
       formString ="Log In";
       currentPage = "Sign Up";
       return (
-<div>
+<div className="splash-content">
     <ErrorsPopup />
   <div className="session-form-container">
     <h3 className="form-header">{currentPage}</h3>
@@ -163,10 +188,9 @@ renderErrors() {
 
     }
 
+  } //render end
 
-  }
-
-}
+} //class end
 
 export default withRouter(SessionForm);
 // <Link className="other-action" to={`${formUrl}`}>{formString} Instead</Link>
