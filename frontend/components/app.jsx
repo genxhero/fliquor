@@ -112,7 +112,7 @@ const App = () => (
     <AuthRoute exact path="/" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/signup" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
-    <AuthRoute path="/" component={Splash} />
+    <AuthRoute exact path="/" component={Splash} />
     <Route exact path="/home" component={Index}/>
 
     <Switch>
@@ -125,8 +125,8 @@ const App = () => (
       <Route exact path="/albums" component={AlbumPane} />
       <Route exact path="/tags/:tagTitle" component={TagShow} />
       <Route exact path="/tags" component={TagPane} />
+      <Route path="/users/:userID" component={UserProfile} />
     </Switch>
-    <Route path="/users/:userID" component={UserProfile} />
   </div>
 );
 
