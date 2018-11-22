@@ -16,7 +16,8 @@ class User < ApplicationRecord
   BAD_PASSWORDS =["123456", "abcdefg", "abc123", "123abc"]
   after_initialize :ensure_token
   validates :password, length: {minimum: 6, allow_nil: true  }
-  validates :username, :password_digest, :email, :first_name, :last_name, :session_token, presence: true, uniqueness: true
+  validates :username, :password_digest, :email, :session_token, presence: true, uniqueness: true
+  validates :first_name, :last_name, presence: true;
   # validate :stupid_passwords
 
   has_many :albums,
