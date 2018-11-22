@@ -106,13 +106,19 @@ const UserProfile = () => (
 </div>
 );
 
-const App = () => (
+
+
+const App = () => {
+   debugger;
+  return (
   <div className="app-main">
 
     <AuthRoute exact path="/" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/signup" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/login" component={OfflineHeaderContainer} />
     <AuthRoute exact path="/" component={Splash} />
+      <AuthRoute exact path="/signup" component={Splash} />
+      <AuthRoute exact path="/login" component={Splash} />
     <Route exact path="/home" component={Index}/>
 
     <Switch>
@@ -128,7 +134,7 @@ const App = () => (
       <Route path="/users/:userID" component={UserProfile} />
     </Switch>
   </div>
-);
+)};
 
 export default withRouter(App);
 // <AuthRoute path="/login" component={LoginContainer} />

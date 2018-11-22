@@ -183,7 +183,6 @@ if(!this.state.pageOwner) {
 
   return (
     <div className="user-profile">
-      <OnlineHeaderContainer />
       <br></br>
       <div className="cover-photo" id="cover" >
         <div className="cover-photo-content">

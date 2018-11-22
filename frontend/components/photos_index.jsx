@@ -33,9 +33,6 @@ class PhotosIndex extends React.Component {
     event.currentTarget.style.textShadow="1px 1px black";
     //event.currentTarget.firstChild.lastChild.style.color = "gray";
     event.currentTarget.firstChild.style.backgroundImage="linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0), rgba(0,0,0,.7))";
-
-
-
   }
 
   noverlay(event){

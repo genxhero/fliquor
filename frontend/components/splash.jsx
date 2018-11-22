@@ -21,6 +21,7 @@ const Footer = () => (
 );
 
 const Splash = (props) => {
+  console.log("Current Path: ", props.location.pathname);
 if (props.location.pathname === '/') {
   return (
     <div className="splash">
