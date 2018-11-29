@@ -904,6 +904,8 @@ text-align: left;
 .photo-page{
   display: flex;
   flex-direction: column;
+   position: relative;
+   top: 20px;
 }
 .show-user-name{
   font-size: 22px;
@@ -1009,32 +1011,22 @@ margin-left: 9%;
   z-index: 7000;
 }
 
-.photo-page {
-  /* position:absolute; */
-background: #2C2C2C;
-color: #fff;
-/* display: flex; */
-/* height: 585px;
-width: 100%; */
-}
+
 
 .show-container {
   height: 700px;
   width: 100%;
   display: flex;
    justify-content: center;
-   align-items: center;
    background: #2C2C2C;
    margin-top: 1%;
    flex-direction: column;
 }
 
 .show-image {
-  min-width: 485px;
-  min-height: 495px;
-  max-height: 80%;
-  max-width: 60%;
+ width: 700px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .show-menu-top {
@@ -1045,6 +1037,8 @@ width: 100%; */
   width: 100%;
   padding: 20px;
   margin-left: 20px;
+      position: absolute;
+    top: 50px;
 }
 
 #back-link {
