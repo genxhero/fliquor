@@ -2212,8 +2212,7 @@ opacity: 0.65;
 .show-div {
  display: flex;
  flex-direction: row;
- align-items: center;
- justify-content: space-between;
+ justify-content: center;
 }
 
 .carousel-left {
@@ -2223,6 +2222,10 @@ opacity: 0.65;
   background-repeat: no-repeat;
  background-size: contain;
  margin-left: 40px;
+   position: absolute;
+       left: 40px;
+    top: 30%;
+
 }
 
 .carousel-right {
@@ -2232,4 +2235,20 @@ opacity: 0.65;
    background-repeat: no-repeat;
   background-size: contain;
   margin-right: 40px;
+    position: absolute;
+        right: 40px;
+    top: 30%;
+
+}
+
+.carousel-left:hover{
+  width: 120px;
+  height: 120px;
+  transition: all .2s;
+}
+
+.carousel-right:hover{
+  width: 120px;
+  height: 120px;
+  transition: all .2s;
 }
