@@ -10,12 +10,15 @@ import {requestAlbums} from '../actions/album_actions';
 const mapStateToProps = (state, ownProps) => {
 //  ;
   const photo = state.entities.photos[ownProps.match.params.photoID];
+  // debugger;
   const currentUser = state.entities.users[state.session.id];
   const comments = Object.values(state.entities.comments);
+  const photos = Object.values(state.entities.photos);
   // const comments = Object.values(state.entities.comments).filter((comment) => comment.photo_id === photo.id);
 
 //;
   let user;
+
 
    if (photo != undefined) {
     user = requestUser(photo.user_id);
@@ -26,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
      user,
     currentUser,
     comments,
+    photos,
 
   };
 };

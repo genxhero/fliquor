@@ -109,7 +109,6 @@ const UserProfile = () => (
 
 
 const App = () => {
-   debugger;
   return (
   <div className="app-main">
 

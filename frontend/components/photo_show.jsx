@@ -11,7 +11,8 @@ constructor (props){
   this.state = {
     body: "",
     expanded: false,
-    xpandid: 0
+    xpandid: 0,
+    clickCount: 0,
   }
 
   this.sakujo= this.sakujo.bind(this);
@@ -26,6 +27,8 @@ constructor (props){
   this.blankFunc = this.blankFunc.bind(this);
   this.expandTag = this.expandTag.bind(this);
   this.collapseTag = this.collapseTag.bind(this);
+  this.getNext = this.getNext.bind(this);
+  this.getPrev = this.getPrev.bind(this);  
 
 }
 
@@ -33,22 +36,45 @@ blankFunc(){
   return null;
 }
 
+getNext(){
+  if (this.props.photos.indexOf(this.props.photo) === this.props.photos.length - 1) {
+    return 0;
+  } else {
+    return this.props.photos.indexOf(this.props.photo) + 1;
+
+  } 
+}
+
+getPrev(){
+  if (this.props.photos.indexOf(this.props.photo) === 0) {
+    return this.props.photos.length - 1
+  } else {
+    return this.props.photos.indexOf(this.props.photo) - 1;
+  }
+}
+    
+    
+
 
 componentDidMount() {
-
+  this.props.requestPhotos();
   this.props.requestPhoto(this.props.match.params.photoID).then(res =>
     {
-
     this.props.requestUser(res.photo.photo.user_id);
   })
+
 }
+
+
 
   componentDidUpdate(previous) {
 
     if (previous.match.params.photoID !== this.props.match.params.photoID) {
 
       this.props.requestPhoto(this.props.match.params.photoID);
+
     }
+   
   // ;
   //   if(previous.props.photo.tags !== this.props.photo.tags){
   //      this.props.requestPhoto(this.props.match.params.photoID)
@@ -56,10 +82,9 @@ componentDidMount() {
   }
 
   componentWillReceiveProps(nextProps){
-
-    // if (this.props.currentUser != nextProps.currentUser) {
-          
-    // }
+    
+    
+  
   }
 
 
@@ -185,8 +210,7 @@ componentDidMount() {
 
   render() {
 
-
-    if (this.props.photo === undefined || this.props.user === undefined) {
+    if (this.props.photo === undefined || this.props.user === undefined || this.props.photos.length <= 1) {
       return 'Loading';
     }
 
@@ -199,110 +223,99 @@ componentDidMount() {
       return (<div></div>);
     };
 
+    const next = this.getNext();
+    const prev = this.getPrev();
 
-    return (
-      <div className="photo-page">
+  
+  
+    
+
+    return <div className="photo-page">
         <div className="show-container">
-          <div className="show-menu-top"><Link to="/home" id="back-link"><div className="back-arrow"></div> back to Photos</Link></div>
-            <img className="show-image" src={this.props.photo.image_url}></img>
-            <div className="show-menu-bottom">{this.editMaybe()}</div>
+          <div className="show-menu-top">
+            <Link to="/home" id="back-link">
+              <div className="back-arrow" /> back to Photos
+            </Link>
+          </div>
+          <img className="show-image" src={this.props.photo.image_url} />
+        <Link to={`/photos/${this.props.photos[next].id}`}>NEXT</Link>
+          <div className="show-menu-bottom">{this.editMaybe()}</div>
         </div>
         <div className="show-bottom">
           <div className="show-bottom-left">
             <div className="show-user-info">
-             <Link to={`/users/${this.props.photo.user.id}`}> 
-                <h3 className="show-user-name"> 
-                {this.props.photo.user.first_name} {this.props.photo.user.last_name}
+              <Link to={`/users/${this.props.photo.user.id}`}>
+                <h3 className="show-user-name">
+                  {this.props.photo.user.first_name} {this.props.photo.user.last_name}
                 </h3>
               </Link>
-             </div>
+            </div>
 
             <div className="show-photo-info">
               <h3 className="show-title">{this.props.photo.title} </h3>
               <h3 className="show-desc">{this.props.photo.description} </h3>
             </div>
 
-           <div className="show-photo-comments">
-             <div className="comment-spread">
-               {this.props.comments.map( comment => {
-            
-                 return (
-                    <div className="comment-single" id={`${comment.id}`}>
-                      <div className="comment-author"><Link to={`/users/${comment.user_id}`}>{comment.username}</Link><div className="comment-bottom" id={`${comment.user_id}`}>{this.deleteCommentMaybe(comment.user_id, comment.id)}</div>
+            <div className="show-photo-comments">
+              <div className="comment-spread">
+                {this.props.comments.map(comment => {
+                  return <div className="comment-single" id={`${comment.id}`}>
+                      <div className="comment-author">
+                        <Link to={`/users/${comment.user_id}`}>
+                          {comment.username}
+                        </Link>
+                        <div className="comment-bottom" id={`${comment.user_id}`}>
+                          {this.deleteCommentMaybe(comment.user_id, comment.id)}
+                        </div>
                       </div>
                       <div className="comment-body">{comment.body}</div>
-                    </div>
-                 );
-               }, this)
-             }
-             </div>
-           </div>
+                    </div>;
+                }, this)}
+              </div>
+            </div>
 
-               <div className= {this.props.currentUser ?  "comment-form-container" : "blank-div"}>
-                 <form className="comment-creation" onSubmit={this.addComment}>
-                         <textarea className="comment-field"
-                            placeholder="Add a comment"
-                            onChange={this.update('body')}
-                            value={this.state.body}
-                            >
-                         </textarea>
-                         <input className="comment-submit" type="submit" value="Comment"></input>
-                 </form>
-               </div>
-               <div className={this.props.currentUser ?  "blank-div" : "commenting-disabled"}> Please log in or sign up to comment</div>
-
+            <div className={this.props.currentUser ? "comment-form-container" : "blank-div"}>
+              <form className="comment-creation" onSubmit={this.addComment}>
+                <textarea className="comment-field" placeholder="Add a comment" onChange={this.update("body")} value={this.state.body} />
+                <input className="comment-submit" type="submit" value="Comment" />
+              </form>
+            </div>
+            <div
+              className={
+                this.props.currentUser ? "blank-div" : "commenting-disabled"
+              }
+            >
+              {" "}
+              Please log in or sign up to comment
+            </div>
           </div>
           <div className="show-bottom-right">
-               <div className = "photo-show-albums-container">
-                 <div className="photo-show-albums-heading"></div>
-                 <div className="photo-show-album-spread">
-
-                 </div>
-
-               </div>
-             <div className="tags-container">
-                <div className="tag-heading">
-                  <Link to="/tags">Tags</Link>
-
-                </div>
-                  <div className="tags-list">
-                  {this.props.photo.tags.map(tag =>
-
-                       <div className="tag-bubble-existing" id={`${tag.id}`}
-                           onMouseEnter={(this.props.currentUser  && this.props.currentUser.id === this.props.photo.user_id) ? this.expandTag : this.blankFunc}
-                           onMouseLeave={(this.props.currentUser  && this.props.currentUser.id === this.props.photo.user_id) ? this.collapseTag : this.blankFunc}
-                         >
-                      { this.state.expanded === true && this.state.xpandid == tag.id ?
-                        <div className="tag-expanded">
-                          <Link className="tag-link" id={`${tag.title}`}
-                            to={`/tags/${tag.title}`}>
+            <div className="photo-show-albums-container">
+              <div className="photo-show-albums-heading" />
+              <div className="photo-show-album-spread" />
+            </div>
+            <div className="tags-container">
+              <div className="tag-heading">
+                <Link to="/tags">Tags</Link>
+              </div>
+              <div className="tags-list">
+                {this.props.photo.tags.map(tag => <div className="tag-bubble-existing" id={`${tag.id}`} onMouseEnter={this.props.currentUser && this.props.currentUser.id === this.props.photo.user_id ? this.expandTag : this.blankFunc} onMouseLeave={this.props.currentUser && this.props.currentUser.id === this.props.photo.user_id ? this.collapseTag : this.blankFunc}>
+                      {this.state.expanded === true && this.state.xpandid == tag.id ? <div className="tag-expanded">
+                          <Link className="tag-link" id={`${tag.title}`} to={`/tags/${tag.title}`}>
                             {tag.title}
                           </Link>
-                          <div className={this.props.currentUser.id === this.props.photo.user_id ? "delete-x" : "blank-div"}
-                               onClick={this.deleteTag}
-                               id={`${tag.id}`}
-                               >
-                          </div>
-                        </div>
-                          :
-                          <Link className="tag-link" id={`${tag.title}`}
-                            to={`/tags/${tag.title}`}>
-                            {tag.title}
-                          </Link>
+                          <div className={this.props.currentUser.id === this.props.photo.user_id ? "delete-x" : "blank-div"} onClick={this.deleteTag} id={`${tag.id}`} />
+                        </div> : <Link className="tag-link" id={`${tag.title}`} to={`/tags/${tag.title}`}>
+                          {tag.title}
+                        </Link>}
+                    </div>,
 
-
-                      }
-                      </div>
-
-                  , this)}
-
-
-                </div>
-             </div>
+                  this)}
+              </div>
+            </div>
           </div>
-       </div>
-      </div>
-    );
+        </div>
+      </div>;
   }
 
 }
