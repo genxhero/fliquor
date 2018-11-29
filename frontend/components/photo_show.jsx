@@ -237,8 +237,12 @@ componentDidMount() {
               <div className="back-arrow" /> back to Photos
             </Link>
           </div>
+          <div className="show-div">
+          <Link className="carousel-left" to={`/photos/${this.props.photos[prev].id}`}></Link>
           <img className="show-image" src={this.props.photo.image_url} />
-        <Link to={`/photos/${this.props.photos[next].id}`}>NEXT</Link>
+          <Link className="carousel-right" to={`/photos/${this.props.photos[next].id}`}></Link>
+          </div>
+       
           <div className="show-menu-bottom">{this.editMaybe()}</div>
         </div>
         <div className="show-bottom">

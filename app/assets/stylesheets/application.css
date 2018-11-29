@@ -2214,3 +2214,28 @@ opacity: 0.65;
     opacity: 0;
   }
 }
+
+.show-div {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.carousel-left {
+ width: 100px;
+ height: 100px;
+ background: url('https://flaticons.net/icons/Application/Arrowhead-Left-01.png');
+  background-repeat: no-repeat;
+ background-size: contain;
+ margin-left: 40px;
+}
+
+.carousel-right {
+  width: 100px;
+  height: 100px;
+  background: url('https://flaticons.net/icons/Application/Arrowhead-Right-01.png');
+   background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 40px;
+}
