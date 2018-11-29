@@ -1063,6 +1063,7 @@ margin-top: 2px;
     width: 100%;
     margin-right: 40px;
 padding-bottom: 20px;
+margin-bottom: 20px;
 }
 
 
@@ -2213,6 +2214,8 @@ opacity: 0.65;
  display: flex;
  flex-direction: row;
  justify-content: center;
+ height: 700px;
+ margin-top: 10px;
 }
 
 .carousel-left {
