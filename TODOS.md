@@ -1,1 +1,1 @@
-*  
+*  Remove "uniqueness" validation for first and last names
