@@ -238,9 +238,9 @@ componentDidMount() {
             </Link>
           </div>
           <div className="show-div">
-          <Link className="carousel-left" to={`/photos/${this.props.photos[prev].id}`}></Link>
+          <Link className="carousel-left" to={`/photos/${this.props.photos[prev].id}`}> {'<'} </Link>
           <img className="show-image" src={this.props.photo.image_url} />
-          <Link className="carousel-right" to={`/photos/${this.props.photos[next].id}`}></Link>
+          <Link className="carousel-right" to={`/photos/${this.props.photos[next].id}`}>{'>'}</Link>
           </div>
        
           <div className="show-menu-bottom">{this.editMaybe()}</div>

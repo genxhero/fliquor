@@ -1464,7 +1464,7 @@ margin-bottom: 20px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   background-color: black;
+   background-color: navy;
    position: fixed;
    z-index: 2000;
    width: 100%;
