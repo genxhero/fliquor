@@ -1,3 +1,4 @@
+# TODO: Validate passwords not sequential, contains no repeats, is not "password"
 # == Schema Information
 #
 # Table name: users
@@ -9,7 +10,7 @@
 #  last_name       :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#
+
 
 class User < ApplicationRecord
   attr_reader :password
